@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Valley Daycare Sites</title>
+  <meta name="description" content="Tips, insights, and resources for daycare centers to improve their online presence and grow their business.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/tokens/design-tokens.css">
+  <link rel="stylesheet" href="../css/components/base.css">
+  <link rel="stylesheet" href="../css/components/header.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/components/button.css">
+  <link rel="stylesheet" href="../css/components/card.css">
+  <link rel="stylesheet" href="../css/components/hero.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__container">
+      <a href="home.html" class="header__logo">
+        <span class="header__logo-icon">🏫</span>
+        Valley Daycare Sites
+      </a>
+      
+      <nav class="header__nav">
+        <ul class="header__menu" id="mainMenu">
+          <li class="header__menu-item">
+            <a href="home.html" class="header__menu-link">Home</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="about.html" class="header__menu-link">About</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="services.html" class="header__menu-link">Services</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="blog.html" class="header__menu-link header__menu-link--active">Blog</a>
+          </li>
+        </ul>
+        
+        <a href="../forms/client-intake.html" class="header__cta">Get Started</a>
+      </nav>
+
+      <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span class="header__menu-toggle-bar"></span>
+        <span class="header__menu-toggle-bar"></span>
+        <span class="header__menu-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero hero--centered" style="background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%); min-height: 350px;">
+    <div class="hero__container">
+      <div class="hero__content">
+        <h1 class="hero__title">Blog & Resources</h1>
+        <p class="hero__subtitle">Tips, insights, and best practices for daycare websites and digital marketing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section -->
+  <section class="section">
+    <div class="container">
+      <!-- Featured Post -->
+      <div class="card card--horizontal card--featured" style="margin-bottom: var(--space-12);">
+        <img src="https://via.placeholder.com/600x400/f9ad00/ffffff?text=Featured+Post" alt="Featured blog post" class="card__image">
+        <div class="card__content">
+          <span class="card__badge">Featured</span>
+          <h2 class="card__title">10 Essential Features Every Daycare Website Needs</h2>
+          <div class="card__meta">
+            <span class="card__meta-item">📅 March 15, 2024</span>
+            <span class="card__meta-item">⏱️ 5 min read</span>
+          </div>
+          <p class="card__description">
+            Discover the must-have features that will help your daycare website attract more families and streamline enrollment. From online forms to photo galleries, we cover everything you need to know.
+          </p>
+          <div class="card__actions">
+            <a href="#" class="btn btn--primary">Read Article</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="card-grid">
+        <!-- Post 1 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/0080c8/ffffff?text=SEO+Guide" alt="SEO Guide" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">Marketing</span>
+            <h3 class="card__title">Local SEO for Daycare Centers: A Complete Guide</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 March 10, 2024</span>
+              <span class="card__meta-item">⏱️ 7 min read</span>
+            </div>
+            <p class="card__description">
+              Learn how to optimize your daycare website for local search results and help families in your area find you easily.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/7ed957/ffffff?text=Social+Media" alt="Social Media Tips" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">Social Media</span>
+            <h3 class="card__title">How to Use Social Media to Promote Your Daycare</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 March 5, 2024</span>
+              <span class="card__meta-item">⏱️ 6 min read</span>
+            </div>
+            <p class="card__description">
+              Effective social media strategies for daycare centers to engage with parents and build your community presence.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/ff99cc/ffffff?text=Photography" alt="Photography Tips" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">Content</span>
+            <h3 class="card__title">Photography Tips for Your Daycare Website</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 February 28, 2024</span>
+              <span class="card__meta-item">⏱️ 5 min read</span>
+            </div>
+            <p class="card__description">
+              Best practices for taking photos that showcase your facilities and create an emotional connection with parents.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 4 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/c899ff/ffffff?text=Website+Design" alt="Website Design" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">Design</span>
+            <h3 class="card__title">Website Design Trends for Childcare Providers</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 February 22, 2024</span>
+              <span class="card__meta-item">⏱️ 4 min read</span>
+            </div>
+            <p class="card__description">
+              Stay current with the latest design trends that appeal to modern parents while maintaining professionalism.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 5 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/ffaa66/ffffff?text=Enrollment" alt="Online Enrollment" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">Technology</span>
+            <h3 class="card__title">Streamlining Online Enrollment for Your Daycare</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 February 15, 2024</span>
+              <span class="card__meta-item">⏱️ 6 min read</span>
+            </div>
+            <p class="card__description">
+              Make the enrollment process easy for parents with online forms, automated emails, and clear next steps.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 6 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250/f9ad00/ffffff?text=WordPress" alt="WordPress Guide" class="card__image">
+          <div class="card__content">
+            <span class="card__badge">WordPress</span>
+            <h3 class="card__title">Why WordPress is Perfect for Daycare Websites</h3>
+            <div class="card__meta">
+              <span class="card__meta-item">📅 February 8, 2024</span>
+              <span class="card__meta-item">⏱️ 5 min read</span>
+            </div>
+            <p class="card__description">
+              Discover why WordPress is the ideal platform for daycare websites, from ease of use to extensive features.
+            </p>
+            <div class="card__actions">
+              <a href="#" class="btn btn--outline btn--sm">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div style="display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-12);">
+        <button class="btn btn--outline" disabled>Previous</button>
+        <button class="btn btn--primary">1</button>
+        <button class="btn btn--outline">2</button>
+        <button class="btn btn--outline">3</button>
+        <button class="btn btn--outline">Next</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section" style="background-color: var(--color-bg-accent);">
+    <div class="container">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <h2 style="font-family: var(--font-family-heading); font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); color: var(--color-text-primary); margin-bottom: var(--space-4);">
+          Subscribe to Our Newsletter
+        </h2>
+        <p style="font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+          Get the latest tips and resources for your daycare website delivered to your inbox.
+        </p>
+        <form style="display: flex; gap: var(--space-3); max-width: 500px; margin: 0 auto;">
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            style="flex: 1; padding: var(--space-3) var(--space-4); font-size: var(--font-size-base); border: var(--border-width-thin) solid var(--color-border-medium); border-radius: var(--border-radius-base);"
+          >
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__section">
+          <h3 class="footer__title">Valley Daycare Sites</h3>
+          <p class="footer__description">
+            Helping local daycare centers connect with families through professional website solutions.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">🐦</a>
+          </div>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__title">Quick Links</h3>
+          <ul class="footer__menu">
+            <li><a href="home.html" class="footer__menu-link">Home</a></li>
+            <li><a href="about.html" class="footer__menu-link">About</a></li>
+            <li><a href="services.html" class="footer__menu-link">Services</a></li>
+            <li><a href="blog.html" class="footer__menu-link">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__title">Services</h3>
+          <ul class="footer__menu">
+            <li><a href="services.html" class="footer__menu-link">Website Design</a></li>
+            <li><a href="services.html" class="footer__menu-link">WordPress Development</a></li>
+            <li><a href="services.html" class="footer__menu-link">SEO Optimization</a></li>
+            <li><a href="services.html" class="footer__menu-link">Content Creation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__title">Contact</h3>
+          <div class="footer__contact">
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">📧</span>
+              <span>info@valleydaycaresites.com</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">📞</span>
+              <span>(555) 123-4567</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">📍</span>
+              <span>Valley Area, Local Region</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2024 Valley Daycare Sites. All rights reserved.</p>
+        <ul class="footer__legal">
+          <li><a href="#" class="footer__legal-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer__legal-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    
+    menuToggle.addEventListener('click', function() {
+      mainMenu.classList.toggle('header__menu--open');
+    });
+
+    // Newsletter form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

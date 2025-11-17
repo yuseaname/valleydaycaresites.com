@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Intake Form - Valley Daycare Sites</title>
+  <link rel="stylesheet" href="../css/tokens/design-tokens.css">
+  <link rel="stylesheet" href="../css/components/base.css">
+  <link rel="stylesheet" href="../css/components/form.css">
+  <link rel="stylesheet" href="../css/components/button.css">
+</head>
+<body>
+  <div class="container" style="max-width: 800px; margin-top: 3rem; margin-bottom: 3rem;">
+    <header style="text-align: center; margin-bottom: 3rem;">
+      <h1 style="font-family: var(--font-family-heading); font-size: var(--font-size-4xl); color: var(--color-primary-500); margin-bottom: 1rem;">Client Intake Form</h1>
+      <p style="font-size: var(--font-size-lg); color: var(--color-text-secondary);">Help us understand your daycare website needs by completing this brief questionnaire.</p>
+    </header>
+
+    <form class="form" id="intakeForm">
+      <!-- Question 1: Business Name -->
+      <div class="form-group">
+        <label for="businessName" class="form-label form-label--required">1. What is the name of your daycare center?</label>
+        <input 
+          type="text" 
+          id="businessName" 
+          name="businessName" 
+          class="form-input" 
+          placeholder="e.g., Sunshine Kids Daycare"
+          required
+        >
+      </div>
+
+      <!-- Question 2: Location -->
+      <div class="form-group">
+        <label for="location" class="form-label form-label--required">2. What is your daycare's physical location?</label>
+        <input 
+          type="text" 
+          id="location" 
+          name="location" 
+          class="form-input" 
+          placeholder="City, State"
+          required
+        >
+        <span class="form-hint">This helps us optimize your site for local search results.</span>
+      </div>
+
+      <!-- Question 3: Age Groups -->
+      <div class="form-group">
+        <label class="form-label form-label--required">3. What age groups do you serve?</label>
+        <span class="form-hint">Select all that apply.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+          <div class="form-checkbox">
+            <input type="checkbox" id="ageInfants" name="ageGroups" value="infants">
+            <label for="ageInfants" class="form-checkbox__label">Infants (0-12 months)</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="ageToddlers" name="ageGroups" value="toddlers">
+            <label for="ageToddlers" class="form-checkbox__label">Toddlers (1-2 years)</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="agePreschool" name="ageGroups" value="preschool">
+            <label for="agePreschool" class="form-checkbox__label">Preschool (3-5 years)</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="ageSchoolAge" name="ageGroups" value="schoolAge">
+            <label for="ageSchoolAge" class="form-checkbox__label">School Age (6+ years)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4: Current Website -->
+      <div class="form-group">
+        <label class="form-label form-label--required">4. Do you currently have a website?</label>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+          <div class="form-radio">
+            <input type="radio" id="websiteYes" name="hasWebsite" value="yes">
+            <label for="websiteYes" class="form-radio__label">Yes</label>
+          </div>
+          <div class="form-radio">
+            <input type="radio" id="websiteNo" name="hasWebsite" value="no">
+            <label for="websiteNo" class="form-radio__label">No</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5: Current Website URL (conditional) -->
+      <div class="form-group" id="websiteUrlGroup" style="display: none;">
+        <label for="websiteUrl" class="form-label">5. If yes, what is your current website URL?</label>
+        <input 
+          type="url" 
+          id="websiteUrl" 
+          name="websiteUrl" 
+          class="form-input" 
+          placeholder="https://www.yourwebsite.com"
+        >
+      </div>
+
+      <!-- Question 6: Primary Goals -->
+      <div class="form-group">
+        <label for="primaryGoals" class="form-label form-label--required">6. What are your primary goals for your website?</label>
+        <span class="form-hint">Select your top 3 goals.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+          <div class="form-checkbox">
+            <input type="checkbox" id="goalEnrollment" name="goals" value="enrollment">
+            <label for="goalEnrollment" class="form-checkbox__label">Increase enrollment</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="goalInfo" name="goals" value="information">
+            <label for="goalInfo" class="form-checkbox__label">Provide information to parents</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="goalBrand" name="goals" value="branding">
+            <label for="goalBrand" class="form-checkbox__label">Build brand awareness</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="goalCommunication" name="goals" value="communication">
+            <label for="goalCommunication" class="form-checkbox__label">Improve parent communication</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="goalShowcase" name="goals" value="showcase">
+            <label for="goalShowcase" class="form-checkbox__label">Showcase facilities and programs</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 7: Key Features -->
+      <div class="form-group">
+        <label for="keyFeatures" class="form-label form-label--required">7. Which features are most important for your website?</label>
+        <span class="form-hint">Select all that apply.</span>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureEnrollment" name="features" value="enrollmentForm">
+            <label for="featureEnrollment" class="form-checkbox__label">Online enrollment forms</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureGallery" name="features" value="gallery">
+            <label for="featureGallery" class="form-checkbox__label">Photo galleries</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureCalendar" name="features" value="calendar">
+            <label for="featureCalendar" class="form-checkbox__label">Events calendar</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureBlog" name="features" value="blog">
+            <label for="featureBlog" class="form-checkbox__label">Blog/news section</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureTestimonials" name="features" value="testimonials">
+            <label for="featureTestimonials" class="form-checkbox__label">Parent testimonials</label>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="featureContact" name="features" value="contactForm">
+            <label for="featureContact" class="form-checkbox__label">Contact form</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 8: Content Provided -->
+      <div class="form-group">
+        <label class="form-label form-label--required">8. Do you have existing content (text, images, videos) that can be used for the website?</label>
+        <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2);">
+          <div class="form-radio">
+            <input type="radio" id="contentYes" name="hasContent" value="yes">
+            <label for="contentYes" class="form-radio__label">Yes, I have most content ready</label>
+          </div>
+          <div class="form-radio">
+            <input type="radio" id="contentSome" name="hasContent" value="some">
+            <label for="contentSome" class="form-radio__label">I have some content</label>
+          </div>
+          <div class="form-radio">
+            <input type="radio" id="contentNo" name="hasContent" value="no">
+            <label for="contentNo" class="form-radio__label">No, I need help creating content</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 9: Timeline -->
+      <div class="form-group">
+        <label for="timeline" class="form-label form-label--required">9. What is your desired timeline for launching the website?</label>
+        <select id="timeline" name="timeline" class="form-select" required>
+          <option value="">Select a timeline</option>
+          <option value="asap">As soon as possible</option>
+          <option value="1month">Within 1 month</option>
+          <option value="3months">Within 3 months</option>
+          <option value="6months">Within 6 months</option>
+          <option value="flexible">Flexible/No rush</option>
+        </select>
+      </div>
+
+      <!-- Question 10: Additional Information -->
+      <div class="form-group">
+        <label for="additionalInfo" class="form-label">10. Is there anything else you'd like us to know about your daycare or website needs?</label>
+        <textarea 
+          id="additionalInfo" 
+          name="additionalInfo" 
+          class="form-textarea" 
+          placeholder="Tell us about your unique requirements, concerns, or ideas..."
+        ></textarea>
+      </div>
+
+      <!-- Contact Information -->
+      <fieldset style="border: var(--border-width-thin) solid var(--color-border-light); border-radius: var(--border-radius-base); padding: var(--space-6); margin-top: var(--space-8);">
+        <legend style="font-family: var(--font-family-heading); font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); padding: 0 var(--space-2);">Contact Information</legend>
+        
+        <div class="form-input-group">
+          <div class="form-group">
+            <label for="contactName" class="form-label form-label--required">Your Name</label>
+            <input 
+              type="text" 
+              id="contactName" 
+              name="contactName" 
+              class="form-input" 
+              placeholder="John Doe"
+              required
+            >
+          </div>
+          <div class="form-group">
+            <label for="contactEmail" class="form-label form-label--required">Email Address</label>
+            <input 
+              type="email" 
+              id="contactEmail" 
+              name="contactEmail" 
+              class="form-input" 
+              placeholder="john@example.com"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contactPhone" class="form-label">Phone Number</label>
+          <input 
+            type="tel" 
+            id="contactPhone" 
+            name="contactPhone" 
+            class="form-input" 
+            placeholder="(555) 123-4567"
+          >
+        </div>
+      </fieldset>
+
+      <!-- Submit Button -->
+      <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+        <button type="submit" class="btn btn--primary btn--lg">Submit Intake Form</button>
+        <button type="reset" class="btn btn--outline btn--lg">Clear Form</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Show/hide website URL field based on current website answer
+    const websiteRadios = document.querySelectorAll('input[name="hasWebsite"]');
+    const websiteUrlGroup = document.getElementById('websiteUrlGroup');
+    
+    websiteRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'yes') {
+          websiteUrlGroup.style.display = 'flex';
+        } else {
+          websiteUrlGroup.style.display = 'none';
+        }
+      });
+    });
+
+    // Form submission handler
+    document.getElementById('intakeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(this);
+      const data = {};
+      
+      // Handle regular fields
+      for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+          if (Array.isArray(data[key])) {
+            data[key].push(value);
+          } else {
+            data[key] = [data[key], value];
+          }
+        } else {
+          data[key] = value;
+        }
+      }
+      
+      // Log data (in production, this would be sent to a server)
+      console.log('Form submitted:', data);
+      
+      // Show success message
+      alert('Thank you for completing the intake form! We will review your information and get back to you shortly.');
+      
+      // Optionally reset the form
+      // this.reset();
+    });
+  </script>
+</body>
+</html>
