@@ -1,0 +1,48 @@
+# Development files
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/
+.idea/
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.min.css
+*.min.js
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Environment files
+.env
+.env.local
+.env.production
