@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Valley Daycare Growth Agent Models
+
+/// Lead classification temperature
+enum LeadTemperature {
+  HOT   // Ready to buy now
+  WARM  // Interested, exploring
+  COLD  // Just information seeking
+}
+
+/// Lead status in the pipeline
+enum LeadStatus {
+  NEW           // First contact
+  QUALIFIED     // Verified as potential customer
+  IN_PROGRESS   // Active conversation
+  CONVERTED     // Became a customer
+  LOST          // Did not convert
+}
+
+/// Follow-up status
+enum FollowUpStatus {
+  SCHEDULED  // Waiting to be sent
+  SENT       // Already sent
+  SKIPPED    // Manually skipped (lead responded)
+}
+
+/// A potential customer (daycare owner)
+model Lead {
+  id           String          @id @default(cuid())
+  email        String          @unique
+  name         String?
+  business     String?         // Daycare name
+  location     String?         // City & State
+  phone        String?
+  daycareType  String?         // home, center, montessori, preschool, other
+  currentSite  String?         // none, facebook, existing
+  temperature  LeadTemperature @default(COLD)
+  status       LeadStatus      @default(NEW)
+  notes        String?         // Additional message from contact form
+  source       String?         // How they found us
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  // Relations
+  conversations Conversation[]
+  followUps     FollowUp[]
+
+  @@index([email])
+  @@index([temperature])
+  @@index([status])
+}
+
+/// A conversation thread with a lead
+model Conversation {
+  id        String   @id @default(cuid())
+  leadId    String
+  subject   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  lead     Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  @@index([leadId])
+}
+
+/// Individual message in a conversation
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  direction      String   // "inbound" or "outbound"
+  content        String   // Email body
+  fromEmail      String
+  toEmail        String
+  subject        String?
+  sentAt         DateTime @default(now())
+  readAt         DateTime?
+
+  // Agent analysis
+  classification String? // Agent's classification reasoning
+  suggestedReply String? // AI-generated suggested response
+
+  // Relations
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([sentAt])
+}
+
+/// Scheduled follow-up for a lead
+model FollowUp {
+  id          String          @id @default(cuid())
+  leadId      String
+  scheduledAt DateTime        // When to send the follow-up
+  status      FollowUpStatus  @default(SCHEDULED)
+  sequenceDay Int             // Day in sequence (1, 3, 7, etc.)
+  message     String?         // Pre-generated follow-up message
+  sentAt      DateTime?       // When actually sent
+  createdAt   DateTime        @default(now())
+
+  // Relations
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId])
+  @@index([status])
+  @@index([scheduledAt])
+}

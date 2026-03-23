@@ -1,0 +1,242 @@
+{
+  "name": "Valley Daycare - Email Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "mailbox": "INBOX",
+        "options": {
+          "customEmailConfig": "UNSEEN"
+        }
+      },
+      "id": "imap-trigger",
+      "name": "Watch for New Emails",
+      "type": "n8n-nodes-base.imapEmailTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "credentials": {
+        "imap": {
+          "id": "HOSTINGER_IMAP_CREDENTIAL_ID",
+          "name": "Hostinger IMAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "systemMessage": "You are the Customer Success & Email Marketing Agent for ValleyDaycareSites.com.\n\nYour job is to:\n1. Analyze incoming emails from potential daycare owners\n2. Classify each lead as HOT, WARM, or COLD\n3. Generate a friendly, helpful reply that moves toward conversion\n\nRules:\n- Keep responses short, clear, and friendly\n- Avoid technical jargon\n- Always move the conversation forward\n- If the lead shows interest, suggest the next step\n\nOutput ONLY valid JSON with this structure:\n{\n  \"temperature\": \"HOT|WARM|COLD\",\n  \"isDaycareOwner\": true|false,\n  \"reasoning\": \"brief explanation\",\n  \"reply\": \"the email reply text\"\n}"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analyze this email and respond with JSON:\n\nFrom: {{ $json.from }}\nSubject: {{ $json.subject }}\nBody: {{ $json.text }}"
+            }
+          ]
+        }
+      },
+      "id": "ai-classify",
+      "name": "AI Classify & Generate Reply",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [500, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the AI response\nconst aiResponse = $input.first().json;\nlet parsed;\n\ntry {\n  // Try to parse as JSON\n  const content = aiResponse.message?.content || aiResponse.text || aiResponse;\n  parsed = JSON.parse(content);\n} catch (e) {\n  // Fallback parsing\n  parsed = {\n    temperature: 'WARM',\n    isDaycareOwner: true,\n    reasoning: 'Could not parse AI response',\n    reply: aiResponse.message?.content || aiResponse.text || 'Thank you for your email!'\n  };\n}\n\n// Get original email data\nconst email = $('Watch for New Emails').first().json;\n\nreturn [{\n  json: {\n    email: {\n      from: email.from,\n      fromName: email.fromName || email.from?.split('<')[0]?.trim(),\n      to: email.to || 'contact@valleydaycaresites.com',\n      subject: email.subject,\n      body: email.text || email.html || '',\n      receivedAt: email.date || new Date().toISOString()\n    },\n    analysis: {\n      temperature: parsed.temperature || 'WARM',\n      isDaycareOwner: parsed.isDaycareOwner ?? true,\n      reasoning: parsed.reasoning || ''\n    },\n    reply: parsed.reply || 'Thank you for reaching out!'\n  }\n}];"
+      },
+      "id": "parse-response",
+      "name": "Parse AI Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SITE_URL || 'http://localhost:3000' }}/api/agent/email",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "from",
+              "value": "={{ $json.email.from }}"
+            },
+            {
+              "name": "fromName",
+              "value": "={{ $json.email.fromName }}"
+            },
+            {
+              "name": "to",
+              "value": "={{ $json.email.to }}"
+            },
+            {
+              "name": "subject",
+              "value": "={{ $json.email.subject }}"
+            },
+            {
+              "name": "body",
+              "value": "={{ $json.email.body }}"
+            },
+            {
+              "name": "receivedAt",
+              "value": "={{ $json.email.receivedAt }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "store-lead",
+      "name": "Store Lead in Database",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "only-hot-warm",
+              "leftValue": "={{ $('Parse AI Response').item.json.analysis.temperature }}",
+              "rightValue": "COLD",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "or"
+        }
+      },
+      "id": "check-should-reply",
+      "name": "Should Auto-Reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "contact@valleydaycaresites.com",
+        "toEmail": "={{ $('Parse AI Response').item.json.email.from }}",
+        "subject": "=Re: {{ $('Parse AI Response').item.json.email.subject }}",
+        "text": "={{ $('Parse AI Response').item.json.reply }}",
+        "options": {}
+      },
+      "id": "send-reply",
+      "name": "Send Reply via SMTP",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1500, 200],
+      "credentials": {
+        "smtp": {
+          "id": "HOSTINGER_SMTP_CREDENTIAL_ID",
+          "name": "Hostinger SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Email Processed (COLD Lead)\n\nNo auto-reply sent. Lead stored for manual follow-up.\n\n**From:** {{ $('Parse AI Response').item.json.email.from }}\n**Temperature:** {{ $('Parse AI Response').item.json.analysis.temperature }}\n**Reasoning:** {{ $('Parse AI Response').item.json.analysis.reasoning }}",
+        "height": 300,
+        "width": 350
+      },
+      "id": "log-cold",
+      "name": "Log Cold Lead",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1500, 400]
+    }
+  ],
+  "connections": {
+    "Watch for New Emails": {
+      "main": [
+        [
+          {
+            "node": "AI Classify & Generate Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Classify & Generate Reply": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Response": {
+      "main": [
+        [
+          {
+            "node": "Store Lead in Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store Lead in Database": {
+      "main": [
+        [
+          {
+            "node": "Should Auto-Reply?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Should Auto-Reply?": {
+      "main": [
+        [
+          {
+            "node": "Send Reply via SMTP",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": ""
+  }
+}

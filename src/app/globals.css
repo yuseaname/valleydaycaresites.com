@@ -1,0 +1,336 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Premium Daycare Brand Colors */
+  --color-ivory: #FFFEF9;
+  --color-warm-white: #FDFCFA;
+  --color-soft-sand: #F5F0E8;
+  --color-warm-beige: #E8DFD4;
+  --color-muted-sage: #9CAF94;
+  --color-sage-dark: #7A9172;
+  --color-eucalyptus: #8BA888;
+  --color-charcoal: #2D2D2D;
+  --color-graphite: #3A3A3A;
+  --color-champagne: #D4C5A9;
+  --color-soft-gold: #C9B896;
+  --color-peach-warm: #F5E6D8;
+  --color-blush: #F2E8E4;
+  
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  
+  /* Premium Daycare Palette */
+  --background: #FFFEF9;
+  --foreground: #2D2D2D;
+  --card: #FDFCFA;
+  --card-foreground: #2D2D2D;
+  --popover: #FDFCFA;
+  --popover-foreground: #2D2D2D;
+  
+  /* Primary: Muted Sage/Eucalyptus */
+  --primary: #7A9172;
+  --primary-foreground: #FFFEF9;
+  
+  /* Secondary: Warm Sand/Beige */
+  --secondary: #F5F0E8;
+  --secondary-foreground: #2D2D2D;
+  
+  /* Muted: Soft Warm Gray */
+  --muted: #F5F0E8;
+  --muted-foreground: #6B6B6B;
+  
+  /* Accent: Champagne/Gold */
+  --accent: #D4C5A9;
+  --accent-foreground: #2D2D2D;
+  
+  --destructive: #C75B5B;
+  --border: #E8DFD4;
+  --input: #E8DFD4;
+  --ring: #7A9172;
+  
+  --chart-1: #7A9172;
+  --chart-2: #9CAF94;
+  --chart-3: #D4C5A9;
+  --chart-4: #8BA888;
+  --chart-5: #C9B896;
+  
+  --sidebar: #FDFCFA;
+  --sidebar-foreground: #2D2D2D;
+  --sidebar-primary: #7A9172;
+  --sidebar-primary-foreground: #FFFEF9;
+  --sidebar-accent: #F5F0E8;
+  --sidebar-accent-foreground: #2D2D2D;
+  --sidebar-border: #E8DFD4;
+  --sidebar-ring: #7A9172;
+}
+
+.dark {
+  --background: #1F2421;
+  --foreground: #F5F0E8;
+  --card: #262B28;
+  --card-foreground: #F5F0E8;
+  --popover: #262B28;
+  --popover-foreground: #F5F0E8;
+  --primary: #9CAF94;
+  --primary-foreground: #1F2421;
+  --secondary: #2D332F;
+  --secondary-foreground: #F5F0E8;
+  --muted: #2D332F;
+  --muted-foreground: #A8A8A8;
+  --accent: #8BA888;
+  --accent-foreground: #1F2421;
+  --destructive: #C75B5B;
+  --border: #3A423D;
+  --input: #3A423D;
+  --ring: #9CAF94;
+  --chart-1: #9CAF94;
+  --chart-2: #7A9172;
+  --chart-3: #8BA888;
+  --chart-4: #D4C5A9;
+  --chart-5: #C9B896;
+  --sidebar: #262B28;
+  --sidebar-foreground: #F5F0E8;
+  --sidebar-primary: #9CAF94;
+  --sidebar-primary-foreground: #1F2421;
+  --sidebar-accent: #2D332F;
+  --sidebar-accent-foreground: #F5F0E8;
+  --sidebar-border: #3A423D;
+  --sidebar-ring: #9CAF94;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Premium Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Selection */
+::selection {
+  background: rgba(122, 145, 114, 0.25);
+  color: #2D2D2D;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C5A9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9B896;
+}
+
+/* Premium Gradient Utilities */
+.gradient-sage {
+  background: linear-gradient(135deg, #7A9172 0%, #9CAF94 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #F5F0E8 0%, #E8DFD4 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #D4C5A9 0%, #C9B896 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(180deg, #FFFEF9 0%, #F5F0E8 50%, #FFFEF9 100%);
+}
+
+/* Premium Text Gradients */
+.text-gradient-sage {
+  background: linear-gradient(135deg, #7A9172 0%, #9CAF94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C9B896 0%, #D4C5A9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Premium Shadows */
+.shadow-premium {
+  box-shadow: 
+    0 1px 2px rgba(45, 45, 45, 0.04),
+    0 4px 8px rgba(45, 45, 45, 0.04),
+    0 16px 32px rgba(45, 45, 45, 0.04);
+}
+
+.shadow-premium-lg {
+  box-shadow: 
+    0 2px 4px rgba(45, 45, 45, 0.04),
+    0 8px 16px rgba(45, 45, 45, 0.04),
+    0 24px 48px rgba(45, 45, 45, 0.06);
+}
+
+.shadow-premium-glow {
+  box-shadow: 
+    0 0 0 1px rgba(122, 145, 114, 0.1),
+    0 4px 16px rgba(122, 145, 114, 0.15);
+}
+
+/* Premium Button Styles */
+.btn-premium {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.btn-premium::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+}
+
+.btn-premium:hover::before {
+  @apply opacity-100;
+}
+
+/* Animation Utilities */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+/* Stagger Animation Delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+
+/* Section Spacing */
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.section-padding-sm {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+/* Container with proper padding */
+.container-premium {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1;
+  box-shadow: 
+    0 2px 4px rgba(45, 45, 45, 0.04),
+    0 8px 16px rgba(45, 45, 45, 0.04),
+    0 24px 48px rgba(45, 45, 45, 0.06);
+}
+
+/* Focus Ring */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-background;
+}
