@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,6 +17,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   Check,
@@ -32,13 +33,82 @@ import {
   Rocket,
   Shield,
   Smartphone,
-  Star,
   Target,
   Users,
   Zap,
 } from "lucide-react";
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: "",
+    business: "",
+    email: "",
+    phone: "",
+    location: "",
+    website: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState("");
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = event.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          daycare: formData.business,
+          email: formData.email,
+          location: formData.location,
+          phone: formData.phone || undefined,
+          "current-site": formData.website || undefined,
+          message: formData.message || undefined,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit form. Please try again.");
+      }
+
+      setSubmitSuccess("Thanks! Check your email for confirmation.");
+      setFormData({
+        name: "",
+        business: "",
+        email: "",
+        phone: "",
+        location: "",
+        website: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit form. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -55,26 +125,35 @@ export default function Home() {
             {/* Hero Content */}
             <div className="text-center lg:text-left">
               <Badge variant="outline" className="mb-6 px-4 py-1.5 text-sm border-primary/30 text-primary bg-primary/5">
-                Free sample • 48-hour setup • No upfront cost
+                More trust • More tours • Lower risk • SFV daycares
               </Badge>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
-                See Your Daycare Homepage{" "}
-                <span className="text-gradient-sage">Before You Pay</span>{" "}
-                for Anything
+                A Website That{" "}
+                <span className="text-gradient-sage">Builds Trust</span>{" "}
+                and Fills Your Tours
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                We build you a sample homepage in 48 hours. Take a look, show it to a friend, think it over.
-                If you want to keep it, it's $50/month. If not, no worries—no charge, no pressure.
+                Parents decide in seconds. A professional website builds instant trust and makes scheduling a tour feel like the natural next step.
+                See your new homepage in 48 hours—no upfront cost, no pressure.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-                <Button size="lg" className="gradient-sage text-primary-foreground hover:opacity-90 shadow-premium-glow text-base px-8 py-6">
-                  Request Your Free Sample
+                <Button
+                  size="lg"
+                  className="gradient-sage text-primary-foreground hover:opacity-90 shadow-premium-glow text-base px-8 py-6"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  Get Your Homepage Sample
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="text-base px-8 py-6 border-border hover:bg-muted">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base px-8 py-6 border-border hover:bg-muted"
+                  onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })}
+                >
                   How It Works
                 </Button>
               </div>
@@ -82,11 +161,15 @@ export default function Home() {
               <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
-                  <span>No upfront cost</span>
+                  <span>Builds trust</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
-                  <span>No pressure</span>
+                  <span>Gets more tours</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-primary" />
+                  <span>Zero risk</span>
                 </div>
               </div>
             </div>
@@ -132,7 +215,7 @@ export default function Home() {
                         <Star key={i} className="h-3 w-3 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">No pressure, no contracts</p>
+                    <p className="text-xs text-muted-foreground mt-1">Build trust, get tours</p>
                   </div>
                 </div>
               </div>
@@ -141,18 +224,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Logos */}
+      {/* Trust Signals */}
       <section className="py-12 border-y border-border bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-muted-foreground mb-8">
-            Built for home daycares, preschools, and childcare centers
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-60">
-            {["Home Daycares", "Montessori Schools", "Preschools", "Learning Centers", "Family Childcare"].map((name, i) => (
-              <div key={i} className="font-display text-lg text-muted-foreground">
-                {name}
-              </div>
-            ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div className="flex flex-col items-center">
+              <div className="text-3xl font-display font-semibold text-foreground mb-1">48hrs</div>
+              <p className="text-sm text-muted-foreground">See your homepage</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-3xl font-display font-semibold text-foreground mb-1">+Trust</div>
+              <p className="text-sm text-muted-foreground">Instant credibility</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-3xl font-display font-semibold text-foreground mb-1">+Tours</div>
+              <p className="text-sm text-muted-foreground">More parent visits</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-3xl font-display font-semibold text-foreground mb-1">$0</div>
+              <p className="text-sm text-muted-foreground">Risk to try</p>
+            </div>
           </div>
         </div>
       </section>
@@ -533,7 +624,11 @@ export default function Home() {
                   ))}
                 </ul>
 
-                <Button size="lg" className="w-full gradient-sage text-primary-foreground hover:opacity-90">
+                <Button
+                  size="lg"
+                  className="w-full gradient-sage text-primary-foreground hover:opacity-90"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                >
                   Get Your Free Sample
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -563,145 +658,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
+      {/* Template Styles Section */}
       <section id="portfolio" className="py-16 lg:py-24 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5">
-              Portfolio
+              Design Styles
             </Badge>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-              Websites That Make an Impression
+              Choose Your Style
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              See how we've helped daycare businesses transform their online presence.
+              We offer 5 professional design styles. Pick the one that matches your daycare's personality, and we'll customize it with your content.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {[
               {
-                name: "Bright Start Academy",
-                type: "Large Center",
-                result: "47% increase in inquiries",
-                image: "/images/daycare-interior.png",
-                imageAlt: "Successful daycare owner smiling at her laptop showing increased inquiries on her new daycare website",
+                name: "Playful",
+                description: "Bright colors, fun energy",
+                image: "/images/hero-playful.png",
+                bestFor: "Preschools & learning centers",
               },
               {
-                name: "Little Hearts Daycare",
-                type: "Family Daycare",
-                result: "Fully booked within 3 months",
-                image: "/images/daycare-children.png",
-                imageAlt: "Daycare owner celebrating business growth while viewing new enrollment inquiries on her phone",
+                name: "Professional",
+                description: "Clean, modern, trustworthy",
+                image: "/images/hero-professional.png",
+                bestFor: "Large centers & chains",
               },
               {
-                name: "Sunshine Learning Center",
-                type: "Preschool",
-                result: "Doubled tour requests",
-                image: "/images/process-design.png",
-                imageAlt: "Web design process showing wireframes, color palette cards, and daycare website mockup in progress",
+                name: "Cozy",
+                description: "Warm, home-like feel",
+                image: "/images/hero-cozy.png",
+                bestFor: "Family & home daycares",
               },
               {
-                name: "Growing Minds Academy",
-                type: "Multi-location",
-                result: "Consistent branding across locations",
-                image: "/images/contact-consultation.png",
-                imageAlt: "Friendly website consultation meeting between a web designer and daycare owner at a coffee shop",
+                name: "Modern",
+                description: "Sleek, minimalist design",
+                image: "/images/hero-modern.png",
+                bestFor: "Contemporary programs",
               },
               {
-                name: "Happy Kids Childcare",
-                type: "Home Daycare",
-                result: "Professional online presence",
-                image: "/images/about-workspace.png",
-                imageAlt: "Professional web design workspace with daycare website mockups, color swatches, and design planning materials",
+                name: "Classic",
+                description: "Timeless, established look",
+                image: "/images/hero-classic.png",
+                bestFor: "Traditional preschools",
               },
-              {
-                name: "Tiny Steps Learning",
-                type: "Early Education",
-                result: "Improved parent communication",
-                image: "/images/hero-mockup.png",
-                imageAlt: "Professional daycare website mockup displayed on laptop and tablet, showcasing responsive web design",
-              },
-            ].map((project, i) => (
+            ].map((style, i) => (
               <Card key={i} className="border-border bg-card overflow-hidden card-hover group">
-                {/* Project Image */}
-                <div className="aspect-[16/10] bg-muted/30 relative overflow-hidden">
+                <div className="aspect-[4/3] bg-muted/30 relative overflow-hidden">
                   <Image 
-                    src={project.image}
-                    alt={project.imageAlt}
+                    src={style.image}
+                    alt={`${style.name} daycare website style - ${style.description}`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <CardContent className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display font-semibold text-foreground">{project.name}</h3>
-                    <Badge variant="secondary" className="text-xs">{project.type}</Badge>
-                  </div>
-                  <p className="text-sm text-primary">{project.result}</p>
+                  <h3 className="font-display font-semibold text-foreground mb-1">{style.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-2">{style.description}</p>
+                  <Badge variant="secondary" className="text-xs">{style.bestFor}</Badge>
                 </CardContent>
               </Card>
             ))}
           </div>
           
           <div className="text-center mt-8">
-            <Button variant="outline" size="lg">
-              View All Projects
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <p className="text-muted-foreground mb-4">
+              All styles are fully customizable with your logo, colors, photos, and content.
+            </p>
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+            >
+              <Link href="/templates">See Full Previews</Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 lg:py-24 bg-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5">
-              Testimonials
-            </Badge>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-              What Daycare Owners Say
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                quote: "I was embarrassed by my old website. Now I'm proud to share it with parents. The Valley team understood exactly what I needed.",
-                author: "Maria S.",
-                role: "Little Stars Daycare",
-                rating: 5,
-              },
-              {
-                quote: "They made the whole process so easy. I'm not technical at all, but they guided me through everything. My new site is beautiful.",
-                author: "Jennifer T.",
-                role: "Happy Hearts Childcare",
-                rating: 5,
-              },
-              {
-                quote: "The increase in tour requests was immediate. Parents tell me all the time how professional our website looks.",
-                author: "David L.",
-                role: "Bright Beginnings Academy",
-                rating: 5,
-              },
-            ].map((testimonial, i) => (
-              <Card key={i} className="border-border bg-card">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star key={j} className="h-4 w-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="text-foreground leading-relaxed mb-4">"{testimonial.quote}"</p>
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
@@ -791,51 +824,59 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
+                slug: "what-parents-notice-first",
                 title: "What Parents Notice First on a Daycare Website",
                 excerpt: "Discover the key elements that shape a parent's first impression and learn how to optimize them.",
                 category: "Design Tips",
               },
               {
+                slug: "trustworthy-daycare-website",
                 title: "How to Make Your Daycare Website Look More Trustworthy",
                 excerpt: "Build instant credibility with these proven trust-building strategies for your website.",
                 category: "Trust Building",
               },
               {
+                slug: "outdated-website-hurts-enrollment",
                 title: "Why an Outdated Website Can Hurt Enrollment",
                 excerpt: "Understanding the hidden costs of an old website and what you can do about it.",
                 category: "Enrollment",
               },
               {
+                slug: "best-photos-childcare-website",
                 title: "Best Photos to Use on Your Childcare Website",
                 excerpt: "A guide to selecting and using images that showcase your daycare professionally.",
                 category: "Content",
               },
               {
+                slug: "daycare-website-must-haves-2026",
                 title: "Daycare Website Must-Haves for 2026",
                 excerpt: "Stay ahead with these essential features every modern daycare website needs.",
                 category: "Trends",
               },
               {
+                slug: "mobile-matters-parents-browse-phones",
                 title: "Mobile Matters: Why Parents Browse on Phones",
                 excerpt: "How to ensure your website works perfectly for mobile-first parents.",
                 category: "Mobile",
               },
             ].map((post, i) => (
-              <Card key={i} className="border-border bg-card overflow-hidden card-hover group">
-                {/* Image Placeholder */}
-                <div className="aspect-[16/9] bg-muted/30 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                    <Laptop className="h-10 w-10 opacity-20" />
+              <Link key={i} href={`/blog/${post.slug}`}>
+                <Card className="border-border bg-card overflow-hidden card-hover group cursor-pointer h-full">
+                  {/* Image Placeholder */}
+                  <div className="aspect-[16/9] bg-muted/30 relative">
+                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+                      <Laptop className="h-10 w-10 opacity-20" />
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-4">
-                  <Badge variant="outline" className="text-xs mb-2">{post.category}</Badge>
-                  <h3 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4">
+                    <Badge variant="outline" className="text-xs mb-2">{post.category}</Badge>
+                    <h3 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -901,49 +942,110 @@ export default function Home() {
             {/* Contact Form */}
             <Card className="border-border bg-card shadow-premium">
               <CardContent className="p-6 sm:p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Your Name *</Label>
-                      <Input id="name" placeholder="Jane Smith" required />
+                      <Input
+                        id="name"
+                        placeholder="Jane Smith"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="business">Daycare Name *</Label>
-                      <Input id="business" placeholder="Happy Kids Daycare" required />
+                      <Input
+                        id="business"
+                        placeholder="Happy Kids Daycare"
+                        value={formData.business}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
-                  
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
-                      <Input id="email" type="email" placeholder="jane@happykids.com" required />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="jane@happykids.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone (optional)</Label>
-                      <Input id="phone" type="tel" placeholder="(555) 123-4567" />
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="(555) 123-4567"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
-                  
+
+                  <div className="space-y-2">
+                    <Label htmlFor="location">Location *</Label>
+                    <Input
+                      id="location"
+                      placeholder="Sylmar, CA"
+                      value={formData.location}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="website">Current Website (optional)</Label>
-                    <Input id="website" type="url" placeholder="https://yourwebsite.com" />
+                    <Input
+                      id="website"
+                      type="url"
+                      placeholder="https://yourwebsite.com"
+                      value={formData.website}
+                      onChange={handleChange}
+                    />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="message">Tell us about your daycare</Label>
                     <Textarea
                       id="message"
                       placeholder="Share a bit about your daycare, what you're looking for, or any questions you have..."
                       rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
                     />
                   </div>
-                  
+
+                  {submitSuccess ? (
+                    <p className="rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-primary">
+                      {submitSuccess}
+                    </p>
+                  ) : null}
+
+                  {submitError ? (
+                    <p className="rounded-lg border border-destructive/20 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+                      {submitError}
+                    </p>
+                  ) : null}
+
                   <p className="text-xs text-muted-foreground">
                     No pressure. We'll send you a private link to view your sample within 48 hours.
                   </p>
-                  
-                  <Button type="submit" size="lg" className="w-full gradient-sage text-primary-foreground hover:opacity-90">
-                    Get Your Free Sample
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full gradient-sage text-primary-foreground hover:opacity-90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Get Your Free Sample"}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
@@ -965,11 +1067,21 @@ export default function Home() {
             Look it over, think about it, decide when you're ready.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-base px-8 py-6">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-base px-8 py-6"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            >
               Get Your Free Sample
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-8 py-6 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-base px-8 py-6 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })}
+            >
               See How It Works
             </Button>
           </div>
