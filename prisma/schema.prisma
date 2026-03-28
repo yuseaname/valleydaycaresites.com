@@ -14,11 +14,23 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  phone        String?
+  daycareName  String?
+  address      String?
+  city         String?
+  state        String?
+  zip          String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  orders          Order[]
+  onboardingTasks OnboardingTask[]
+
+  @@index([email])
 }
 
 model Post {
@@ -137,4 +149,90 @@ model FollowUp {
   @@index([leadId])
   @@index([status])
   @@index([scheduledAt])
+}
+
+// Payment & Subscription Models
+
+/// Order status
+enum OrderStatus {
+  PENDING_SAMPLE   // Free sample requested
+  PENDING_PAYMENT   // Awaiting payment
+  PAID              // Payment completed
+  ACTIVE            // Subscription active
+  PAST_DUE          // Payment overdue
+  FAILED            // Payment failed
+  CANCELLED         // Cancelled by user
+  EXPIRED           // Expired/ended
+  TRIALING          // In trial period
+}
+
+/// Payment plan type
+enum PlanType {
+  FREE_SAMPLE      // $0, 48-hour trial
+  MONTHLY_HOSTING  // $50/month subscription
+}
+
+/// Customer order/subscription
+model Order {
+  id                    String      @id @default(cuid())
+  userId                String
+  plan                  PlanType
+  status                OrderStatus @default(PENDING_PAYMENT)
+  amount                Float       // Price in dollars
+  stripeId              String?     // Stripe payment ID if applicable
+  stripeCustomerId      String?     // Stripe customer ID
+  stripeSubscriptionId  String?     // Stripe subscription ID for recurring
+  stripePriceId         String?     // Stripe price ID for the plan
+  paidAt                DateTime?   // When payment was completed
+  cancelledAt           DateTime?   // When subscription was cancelled
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+
+  // Relations
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  onboardingTasks OnboardingTask[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([stripeCustomerId])
+  @@index([stripeSubscriptionId])
+}
+
+/// Onboarding task status
+enum TaskStatus {
+  PENDING    // Not started
+  IN_PROGRESS // Being worked on
+  COMPLETED   // Finished
+  BLOCKED     // Waiting for something
+}
+
+/// Task type for onboarding
+enum TaskType {
+  SAMPLE_CREATION   // Create free sample website
+  WEBSITE_SETUP     // Full website setup
+  DOMAIN_CONFIG     // Configure custom domain
+  WELCOME_EMAIL     // Send welcome email
+}
+
+/// Onboarding task for tracking customer setup progress
+model OnboardingTask {
+  id          String     @id @default(cuid())
+  userId      String
+  orderId     String
+  type        TaskType
+  status      TaskStatus @default(PENDING)
+  priority    Int        @default(1)
+  notes       String?
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([orderId])
+  @@index([status])
 }
