@@ -83,7 +83,7 @@ async function sendViaSendGrid(payload: EmailPayload): Promise<boolean> {
           name: NOTIFICATION_CONFIG.companyName,
         },
         reply_to: {
-          email: "hello@valleydaycaresites.com",
+          email: "contact@valleydaycaresites.com",
           name: NOTIFICATION_CONFIG.companyName,
         },
         content: [
@@ -277,7 +277,7 @@ export async function sendCustomerConfirmation(
       <div style="text-align: center; margin-top: 30px; color: #999; font-size: 14px;">
         <p>Valley Daycare Sites</p>
         <p>
-          <a href="mailto:hello@valleydaycaresites.com" style="color: #7a9178;">hello@valleydaycaresites.com</a>
+          <a href="mailto:contact@valleydaycaresites.com" style="color: #7a9178;">contact@valleydaycaresites.com</a>
         </p>
       </div>
     </div>
@@ -301,7 +301,7 @@ What's Next?
 
 ---
 Valley Daycare Sites
-hello@valleydaycaresites.com
+contact@valleydaycaresites.com
   `.trim();
 
   return sendEmail({
@@ -345,7 +345,7 @@ export async function sendOnboardingWelcome(customer: CustomerData): Promise<boo
 
       <div style="background: #f9fafb; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
         <p style="color: #666; margin: 0;">
-          Questions? Just reply to this email or call us at (555) 123-4567.
+          Questions? Just reply to this email or text us at 747 3158215.
         </p>
       </div>
 
@@ -370,7 +370,7 @@ Here's what you can expect from us:
 
 If you have any logos, photos, or specific content you'd like us to use, feel free to send them over.
 
-Questions? Just reply to this email or call us at (555) 123-4567.
+Questions? Just reply to this email or text us at 747 3158215.
 
 ---
 Valley Daycare Sites

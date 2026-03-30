@@ -193,11 +193,11 @@ export default function TermsOfService() {
 
             <div className="flex items-center gap-2 text-muted-foreground mb-2">
               <Mail className="h-4 w-4" />
-              <span>Email: hello@valleydaycaresites.com</span>
+              <span>Email: contact@valleydaycaresites.com</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <span>Phone: (555) 123-4567</span>
+              <span>Phone: 747 3158215</span>
             </div>
           </CardContent>
         </Card>

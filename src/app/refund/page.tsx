@@ -116,7 +116,7 @@ export default function RefundPolicy() {
               To request a refund, please contact our support team:
             </p>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>Email: hello@valleydaycaresites.com</span>
+              <span>Email: contact@valleydaycaresites.com</span>
             </div>
 
             <Separator className="my-6" />
@@ -139,10 +139,10 @@ export default function RefundPolicy() {
 
             <h3 className="font-semibold text-foreground mb-2">Contact Support</h3>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>Email: hello@valleydaycaresites.com</span>
+              <span>Email: contact@valleydaycaresites.com</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>Phone: (555) 123-4567</span>
+              <span>Phone: 747 3158215</span>
             </div>
           </CardContent>
         </Card>

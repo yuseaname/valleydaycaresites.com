@@ -39,6 +39,8 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
+import { blogPosts } from "@/lib/blog-data";
 
 export default function Home() {
   // Form state
@@ -858,53 +860,27 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "What Parents Notice First on a Daycare Website",
-                excerpt: "Discover the key elements that shape a parent's first impression and learn how to optimize them.",
-                category: "Design Tips",
-              },
-              {
-                title: "How to Make Your Daycare Website Look More Trustworthy",
-                excerpt: "Build instant credibility with these proven trust-building strategies for your website.",
-                category: "Trust Building",
-              },
-              {
-                title: "Why an Outdated Website Can Hurt Enrollment",
-                excerpt: "Understanding the hidden costs of an old website and what you can do about it.",
-                category: "Enrollment",
-              },
-              {
-                title: "Best Photos to Use on Your Childcare Website",
-                excerpt: "A guide to selecting and using images that showcase your daycare professionally.",
-                category: "Content",
-              },
-              {
-                title: "Daycare Website Must-Haves for 2026",
-                excerpt: "Stay ahead with these essential features every modern daycare website needs.",
-                category: "Trends",
-              },
-              {
-                title: "Mobile Matters: Why Parents Browse on Phones",
-                excerpt: "How to ensure your website works perfectly for mobile-first parents.",
-                category: "Mobile",
-              },
-            ].map((post, i) => (
-              <Card key={i} className="border-border bg-card overflow-hidden card-hover group">
-                {/* Image Placeholder */}
-                <div className="aspect-[16/9] bg-muted/30 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                    <Laptop className="h-10 w-10 opacity-20" />
+            {blogPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
+                <Card className="border-border bg-card overflow-hidden card-hover group h-full">
+                  {/* Blog Image */}
+                  <div className="aspect-[16/9] bg-muted/30 relative overflow-hidden">
+                    <Image 
+                      src={post.image}
+                      alt={post.imageAlt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                </div>
-                <CardContent className="p-4">
-                  <Badge variant="outline" className="text-xs mb-2">{post.category}</Badge>
-                  <h3 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4">
+                    <Badge variant="outline" className="text-xs mb-2">{post.category}</Badge>
+                    <h3 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -934,7 +910,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Email</div>
-                    <div className="font-medium text-foreground">hello@valleydaycaresites.com</div>
+                    <div className="font-medium text-foreground">contact@valleydaycaresites.com</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -943,7 +919,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Phone</div>
-                    <div className="font-medium text-foreground">(555) 123-4567</div>
+                    <div className="font-medium text-foreground">747 3158215</div>
                   </div>
                 </div>
               </div>
@@ -1049,7 +1025,7 @@ export default function Home() {
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="(555) 123-4567"
+                          placeholder="747 3158215"
                           value={formData.phone}
                           onChange={handleInputChange}
                         />

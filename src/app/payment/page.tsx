@@ -176,7 +176,7 @@ export default function PaymentPage() {
                 <a href="/">Return Home</a>
               </Button>
               <Button variant="outline" asChild>
-                <a href="#contact">Contact Support</a>
+                <a href="/#contact">Contact Support</a>
               </Button>
             </div>
           </div>
@@ -321,7 +321,7 @@ export default function PaymentPage() {
                         type="tel"
                         value={customerDetails.phone}
                         onChange={(e) => handleCustomerChange("phone", e.target.value)}
-                        placeholder="(555) 123-4567"
+                        placeholder="747 3158215"
                         required
                       />
                     </div>
@@ -506,7 +506,7 @@ export default function PaymentPage() {
 
               {/* Help Link */}
               <div className="text-center">
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary flex items-center justify-center gap-1">
+                <a href="/#contact" className="text-sm text-muted-foreground hover:text-primary flex items-center justify-center gap-1">
                   <HelpCircle className="h-4 w-4" />
                   Having trouble? Contact support
                 </a>

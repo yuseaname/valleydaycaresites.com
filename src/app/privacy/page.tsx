@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
               If you have questions about this Privacy Policy or wish to exercise your rights, contact us at:
             </p>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>Email: hello@valleydaycaresites.com</span>
+              <span>Email: contact@valleydaycaresites.com</span>
             </div>
 
             <Separator className="my-6" />

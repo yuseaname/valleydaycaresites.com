@@ -44,7 +44,7 @@ async function sendViaSendGrid(payload: EmailPayload): Promise<{ success: boolea
           name: "Valley Daycare Sites",
         },
         reply_to: {
-          email: "hello@valleydaycaresites.com",
+          email: "contact@valleydaycaresites.com",
           name: "Valley Daycare Sites",
         },
         content: [

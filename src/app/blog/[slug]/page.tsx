@@ -1,162 +1,224 @@
-import Link from "next/link";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
+import { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
-import { ArrowLeft, Calendar } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, Clock, User } from "lucide-react";
+import { blogPosts, getBlogPost } from "@/lib/blog-data";
+import fs from "fs";
+import path from "path";
 
-interface BlogPostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
+// Generate static params for all blog posts
 export async function generateStaticParams() {
-  const posts = getBlogPosts();
-  return posts.map((post) => ({
+  return blogPosts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+// Generate metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPost(slug);
-
+  
   if (!post) {
     return {
-      title: "Post Not Found | Valley Daycare Sites",
+      title: "Article Not Found",
     };
   }
 
   return {
-    title: `${post.title} | Valley Daycare Sites`,
-    description: post.excerpt,
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      images: [post.image],
+    },
   };
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+// Read markdown content
+function getMarkdownContent(slug: string): string {
+  try {
+    const filePath = path.join(process.cwd(), "content/blog", `${slug}.md`);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    // Remove frontmatter
+    const content = fileContent.replace(/^---[\s\S]*?---/, "").trim();
+    return content;
+  } catch {
+    return "";
+  }
+}
+
+// Simple markdown to HTML conversion
+function markdownToHtml(markdown: string): string {
+  let html = markdown;
+  
+  // Headers
+  html = html.replace(/^### (.*$)/gm, '<h3 class="text-xl font-semibold text-foreground mt-8 mb-4">$1</h3>');
+  html = html.replace(/^## (.*$)/gm, '<h2 class="text-2xl font-semibold text-foreground mt-10 mb-4">$1</h2>');
+  html = html.replace(/^# (.*$)/gm, '<h1 class="text-3xl font-bold text-foreground mt-6 mb-6">$1</h1>');
+  
+  // Bold
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>');
+  
+  // Italic
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  
+  // Links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>');
+  
+  // Lists
+  html = html.replace(/^- (.*$)/gm, '<li class="text-muted-foreground ml-4">$1</li>');
+  html = html.replace(/^(\d+)\. (.*$)/gm, '<li class="text-muted-foreground ml-4">$2</li>');
+  
+  // Paragraphs
+  html = html.replace(/\n\n/g, '</p><p class="text-muted-foreground leading-relaxed mb-4">');
+  
+  // Blockquotes
+  html = html.replace(/^> (.*$)/gm, '<blockquote class="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">$1</blockquote>');
+  
+  // Code blocks
+  html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-muted p-4 rounded-lg overflow-x-auto my-4"><code>$1</code></pre>');
+  
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code class="bg-muted px-1.5 py-0.5 rounded text-sm">$1</code>');
+  
+  // Horizontal rules
+  html = html.replace(/^---$/gm, '<hr class="my-8 border-border" />');
+  
+  return html;
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getBlogPost(slug);
-
+  
   if (!post) {
     notFound();
   }
 
+  const markdownContent = getMarkdownContent(slug);
+  const htmlContent = markdownToHtml(markdownContent);
+  
+  // Get related posts (excluding current)
+  const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
+
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen">
       <Header />
-
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-12 lg:py-16 bg-muted/20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to Blog
-            </Link>
-
-            <Badge
-              variant="outline"
-              className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5"
-            >
-              {post.category}
-            </Badge>
-
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-4">
-              {post.title}
-            </h1>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+      
+      <article className="pt-24 pb-16">
+        {/* Hero */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/#blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-6 transition-colors">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Blog
+          </Link>
+          
+          <Badge variant="outline" className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5">
+            {post.category}
+          </Badge>
+          
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
+            {post.title}
+          </h1>
+          
+          <p className="text-xl text-muted-foreground mb-6">
+            {post.description}
+          </p>
+          
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              <span>Valley Daycare Sites</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              <span>{post.date}</span>
             </div>
           </div>
-        </section>
-
-        {/* Article Content */}
-        <section className="py-12 lg:py-16">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <article className="prose prose-lg prose-slate dark:prose-invert max-w-none">
-              {post.content.split("\n\n").map((paragraph, index) => {
-                // Handle headers
-                if (paragraph.startsWith("## ")) {
-                  return (
-                    <h2
-                      key={index}
-                      className="font-display text-xl sm:text-2xl font-semibold text-foreground mt-8 mb-4"
-                    >
-                      {paragraph.replace("## ", "")}
-                    </h2>
-                  );
-                }
-
-                // Handle bold text within paragraphs
-                const formattedParagraph = paragraph.replace(
-                  /\*\*(.*?)\*\*/g,
-                  "<strong>$1</strong>"
-                );
-
-                // Handle bullet lists
-                if (paragraph.includes("\n- ")) {
-                  const items = paragraph.split("\n- ").filter(Boolean);
-                  return (
-                    <ul key={index} className="list-disc list-inside space-y-2 text-muted-foreground mb-4">
-                      {items.map((item, i) => (
-                        <li key={i} dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") }} />
-                      ))}
-                    </ul>
-                  );
-                }
-
-                return (
-                  <p
-                    key={index}
-                    className="text-muted-foreground leading-relaxed mb-4"
-                    dangerouslySetInnerHTML={{ __html: formattedParagraph }}
-                  />
-                );
-              })}
-            </article>
+        </div>
+        
+        {/* Featured Image */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="aspect-[21/9] relative rounded-2xl overflow-hidden bg-muted">
+            <Image
+              src={post.image}
+              alt={post.imageAlt}
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24 bg-muted/20">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground mb-4">
-              Ready for Your Free Sample?
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              See what a professional website can do for your daycare. Get a custom homepage sample within 48 hours.
+        </div>
+        
+        {/* Content */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div 
+            className="prose prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+          
+          <Separator className="my-12" />
+          
+          {/* CTA */}
+          <div className="bg-muted/30 rounded-2xl p-8 text-center">
+            <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
+              Ready to Transform Your Daycare Website?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Get a free sample homepage designed specifically for your daycare. No upfront cost, no pressure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                className="gradient-sage text-primary-foreground hover:opacity-90 shadow-premium-glow"
-              >
-                <Link href="/#contact">Get Your Free Sample</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/blog" className="gap-2">
-                  Read More Articles
-                </Link>
-              </Button>
-            </div>
+            <Button size="lg" asChild className="gradient-sage text-primary-foreground hover:opacity-90">
+              <Link href="/#contact">
+                Get Your Free Sample
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
-        </section>
-      </main>
-
+        </div>
+      </article>
+      
+      {/* Related Posts */}
+      <section className="py-16 bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-semibold text-foreground mb-8 text-center">
+            Related Articles
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {relatedPosts.map((relatedPost) => (
+              <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
+                <Card className="border-border bg-card overflow-hidden card-hover group h-full">
+                  <div className="aspect-[16/9] bg-muted/30 relative overflow-hidden">
+                    <Image 
+                      src={relatedPost.image}
+                      alt={relatedPost.imageAlt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardContent className="p-4">
+                    <Badge variant="outline" className="text-xs mb-2">{relatedPost.category}</Badge>
+                    <h3 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      {relatedPost.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{relatedPost.excerpt}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       <Footer />
-    </div>
+    </main>
   );
 }
