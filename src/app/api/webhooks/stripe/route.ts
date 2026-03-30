@@ -3,10 +3,16 @@ import Stripe from "stripe";
 import { db } from "@/lib/db";
 import { OrderStatus } from "@prisma/client";
 
-// Initialize Stripe with secret key
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2023-10-16",
-});
+// Lazy-initialize Stripe to avoid build-time crash when STRIPE_SECRET_KEY is missing
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is not configured");
+  }
+  return new Stripe(key, {
+    apiVersion: "2023-10-16",
+  });
+}
 
 // Webhook secret for signature verification
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
@@ -22,8 +28,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   let event: Stripe.Event;
 
   try {
-    // Verify webhook signature
-    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    event = getStripe().webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
     console.error("Webhook signature verification failed:", err);
     return NextResponse.json(
@@ -32,7 +37,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
   }
 
-  // Handle the event
   try {
     switch (event.type) {
       case "checkout.session.completed": {
@@ -40,31 +44,26 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         await handleCheckoutCompleted(session);
         break;
       }
-
       case "invoice.paid": {
         const invoice = event.data.object as Stripe.Invoice;
         await handleInvoicePaid(invoice);
         break;
       }
-
       case "invoice.payment_failed": {
         const invoice = event.data.object as Stripe.Invoice;
         await handlePaymentFailed(invoice);
         break;
       }
-
       case "customer.subscription.updated": {
         const subscription = event.data.object as Stripe.Subscription;
         await handleSubscriptionUpdated(subscription);
         break;
       }
-
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
         await handleSubscriptionDeleted(subscription);
         break;
       }
-
       default:
         console.log(`Unhandled event type: ${event.type}`);
     }
@@ -79,21 +78,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 }
 
-/**
- * Handle checkout.session.completed event
- */
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const customerId = session.customer as string;
   const customerEmail = session.customer_email || session.customer_details?.email;
   const metadata = session.metadata || {};
-  
+
   console.log(`Checkout completed for: ${customerEmail}`, {
     customerId,
     orderId: metadata.orderId,
     plan: metadata.plan,
   });
 
-  // Update order status if orderId exists in metadata
   if (metadata.orderId) {
     try {
       await db.order.update({
@@ -111,9 +106,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-/**
- * Handle invoice.paid event
- */
 async function handleInvoicePaid(invoice: Stripe.Invoice) {
   const customerId = invoice.customer as string;
   const subscriptionId = invoice.subscription as string;
@@ -123,7 +115,6 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
     amount: invoice.amount_paid,
   });
 
-  // Update order status for recurring payments
   try {
     await db.order.updateMany({
       where: { stripeSubscriptionId: subscriptionId },
@@ -137,9 +128,6 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
   }
 }
 
-/**
- * Handle invoice.payment_failed event
- */
 async function handlePaymentFailed(invoice: Stripe.Invoice) {
   const customerId = invoice.customer as string;
   const subscriptionId = invoice.subscription as string;
@@ -149,7 +137,6 @@ async function handlePaymentFailed(invoice: Stripe.Invoice) {
     attempt: invoice.attempt_count,
   });
 
-  // Update order status
   try {
     await db.order.updateMany({
       where: { stripeSubscriptionId: subscriptionId },
@@ -162,16 +149,12 @@ async function handlePaymentFailed(invoice: Stripe.Invoice) {
   }
 }
 
-/**
- * Handle customer.subscription.updated event
- */
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
   const subscriptionId = subscription.id;
   const status = subscription.status;
 
   console.log(`Subscription updated: ${subscriptionId}`, { status });
 
-  // Map Stripe status to our status
   const statusMap: Record<string, string> = {
     active: "PAID",
     past_due: "PAST_DUE",
@@ -191,9 +174,6 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
   }
 }
 
-/**
- * Handle customer.subscription.deleted event
- */
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   const subscriptionId = subscription.id;
 
@@ -212,10 +192,6 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   }
 }
 
-/**
- * GET /api/webhooks/stripe
- * Health check endpoint
- */
 export async function GET(): Promise<NextResponse> {
   return NextResponse.json({
     status: "ok",

@@ -5,8 +5,9 @@ import { initializeOnboarding } from "@/lib/onboarding";
 import { db } from "@/lib/db";
 import { PlanType, OrderStatus } from "@prisma/client";
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+// Lazy-initialize Stripe to avoid build-time crash when STRIPE_SECRET_KEY is missing
+function getStripe(): Stripe {
+
   apiVersion: "2023-10-16",
 });
 
