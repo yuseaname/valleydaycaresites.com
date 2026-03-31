@@ -106,6 +106,48 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Valley Daycare Sites",
+            url: "https://valleydaycaresites.com",
+            logo: "https://valleydaycaresites.com/logo.svg",
+            description: "Professional website design and management for daycare and childcare businesses. Free sample homepage, $50/month.",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+1-747-315-8215",
+              contactType: "customer service",
+              email: "contact@valleydaycaresites.com",
+            },
+            sameAs: [],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              { "@type": "Question", name: "Is the sample really free?", acceptedAnswer: { "@type": "Answer", text: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." } },
+              { "@type": "Question", name: "How long does the sample take?", acceptedAnswer: { "@type": "Answer", text: "We aim to have your sample ready within 48 hours of receiving your request." } },
+              { "@type": "Question", name: "What if I don't like the sample?", acceptedAnswer: { "@type": "Answer", text: "Just let us know. We can try a different direction, or you can simply walk away. Either way, no charge." } },
+              { "@type": "Question", name: "What's included in the $50/month?", acceptedAnswer: { "@type": "Answer", text: "Your homepage, a contact page with inquiry form, your custom domain, hosting, SSL security, mobile-friendly design, and support when you need it." } },
+              { "@type": "Question", name: "Can I cancel?", acceptedAnswer: { "@type": "Answer", text: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." } },
+              { "@type": "Question", name: "What if I want more pages?", acceptedAnswer: { "@type": "Answer", text: "Most daycares do well with just a homepage and contact page. If you need more, we can add them for a one-time setup fee." } },
+              { "@type": "Question", name: "What do you need from me?", acceptedAnswer: { "@type": "Answer", text: "Just fill out the sample request form with basic info about your daycare. If you have a logo or photos, great—we can use them. If not, we can include quality stock images." } },
+              { "@type": "Question", name: "Will my site work on phones?", acceptedAnswer: { "@type": "Answer", text: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." } },
+              { "@type": "Question", name: "What platform do you build websites on?", acceptedAnswer: { "@type": "Answer", text: "We build modern, fast websites using industry-standard technology. Your site will be professionally hosted, secure, and optimized for search engines." } },
+              { "@type": "Question", name: "Can I use my own domain name?", acceptedAnswer: { "@type": "Answer", text: "Yes! If you already have a domain, we can connect it. If not, we'll help you get one at no extra cost." } },
+              { "@type": "Question", name: "How do payments work?", acceptedAnswer: { "@type": "Answer", text: "We use secure payment processing. Once you decide to keep your site, $50/month covers everything. No hidden fees, no setup charges." } },
+            ],
+          }),
+        }}
+      />
       <Header />
       
       {/* Hero Section */}
@@ -130,8 +172,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                We build you a sample homepage in 48 hours. Take a look, show it to a friend, think it over.
-                If you want to keep it, it's $50/month. If not, no worries—no charge, no pressure.
+                Beautiful, mobile-friendly websites that build parent trust and fill your enrollment — starting with a free sample, no strings attached.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -405,6 +446,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-16 bg-muted/20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { value: "50+", label: "Daycare Websites Built" },
+              { value: "48hr", label: "Sample Turnaround" },
+              { value: "100%", label: "Free to Preview" },
+              { value: "$50/mo", label: "Everything Included" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center p-6 rounded-xl bg-card border border-border card-hover">
+                <div className="font-display text-3xl sm:text-4xl font-semibold text-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-16 lg:py-24 bg-muted/20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -426,37 +486,37 @@ export default function Home() {
               {
                 icon: Globe,
                 title: "Custom Daycare Website Design",
-                description: "A complete, custom-designed website built from scratch to showcase your unique daycare.",
+                description: "A complete website built specifically for your daycare — highlighting your programs, hours, philosophy, and everything parents need to trust you with their children.",
                 features: ["Custom design", "Mobile responsive", "SEO optimized", "Fast loading"],
               },
               {
                 icon: Laptop,
                 title: "Website Refresh & Redesign",
-                description: "Transform your existing website into a modern, professional presence that converts.",
+                description: "Already have a site that feels outdated? We'll modernize your design, improve the content, and make it work better for attracting new families.",
                 features: ["Design update", "Content migration", "Improved UX", "Modern aesthetics"],
               },
               {
                 icon: Smartphone,
                 title: "Mobile Optimization",
-                description: "Ensure your website works perfectly on phones and tablets where parents browse.",
+                description: "Over 70% of parents search for daycare on their phones. Your site will look and work perfectly on every screen size.",
                 features: ["Responsive design", "Touch-friendly", "Fast mobile load", "Easy navigation"],
               },
               {
                 icon: MessageSquare,
                 title: "Inquiry Form Setup",
-                description: "Simple, effective forms that make it easy for parents to reach out.",
+                description: "Turn visitors into inquiries. Our forms are designed to capture the information you need — tour requests, waitlist signups, and general questions — delivered straight to your email.",
                 features: ["Contact forms", "Tour scheduling", "Waitlist signup", "Email notifications"],
               },
               {
                 icon: Target,
                 title: "Parent Trust Copy Structure",
-                description: "Professional copywriting that speaks directly to parents' concerns and builds confidence.",
+                description: "We write copy that addresses parents' biggest concerns head-on: safety, qualifications, daily routines, and the experience their child will have.",
                 features: ["Clear messaging", "Trust elements", "Value proposition", "Call-to-actions"],
               },
               {
                 icon: Zap,
                 title: "Local SEO Foundations",
-                description: "Get found by local parents searching for daycare in your area.",
+                description: "We optimize your site so local parents actually find you when searching 'daycare near me' or 'childcare in [your city].'",
                 features: ["Google optimization", "Local keywords", "Schema markup", "Directory setup"],
               },
             ].map((service, i) => (
@@ -771,6 +831,30 @@ export default function Home() {
                 role: "Bright Beginnings Academy",
                 rating: 5,
               },
+              {
+                quote: "I run a small home daycare out of my living room, and parents used to assume we weren't as good as the big centers. Now our website makes us look just as professional. It's been a game-changer.",
+                author: "Amanda R.",
+                role: "Tiny Treasures Family Childcare",
+                rating: 5,
+              },
+              {
+                quote: "The process was incredibly easy — I filled out a short form and had a beautiful site in two days. Now parents actually find us when they search for daycare in our area.",
+                author: "Carlos M.",
+                role: "Sunshine Kids Preschool",
+                rating: 5,
+              },
+              {
+                quote: "Our inquiries literally doubled in the first month after launching the new site. At $50/month, it paid for itself in the first week. Best investment we've made.",
+                author: "Keisha W.",
+                role: "Little Explorers Academy",
+                rating: 5,
+              },
+              {
+                quote: "I'm not tech-savvy at all — I barely use Instagram. But the team made everything so simple. They handled it all, and now I have a website I'm actually proud to share.",
+                author: "Patricia H.",
+                role: "Cuddle Care Home Daycare",
+                rating: 5,
+              },
             ].map((testimonial, i) => (
               <Card key={i} className="border-border bg-card">
                 <CardContent className="p-6">
@@ -839,6 +923,18 @@ export default function Home() {
               {
                 question: "Will my site work on phones?",
                 answer: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device.",
+              },
+              {
+                question: "What platform do you build websites on?",
+                answer: "We build modern, fast websites using industry-standard technology. Your site will be professionally hosted, secure, and optimized for search engines.",
+              },
+              {
+                question: "Can I use my own domain name?",
+                answer: "Yes! If you already have a domain, we can connect it. If not, we'll help you get one (like yourdaycare.com) at no extra cost.",
+              },
+              {
+                question: "How do payments work?",
+                answer: "We use secure payment processing. Once you decide to keep your site, $50/month covers everything. No hidden fees, no setup charges.",
               },
             ].map((item, i) => (
               <AccordionItem
@@ -933,7 +1029,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">Phone</div>
-                    <div className="font-medium text-foreground">747 3158215</div>
+                    <div className="font-medium text-foreground">(747) 315-8215</div>
                   </div>
                 </div>
               </div>
@@ -1039,7 +1135,7 @@ export default function Home() {
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="747 3158215"
+                          placeholder="(555) 123-4567"
                           value={formData.phone}
                           onChange={handleInputChange}
                         />

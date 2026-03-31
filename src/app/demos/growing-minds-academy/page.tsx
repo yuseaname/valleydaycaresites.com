@@ -47,7 +47,7 @@ const PROGRAMS = [
     title: 'Infant Care',
     ages: '6 weeks - 12 months',
     icon: Baby,
-    image: '/images/programs/infant.png',
+    image: '/images/demos/growing-minds-academy/programs/infant.png',
     description: 'Nurturing environment with individualized care plans, sensory exploration, and secure attachment building.',
     features: ['Low infant-to-caregiver ratio', 'Daily activity reports', 'Safe sleep practices']
   },
@@ -55,7 +55,7 @@ const PROGRAMS = [
     title: 'Toddler Program',
     ages: '1 - 2 years',
     icon: Heart,
-    image: '/images/programs/toddler.png',
+    image: '/images/demos/growing-minds-academy/programs/toddler.png',
     description: 'Active exploration and discovery through play-based learning that develops independence and social skills.',
     features: ['Language development', 'Motor skill activities', 'Potty training support']
   },
@@ -63,7 +63,7 @@ const PROGRAMS = [
     title: 'Preschool',
     ages: '3 - 4 years',
     icon: BookOpen,
-    image: '/images/programs/preschool.png',
+    image: '/images/demos/growing-minds-academy/programs/preschool.png',
     description: 'School readiness curriculum fostering cognitive, social, and emotional development through structured play.',
     features: ['Pre-literacy skills', 'Math concepts', 'Social-emotional learning']
   },
@@ -71,7 +71,7 @@ const PROGRAMS = [
     title: 'After-School',
     ages: '5 - 12 years',
     icon: GraduationCap,
-    image: '/images/programs/afterschool.png',
+    image: '/images/demos/growing-minds-academy/programs/afterschool.png',
     description: 'Enriching after-school program with homework help, creative activities, and supervised outdoor play.',
     features: ['Homework assistance', 'Enrichment clubs', 'Transportation from local schools']
   }

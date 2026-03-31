@@ -197,7 +197,7 @@ export default function TermsOfService() {
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <span>Phone: 747 3158215</span>
+              <span>Phone: (747) 315-8215</span>
             </div>
           </CardContent>
         </Card>

@@ -321,7 +321,7 @@ export default function PaymentPage() {
                         type="tel"
                         value={customerDetails.phone}
                         onChange={(e) => handleCustomerChange("phone", e.target.value)}
-                        placeholder="747 3158215"
+                        placeholder="(555) 123-4567"
                         required
                       />
                     </div>

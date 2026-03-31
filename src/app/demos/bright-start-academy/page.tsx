@@ -69,7 +69,7 @@ const programs = [
     icon: Baby,
     title: 'Infant Care',
     ages: '6 weeks – 12 months',
-    image: '/images/infant-care.png',
+    image: '/images/demos/bright-start-academy/infant-care.png',
     color: 'bg-coral-50',
     iconColor: 'text-coral-500',
     description:
@@ -80,7 +80,7 @@ const programs = [
     icon: Sparkles,
     title: 'Toddler Program',
     ages: '1 – 2 years',
-    image: '/images/toddler-program.png',
+    image: '/images/demos/bright-start-academy/toddler-program.png',
     color: 'bg-warm-50',
     iconColor: 'text-warm-500',
     description:
@@ -91,7 +91,7 @@ const programs = [
     icon: Palette,
     title: 'Preschool Program',
     ages: '3 – 4 years',
-    image: '/images/preschool-program.png',
+    image: '/images/demos/bright-start-academy/preschool-program.png',
     color: 'bg-sage-50',
     iconColor: 'text-sage-600',
     description:
@@ -102,7 +102,7 @@ const programs = [
     icon: GraduationCap,
     title: 'After-School Care',
     ages: '5 – 12 years',
-    image: '/images/afterschool-care.png',
+    image: '/images/demos/bright-start-academy/afterschool-care.png',
     color: 'bg-sky-50',
     iconColor: 'text-sky-600',
     description:

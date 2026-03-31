@@ -345,7 +345,7 @@ export async function sendOnboardingWelcome(customer: CustomerData): Promise<boo
 
       <div style="background: #f9fafb; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
         <p style="color: #666; margin: 0;">
-          Questions? Just reply to this email or text us at 747 3158215.
+          Questions? Just reply to this email or text us at (747) 315-8215.
         </p>
       </div>
 
@@ -370,7 +370,7 @@ Here's what you can expect from us:
 
 If you have any logos, photos, or specific content you'd like us to use, feel free to send them over.
 
-Questions? Just reply to this email or text us at 747 3158215.
+Questions? Just reply to this email or text us at (747) 315-8215.
 
 ---
 Valley Daycare Sites

@@ -142,7 +142,7 @@ export default function RefundPolicy() {
               <span>Email: contact@valleydaycaresites.com</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>Phone: 747 3158215</span>
+              <span>Phone: (747) 315-8215</span>
             </div>
           </CardContent>
         </Card>

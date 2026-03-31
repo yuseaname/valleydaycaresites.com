@@ -23,6 +23,7 @@ import {
   Brain,
   MessageCircle
 } from 'lucide-react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -239,65 +240,52 @@ function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Hero Image/Visual */}
+          {/* Hero Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-amber-200 via-sky-200 to-emerald-200 rounded-3xl p-8 md:p-12 shadow-2xl">
-              {/* Main Visual */}
-              <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 bg-white/40 rounded-2xl backdrop-blur-sm" />
-                <div className="absolute inset-4 bg-white/60 rounded-xl flex flex-col items-center justify-center p-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                    <GraduationCap className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 text-center mb-2">Ready for Kindergarten</h3>
-                  <p className="text-gray-600 text-center text-sm">Building confident learners every day</p>
-                  
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4 mt-6 w-full">
-                    <div className="bg-white rounded-lg p-3 text-center shadow">
-                      <div className="text-2xl font-bold text-amber-500">95%</div>
-                      <div className="text-xs text-gray-600">Kindergarten Ready</div>
-                    </div>
-                    <div className="bg-white rounded-lg p-3 text-center shadow">
-                      <div className="text-2xl font-bold text-sky-500">15+</div>
-                      <div className="text-xs text-gray-600">Years Experience</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Cards */}
-              <motion.div 
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-4 bg-white rounded-xl p-3 shadow-lg"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <BookOpen className="w-4 h-4 text-emerald-600" />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-700">Early Reading</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-xl p-3 shadow-lg"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center">
-                    <Users className="w-4 h-4 text-sky-600" />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-700">Social Skills</span>
-                </div>
-              </motion.div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/demos/sunshine-learning-center/hero-classroom.png"
+                alt="Sunshine Learning Center bright classroom with children learning and playing, featuring warm colors and educational activities"
+                width={512}
+                height={512}
+                className="w-full h-auto"
+                priority
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent" />
             </div>
+
+            {/* Floating Cards */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-4 -left-4 bg-white rounded-xl p-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <BookOpen className="w-4 h-4 text-emerald-600" />
+                </div>
+                <span className="text-sm font-semibold text-gray-700">Early Reading</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -bottom-4 -right-4 bg-white rounded-xl p-3 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center">
+                  <Users className="w-4 h-4 text-sky-600" />
+                </div>
+                <span className="text-sm font-semibold text-gray-700">Social Skills</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -420,7 +408,8 @@ function ProgramsSection() {
       description: "Building foundational skills through play-based learning. Children develop curiosity, motor skills, and early social abilities.",
       outcomes: ["Language development", "Motor skill development", "Social confidence", "Routine familiarity"],
       color: "from-sky-400 to-sky-500",
-      icon: Baby
+      icon: Baby,
+      image: "/images/demos/sunshine-learning-center/early-explorers.png"
     },
     {
       age: "Ages 3-4",
@@ -430,7 +419,8 @@ function ProgramsSection() {
       outcomes: ["Letter & number recognition", "Following directions", "Independent tasks", "Peer collaboration"],
       color: "from-amber-400 to-orange-500",
       icon: BookOpen,
-      featured: true
+      featured: true,
+      image: "/images/demos/sunshine-learning-center/bright-beginners.png"
     },
     {
       age: "Ages 4-5",
@@ -439,7 +429,8 @@ function ProgramsSection() {
       description: "Intensive preparation for kindergarten success. Advanced literacy, math concepts, and classroom independence.",
       outcomes: ["Reading readiness", "Math fundamentals", "Self-advocacy", "Emotional regulation"],
       color: "from-emerald-400 to-emerald-500",
-      icon: GraduationCap
+      icon: GraduationCap,
+      image: "/images/demos/sunshine-learning-center/kindergarten-prep.png"
     }
   ]
 
@@ -485,7 +476,26 @@ function ProgramsSection() {
                 </div>
               )}
               <Card className={`h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden ${program.featured ? 'ring-2 ring-amber-400' : ''}`}>
-                <div className={`h-2 bg-gradient-to-r ${program.color}`} />
+                {/* Program Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={program.image}
+                    alt={`${program.title} - ${program.subtitle} at Sunshine Learning Center`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="text-xs font-semibold text-white bg-white/30 backdrop-blur-sm rounded-full px-3 py-1">
+                      {program.age}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-r ${program.color} flex items-center justify-center shadow-lg`}>
+                      <program.icon className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+                </div>
                 <CardContent className="p-6 lg:p-8">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-semibold text-gray-500 bg-gray-100 rounded-full px-3 py-1">
@@ -562,7 +572,7 @@ function WhyUsSection() {
     <section id="why-us" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Visual */}
+          {/* Left Side - Classroom Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -570,40 +580,44 @@ function WhyUsSection() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-sky-100 via-amber-50 to-emerald-100 rounded-3xl p-8 lg:p-12">
-              <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 bg-white/60 rounded-2xl backdrop-blur-sm shadow-inner" />
-                <div className="absolute inset-8 flex flex-col items-center justify-center">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full mb-4 shadow-lg">
-                      <Heart className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Trusted by 200+ Families</h3>
-                    <p className="text-gray-600 mb-6">See why parents choose us</p>
-                    
-                    <div className="flex justify-center gap-4 mb-6">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-amber-500">4.9</div>
-                        <div className="flex gap-0.5 justify-center">
-                          {[1,2,3,4,5].map(i => (
-                            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/demos/sunshine-learning-center/classroom.png"
+                alt="Sunshine Learning Center warm classroom with art supplies, reading corner, and circle time area"
+                width={512}
+                height={512}
+                className="w-full h-auto"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent" />
 
-                    <Button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-full px-6">
-                      See Our Classrooms <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
+              {/* Floating stats card */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-amber-500">4.9</div>
+                    <div className="flex gap-0.5 justify-center">
+                      {[1,2,3,4,5].map(i => (
+                        <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="h-10 w-px bg-gray-200" />
+                  <div>
+                    <p className="font-bold text-gray-900">200+</p>
+                    <p className="text-xs text-gray-500">Happy Families</p>
                   </div>
                 </div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-12 h-12 bg-amber-200/50 rounded-xl rotate-12" />
-              <div className="absolute bottom-8 left-4 w-10 h-10 bg-sky-200/50 rounded-full" />
-              <div className="absolute top-1/3 left-0 w-8 h-8 bg-emerald-200/50 rounded-lg rotate-45" />
+              </motion.div>
             </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-amber-200/50 rounded-xl rotate-12" />
+            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-sky-200/50 rounded-full" />
           </motion.div>
 
           {/* Right Side - Content */}
@@ -655,21 +669,24 @@ function TestimonialsSection() {
       role: "Parent of Emma, Age 4",
       content: "Emma has grown so much in just 6 months! She's recognizing letters, writing her name, and is so much more confident. The teachers truly care about each child's progress.",
       rating: 5,
-      image: "S"
+      image: "S",
+      avatarColor: "from-amber-400 to-orange-500"
     },
     {
       name: "Michael T.",
       role: "Parent of Liam, Age 3",
       content: "We were worried about Liam's transition from staying home. The teachers made it so smooth! He now loves coming to school and talks about his friends constantly.",
       rating: 5,
-      image: "M"
+      image: "M",
+      avatarColor: "from-sky-400 to-sky-500"
     },
     {
       name: "Jennifer K.",
       role: "Parent of Sophia, Age 5",
       content: "Sophia is more than ready for kindergarten now. Her reading skills have improved dramatically, and she's learned to work well with other children. Best decision we made!",
       rating: 5,
-      image: "J"
+      image: "J",
+      avatarColor: "from-emerald-400 to-emerald-500"
     }
   ]
 
