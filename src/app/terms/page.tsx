@@ -131,17 +131,22 @@ export default function TermsOfService() {
 
             <h3 className="font-semibold text-foreground mb-2">4.1 Service Availability</h3>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
-              <li>We strive for 99.9% uptime but but However, we do not guarantee uninterrupted service</li>
+              <li>We strive for 99.9% uptime; however, we do not guarantee uninterrupted service</li>
               <li>Scheduled maintenance may occur occasionally</li>
-              <li>We will notify you of advance of scheduled maintenance</li>
+              <li>We will notify you in advance of scheduled maintenance</li>
             </ul>
 
-            <h3 className="font-semibold text-foreground mb-2">4.2 Limitation of Damages</h3>
+            <h3 className="font-semibold text-foreground mb-2">4.2 No Guarantees of Results</h3>
+            <p className="text-muted-foreground mb-4">
+              Valley Daycare Sites provides website design and hosting services only. We do not guarantee any specific business outcomes, including but not limited to increased enrollment, revenue growth, search engine rankings, or inquiries. Results depend on factors outside our control, including your local market, competition, and business practices. Demo sites and example content shown on our website are for illustrative purposes only.
+            </p>
+
+            <h3 className="font-semibold text-foreground mb-2">4.3 Limitation of Damages</h3>
             <p className="text-muted-foreground mb-4">
               In no event shall Valley Daycare Sites, its directors, employees, or affiliates be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising out of or in connection with our services.
             </p>
 
-            <h3 className="font-semibold text-foreground mb-2">4.3 Maximum Liability</h3>
+            <h3 className="font-semibold text-foreground mb-2">4.4 Maximum Liability</h3>
             <p className="text-muted-foreground mb-4">
               Our total liability for any claim arising from these terms shall not exceed the amount paid by you for the services giving rise to the claim.
             </p>

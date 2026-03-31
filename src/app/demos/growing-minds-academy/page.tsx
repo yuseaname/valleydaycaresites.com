@@ -10,17 +10,16 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import Image from 'next/image'
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Star, 
-  Shield, 
-  Heart, 
-  Users, 
-  BookOpen, 
-  Baby, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Shield,
+  Heart,
+  Users,
+  BookOpen,
+  Baby,
   GraduationCap,
   CalendarDays,
   Award,
@@ -79,24 +78,21 @@ const PROGRAMS = [
 
 const TESTIMONIALS = [
   {
-    name: 'Sarah M.',
+    name: 'Sample Name',
     location: 'Downtown Center',
-    rating: 5,
-    text: 'The consistency across all Growing Minds locations is remarkable. We moved from the Westside to Downtown, and my daughter transitioned seamlessly because the quality is the same everywhere.',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
     childAge: '3 years old'
   },
   {
-    name: 'Michael T.',
+    name: 'Sample Name',
     location: 'Northgate Learning',
-    rating: 5,
-    text: 'As a business owner with multiple locations myself, I appreciate how Growing Minds maintains brand consistency. Every center delivers the same professional, caring experience.',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
     childAge: '2 years old'
   },
   {
-    name: 'Jennifer L.',
+    name: 'Sample Name',
     location: 'Riverside Campus',
-    rating: 5,
-    text: 'The staff at every location is trained to the same high standards. I know exactly what to expect, and my son loves going to school every day.',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
     childAge: '4 years old'
   }
 ]
@@ -110,7 +106,7 @@ const TRUST_FACTORS = [
   {
     icon: Award,
     title: 'Standardized Quality',
-    description: 'Every location follows our proven curriculum and operational standards for consistent excellence.'
+    description: 'Every location follows our proven curriculum and operational standards for consistent excellence. (Demo)'
   },
   {
     icon: Users,
@@ -119,7 +115,7 @@ const TRUST_FACTORS = [
   },
   {
     icon: CheckCircle2,
-    title: 'Proven System',
+    title: 'Proven System (Demo)',
     description: 'Our scalable approach ensures every child receives the same nurturing care at any location.'
   }
 ]
@@ -257,6 +253,13 @@ export default function Home() {
         </nav>
       </header>
 
+      {/* DEMO BANNER */}
+      <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4">
+        <p className="text-sm font-semibold text-amber-800">
+          Demo Website -- For Demonstration Only
+        </p>
+      </div>
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 md:py-24">
@@ -274,12 +277,12 @@ export default function Home() {
                 {/* Trust Badge */}
                 <Badge className="mb-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 px-4 py-2 text-sm font-medium shadow-lg shadow-emerald-200/50">
                   <Building2 className="w-4 h-4 mr-2" />
-                  A Growing Network of Trusted Childcare Centers
+                  A Growing Network of Trusted Childcare Centers (Demo)
                 </Badge>
 
                 {/* Headline */}
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Trusted Childcare Across{' '}
+                  Trusted Childcare (Demo) Across{' '}
                   <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
                     Every Location
                   </span>
@@ -288,7 +291,7 @@ export default function Home() {
                 {/* Subheadline */}
                 <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                   Experience the same exceptional care, curriculum, and commitment at any of our locations. 
-                  <span className="font-semibold text-gray-800"> Consistent branding, consistent quality, consistent trust.</span>
+                  <span className="font-semibold text-gray-800"> Consistent branding, consistent quality (demo example).</span>
                 </p>
 
                 {/* CTA Buttons */}
@@ -315,16 +318,16 @@ export default function Home() {
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 md:gap-8">
                   <div className="text-center">
-                    <p className="text-3xl md:text-4xl font-bold text-amber-600">5+</p>
-                    <p className="text-sm text-gray-600">Locations</p>
+                    <p className="text-3xl md:text-4xl font-bold text-amber-600">Your Number</p>
+                    <p className="text-sm text-gray-600">Locations (Example)</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-3xl md:text-4xl font-bold text-orange-600">500+</p>
-                    <p className="text-sm text-gray-600">Families Served</p>
+                    <p className="text-3xl md:text-4xl font-bold text-orange-600">Your Number</p>
+                    <p className="text-sm text-gray-600">Families Served (Example)</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-3xl md:text-4xl font-bold text-yellow-600">15+</p>
-                    <p className="text-sm text-gray-600">Years Experience</p>
+                    <p className="text-3xl md:text-4xl font-bold text-yellow-600">Your Number</p>
+                    <p className="text-sm text-gray-600">Years Experience (Example)</p>
                   </div>
                 </div>
               </div>
@@ -471,7 +474,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900">Standardized Programs</h4>
-                        <p className="text-gray-600">Every location follows our proven curriculum framework</p>
+                        <p className="text-gray-600">Every location follows our proven curriculum framework (demo)</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -615,7 +618,7 @@ export default function Home() {
                 Built on Trust, Designed for Growth
               </h2>
               <p className="text-gray-600 text-lg">
-                Our proven system delivers reliable, high-quality childcare across all locations. 
+                Our proven system (demo) delivers reliable, high-quality childcare across all locations.
                 Parents trust us because we&apos;ve built trust into every aspect of our organization.
               </p>
             </div>
@@ -642,14 +645,16 @@ export default function Home() {
             <div className="max-w-3xl mx-auto text-center mb-12">
               <Badge className="mb-4 bg-amber-100 text-amber-800 border-0">
                 <MessageCircle className="w-4 h-4 mr-1" />
-                Parent Testimonials
+                Demo Website -- Layout Example
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Our Families Say
+                What Your Website Could Look Like
               </h2>
               <p className="text-gray-600 text-lg">
-                Hear from parents across our locations about their consistent, positive experiences 
-                with Growing Minds Academy.
+                This is an example layout for a multi-location childcare center -- professional design, clear calls-to-action, contact form, mobile-friendly layout.
+              </p>
+              <p className="text-xs text-gray-400 mt-2 italic">
+                Demo Website -- all content shown is for demonstration purposes only.
               </p>
             </div>
 
@@ -659,9 +664,7 @@ export default function Home() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-100 to-transparent rounded-bl-full" />
                   <CardContent className="pt-6">
                     <div className="flex items-center gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                      ))}
+                      <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">Sample Demo Content</span>
                     </div>
                     <p className="text-gray-600 mb-6 italic">&quot;{testimonial.text}&quot;</p>
                     <Separator className="mb-4" />
@@ -681,8 +684,9 @@ export default function Home() {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-gray-500 italic">
-                &quot;Every location delivers the same experience&quot; - A common theme in our parent feedback
+              <p className="text-xs text-gray-400">
+                All examples shown are for demonstration purposes only.
+                Your website will be built with your real content and details.
               </p>
             </div>
           </div>
@@ -880,7 +884,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                A growing network of trusted childcare centers delivering consistent, high-quality care across all locations.
+                A growing network of trusted childcare centers (demo) delivering consistent, high-quality care across all locations.
               </p>
               <div className="flex gap-3">
                 <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30">
@@ -956,6 +960,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* DEMO DISCLAIMER */}
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
     </div>
   )
 }

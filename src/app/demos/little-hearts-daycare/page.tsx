@@ -108,6 +108,13 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* DEMO BANNER */}
+      <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4">
+        <p className="text-sm font-semibold text-amber-800">
+          Demo Website -- For Demonstration Only
+        </p>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-hero-gradient overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -187,12 +194,7 @@ export default function Home() {
                       <Star className="w-5 h-5 sm:w-6 sm:h-6 text-primary fill-primary" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-sm font-medium text-foreground mt-1">Loved by Families</p>
+                      <p className="text-sm font-medium text-foreground">Example Trust Signal (Demo)</p>
                     </div>
                   </div>
                 </div>
@@ -421,52 +423,48 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <Badge className="bg-primary/10 text-primary-foreground mb-4 px-4 py-1.5 text-sm font-medium rounded-full">
-              Parent Stories
+              Demo Website -- Layout Example
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 sm:mb-6">
-              What Parents Say About Us
+              What Your Website Could Look Like
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Don&apos;t just take our word for it — hear from families who trust us with their little ones.
+              This is an example layout for a home daycare website -- warm colors, simple navigation, tour request form. Built to highlight your unique value.
+            </p>
+            <p className="text-xs text-muted-foreground mt-2 italic">
+              Demo Website -- all content shown is for demonstration purposes only.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                name: 'Jennifer M.',
-                child: 'Emma, 3 years old',
-                quote: "Leaving my daughter for the first time was so hard, but Sarah made the transition incredible. Emma runs to the door every morning! I couldn't ask for a more loving environment.",
-                rating: 5
+                name: 'Sample Name',
+                child: 'Example Parent',
+                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
               },
               {
-                name: 'Michael & Lisa T.',
-                child: 'Noah, 2 years old',
-                quote: "The small group setting was exactly what we wanted. Noah gets so much individual attention, and we love the daily photos and updates. It truly feels like an extension of our family.",
-                rating: 5
+                name: 'Sample Name',
+                child: 'Example Parents',
+                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
               },
               {
-                name: 'Amanda R.',
-                child: 'Sophia & Lucas',
-                quote: "Both of my kids have been at Little Hearts, and I couldn't be happier. Sarah treats every child like her own. The communication is amazing, and I always know my kids are safe and happy.",
-                rating: 5
+                name: 'Sample Name',
+                child: 'Example Parent',
+                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
               }
             ].map((testimonial, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow rounded-2xl overflow-hidden">
                 <CardContent className="p-6 sm:p-8">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  
+                  <p className="text-xs font-semibold text-muted-foreground/50 uppercase tracking-wide mb-4">Sample Demo Content</p>
+
                   <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed italic">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
-                  
+
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-base sm:text-lg font-semibold text-primary">{testimonial.name[0]}</span>
+                      <span className="text-base sm:text-lg font-semibold text-primary">S</span>
                     </div>
                     <div>
                       <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
@@ -477,10 +475,13 @@ export default function Home() {
               </Card>
             ))}
           </div>
+
+          <p className="text-xs text-muted-foreground text-center mt-8">
+            All examples shown are for demonstration purposes only.
+            Your website will be built with your real content and details.
+          </p>
         </div>
       </section>
-
-      {/* Program Details */}
       <section className="py-16 sm:py-20 lg:py-28 bg-warm-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
@@ -845,6 +846,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* DEMO DISCLAIMER */}
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
     </div>
   )
 }

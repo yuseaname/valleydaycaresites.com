@@ -20,7 +20,6 @@ import {
   Camera,
   BarChart3,
   Smartphone,
-  Star,
   CheckCircle,
   ChevronRight,
   Baby,
@@ -102,6 +101,17 @@ function Navigation() {
         )}
       </nav>
     </header>
+  )
+}
+
+// DEMO BANNER
+function DemoBanner() {
+  return (
+    <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4 mt-16 lg:mt-20">
+      <p className="text-sm font-semibold text-amber-800">
+        Demo Website -- For Demonstration Only
+      </p>
+    </div>
   )
 }
 
@@ -514,22 +524,22 @@ function ProgramsSection() {
 function TestimonialsSection() {
   const testimonials = [
     {
-      name: 'Sarah M.',
-      role: 'Parent of 2-year-old',
-      quote: "We always know what our child is doing throughout the day. The daily updates and photos give us such peace of mind while we're at work.",
-      rating: 5
+      name: 'Sample Name',
+      role: 'Example Parent',
+      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0
     },
     {
-      name: 'Michael & Jennifer T.',
-      role: 'Parents of twins',
-      quote: "The communication is exceptional. We get real-time updates about meals, naps, and activities. It feels like we're right there with them.",
-      rating: 5
+      name: 'Sample Name',
+      role: 'Example Parents',
+      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0
     },
     {
-      name: 'Amanda K.',
-      role: 'Parent of 3-year-old',
-      quote: "I love the progress tracking! Seeing my daughter's developmental milestones and growth has been incredible. Highly recommend!",
-      rating: 5
+      name: 'Sample Name',
+      role: 'Example Parent',
+      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0
     }
   ]
 
@@ -539,15 +549,17 @@ function TestimonialsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge className="bg-teal-100 text-teal-700 mb-4 px-4 py-2">
-            <Star className="w-4 h-4 mr-2" />
-            Testimonials
+            <MessageCircle className="w-4 h-4 mr-2" />
+            Demo Website -- Layout Example
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            What Parents Are Saying
+            What Your Website Could Look Like
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Don&apos;t just take our word for it. Here&apos;s what families love about their experience 
-            at Tiny Steps Learning.
+            This is an example layout for a childcare center -- professional design, clear calls-to-action, mobile-friendly layout. Built to highlight your unique value.
+          </p>
+          <p className="text-xs text-gray-400 mt-2 italic">
+            Demo Website -- all content shown is for demonstration purposes only.
           </p>
         </div>
 
@@ -556,11 +568,9 @@ function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="border-0 shadow-lg bg-white">
               <CardContent className="p-6">
-                {/* Stars */}
+                {/* Demo Badge */}
                 <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
+                  <Badge className="bg-teal-100 text-teal-700 text-xs">Sample Demo Content</Badge>
                 </div>
                 
                 {/* Quote */}
@@ -582,6 +592,11 @@ function TestimonialsSection() {
             </Card>
           ))}
         </div>
+
+        <p className="text-xs text-gray-400 text-center mt-8">
+          All examples shown are for demonstration purposes only.
+          Your website will be built with your real content and details.
+        </p>
       </div>
     </section>
   )
@@ -850,6 +865,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <Navigation />
+      <DemoBanner />
       <HeroSection />
       <CommunicationSection />
       <EducationSection />
@@ -858,6 +874,11 @@ export default function Home() {
       <TestimonialsSection />
       <LeadCaptureSection />
       <Footer />
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
     </main>
   )
 }

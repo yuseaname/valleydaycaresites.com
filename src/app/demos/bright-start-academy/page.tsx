@@ -136,30 +136,27 @@ const whyChooseUs = [
 
 const testimonials = [
   {
-    name: 'Sarah M.',
-    role: 'Mother of 2',
-    stars: 5,
-    text: 'Bright Start Academy has been a blessing for our family. My daughter\'s confidence and social skills have blossomed since starting the preschool program. The staff truly cares about each child.',
+    name: 'Sample Name',
+    role: 'Example Parent',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
   },
   {
-    name: 'James & Emily R.',
-    role: 'Parents',
-    stars: 5,
-    text: 'We toured five daycare centers before choosing Bright Start. The safety measures, clean facilities, and warm staff made it an easy decision. Our son loves going every morning!',
+    name: 'Sample Name',
+    role: 'Example Parents',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
   },
   {
-    name: 'Maria L.',
-    role: 'Mother',
-    stars: 5,
-    text: 'As a first-time mom, I was nervous about daycare. The infant care team made the transition seamless. I get daily photos and updates, which gives me so much comfort during the workday.',
+    name: 'Sample Name',
+    role: 'Example Parent',
+    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
   },
 ];
 
 const stats = [
-  { value: '15+', label: 'Years of Experience' },
-  { value: '200+', label: 'Happy Families' },
-  { value: '47%', label: 'Increase in Inquiries' },
-  { value: '4.9', label: 'Parent Rating' },
+  { value: 'Your Number', label: 'Years of Experience (Example)' },
+  { value: 'Your Number', label: 'Families Served (Example)' },
+  { value: 'Your Stat', label: 'Your Key Metric (Example)' },
+  { value: 'Your Rating', label: 'Your Rating (Example)' },
 ];
 
 /* ─── Main Page ─── */
@@ -279,6 +276,13 @@ export default function Home() {
         </AnimatePresence>
       </header>
 
+      {/* ═══ DEMO BANNER ═══ */}
+      <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4">
+        <p className="text-sm font-semibold text-amber-800">
+          Demo Website -- For Demonstration Only
+        </p>
+      </div>
+
       <main className="flex-1">
         {/* ═══ HERO SECTION ═══ */}
         <section className="relative bg-gradient-hero overflow-hidden">
@@ -296,7 +300,7 @@ export default function Home() {
                   className="mb-5 px-4 py-1.5 text-sm font-semibold bg-white/80 text-teal-700 border-teal-100 shadow-sm"
                 >
                   <Star className="w-3.5 h-3.5 mr-1.5 fill-warm-400 text-warm-400" />
-                  Trusted by 200+ local families
+                  Demo Site -- Not a Real Business
                 </Badge>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.1] tracking-tight text-foreground mb-5">
@@ -305,7 +309,7 @@ export default function Home() {
                 </h1>
 
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                  Safe, nurturing childcare with structured learning programs designed to give your child the brightest start. Licensed, experienced, and loved by families in our community.
+                  Safe, nurturing childcare with structured learning programs designed to give your child the brightest start. Licensed, experienced, and loved by families in our community (demo).
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center lg:justify-start mb-8">
@@ -362,40 +366,15 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Floating stat card */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-white rounded-2xl shadow-warm-lg p-4 sm:p-5 border border-sage-100"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm-400 to-coral-500 flex items-center justify-center">
-                      <TrendingUp className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-foreground">47% Increase</p>
-                      <p className="text-sm text-muted-foreground">in parent inquiries</p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Floating rating card */}
+                {/* Demo badge */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="absolute -top-3 -right-3 sm:top-6 sm:-right-6 bg-white rounded-2xl shadow-warm-lg p-3 sm:p-4 border border-warm-100"
                 >
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-warm-400 text-warm-400" />
-                      ))}
-                    </div>
-                    <span className="text-sm font-bold text-foreground">4.9/5</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-0.5">From 120+ reviews</p>
+                  <p className="text-xs font-semibold text-muted-foreground">Demo Website</p>
+                  <p className="text-[10px] text-muted-foreground">Layout Example</p>
                 </motion.div>
               </motion.div>
             </div>
@@ -419,10 +398,12 @@ export default function Home() {
                 </FadeIn>
               ))}
             </div>
+            <p className="text-xs text-muted-foreground text-center mt-6">
+              All examples shown are for demonstration purposes only.
+              Your website will be built with your real content and details.
+            </p>
           </div>
         </section>
-
-        {/* ═══ PROGRAMS ═══ */}
         <section id="programs" className="py-16 sm:py-20 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
@@ -433,7 +414,7 @@ export default function Home() {
                 Tailored Programs for Every Age
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                From infants to school-age children, our trusted daycare center offers enriching childcare programs designed around your child&apos;s developmental needs.
+                From infants to school-age children, our trusted daycare center (demo) offers enriching childcare programs designed around your child&apos;s developmental needs.
               </p>
             </FadeIn>
 
@@ -524,7 +505,7 @@ export default function Home() {
                     Why Choose Us
                   </Badge>
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
-                    A Trusted Daycare Center Parents Rely On
+                    A Trusted Daycare Center Parents Rely On (Demo)
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                     Choosing the right childcare near you is one of the most important decisions you&apos;ll make. At Bright Start Academy, we combine safety, expertise, and genuine care to create an environment where children flourish.
@@ -569,13 +550,16 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
               <Badge variant="secondary" className="mb-4 px-3 py-1 text-xs font-semibold bg-warm-50 text-warm-500 border-warm-100">
-                Parent Testimonials
+                Demo Website -- Layout Example
               </Badge>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
-                Loved by Local Families
+                What Your Website Could Look Like
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                See why hundreds of families trust Bright Start Academy as their preferred daycare center.
+                This is an example layout for a childcare center -- warm colors, structured program descriptions, enrollment-focused layout. Built to highlight your unique value.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2 italic">
+                Demo Website -- all content shown is for demonstration purposes only.
               </p>
             </FadeIn>
 
@@ -584,10 +568,8 @@ export default function Home() {
                 <ScaleIn key={t.name} delay={i * 0.1}>
                   <Card className="h-full rounded-2xl border-0 shadow-warm hover:shadow-warm-lg transition-shadow bg-white">
                     <CardContent className="p-6">
-                      <div className="flex mb-4">
-                        {[...Array(t.stars)].map((_, j) => (
-                          <Star key={j} className="w-4 h-4 fill-warm-400 text-warm-400" />
-                        ))}
+                      <div className="mb-4">
+                        <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">Sample Demo Content</span>
                       </div>
                       <p className="text-sm text-muted-foreground leading-relaxed mb-5 italic">
                         &ldquo;{t.text}&rdquo;
@@ -607,10 +589,13 @@ export default function Home() {
                 </ScaleIn>
               ))}
             </div>
+
+            <p className="text-xs text-muted-foreground text-center mt-8">
+              All examples shown are for demonstration purposes only.
+              Your website will be built with your real content and details.
+            </p>
           </div>
         </section>
-
-        {/* ═══ CTA BANNER ═══ */}
         <section className="py-14 sm:py-16 bg-gradient-to-r from-teal-600 via-teal-600 to-sage-600 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-1/4 w-40 h-40 rounded-full bg-white blur-3xl" />
@@ -622,7 +607,7 @@ export default function Home() {
                 Give Your Child the Brightest Start
               </h2>
               <p className="text-teal-100 text-lg mb-8 max-w-2xl mx-auto">
-                Spots fill quickly at our trusted daycare center. Schedule a tour today and see why families choose Bright Start Academy for their childcare needs.
+                Spots fill quickly at our trusted daycare center (demo). Schedule a tour today and see why families choose Bright Start Academy for their childcare needs.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Button
@@ -853,17 +838,17 @@ export default function Home() {
             <FadeIn>
               <div className="prose prose-gray max-w-none">
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-4 text-center">
-                  Your Trusted Daycare Center in Maplewood
+                  Your Trusted Daycare Center in Maplewood (Demo)
                 </h2>
                 <div className="text-muted-foreground leading-relaxed space-y-4 text-base">
                   <p>
-                    Looking for reliable <strong className="text-foreground">childcare near you</strong>? Bright Start Academy has been serving families in Maplewood and surrounding communities for over 15 years. As a <strong className="text-foreground">licensed daycare center</strong>, we provide a safe, stimulating environment where children from 6 weeks to 12 years old learn, play, and grow.
+                    Looking for reliable <strong className="text-foreground">childcare near you</strong>? Bright Start Academy (demo) has been serving families in Maplewood and surrounding communities. As a <strong className="text-foreground">licensed daycare center</strong>, we provide a safe, stimulating environment where children from 6 weeks to 12 years old learn, play, and grow.
                   </p>
                   <p>
                     Our experienced early childhood educators create individualized learning plans tailored to each child&apos;s developmental stage. From our infant care program to after-school care, every classroom is designed to foster curiosity, build confidence, and develop essential social skills.
                   </p>
                   <p>
-                    We understand that choosing the right <strong className="text-foreground">daycare</strong> is a big decision. That&apos;s why we invite every family to schedule a personal tour, meet our teachers, and see our classrooms in action. Join the 200+ families who trust Bright Start Academy with their most precious little ones.
+                    We understand that choosing the right <strong className="text-foreground">daycare</strong> is a big decision. That&apos;s why we invite every family to schedule a personal tour, meet our teachers, and see our classrooms in action. (Demo -- this is example content for demonstration purposes.)
                   </p>
                 </div>
               </div>
@@ -885,7 +870,7 @@ export default function Home() {
                 <span className="text-lg font-bold">Bright Start Academy</span>
               </div>
               <p className="text-sm text-white/60 leading-relaxed mb-4">
-                A trusted daycare center providing safe, nurturing childcare and early education for children in Maplewood and surrounding areas.
+                A trusted daycare center (demo) providing safe, nurturing childcare and early education for children in Maplewood and surrounding areas.
               </p>
               <div className="flex items-center gap-2 text-sm text-white/50">
                 <CheckCircle className="w-4 h-4 text-sage-400" />
@@ -980,6 +965,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* ═══ DEMO DISCLAIMER ═══ */}
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
 
       {/* ═══ SCROLL TO TOP ═══ */}
       <AnimatePresence>

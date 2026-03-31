@@ -172,7 +172,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                Beautiful, mobile-friendly websites that build parent trust and fill your enrollment — starting with a free sample, no strings attached.
+                Beautiful, mobile-friendly websites designed to help parents find and trust your daycare — starting with a free sample, no strings attached.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -232,15 +232,11 @@ export default function Home() {
               <div className="absolute -bottom-4 -left-4 bg-card rounded-xl shadow-premium p-4 border border-border">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full gradient-gold flex items-center justify-center">
-                    <Star className="h-5 w-5 text-foreground" />
+                    <Check className="h-5 w-5 text-foreground" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-3 w-3 fill-primary text-primary" />
-                      ))}
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-1">No pressure, no contracts</p>
+                    <p className="text-sm font-semibold text-foreground">Free to preview</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">No pressure, no contracts</p>
                   </div>
                 </div>
               </div>
@@ -451,10 +447,10 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: "50+", label: "Daycare Websites Built" },
               { value: "48hr", label: "Sample Turnaround" },
               { value: "100%", label: "Free to Preview" },
               { value: "$50/mo", label: "Everything Included" },
+              { value: "0", label: "Upfront Cost" },
             ].map((stat, i) => (
               <div key={i} className="text-center p-6 rounded-xl bg-card border border-border card-hover">
                 <div className="font-display text-3xl sm:text-4xl font-semibold text-primary mb-2">{stat.value}</div>
@@ -703,7 +699,8 @@ export default function Home() {
               Websites That Make an Impression
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              See how we've helped daycare businesses transform their online presence.
+              Browse example website layouts built for different types of daycare businesses.
+              These are demo sites — your website would be customized with your own details.
             </p>
           </div>
           
@@ -711,50 +708,50 @@ export default function Home() {
             {[
               {
                 name: "Bright Start Academy",
-                type: "Large Center",
-                result: "47% increase in inquiries",
+                type: "Large Center Demo",
+                result: "Example website layout",
                 image: "/images/demos/bright-start-academy.png",
-                imageAlt: "Bright Start Academy daycare website with programs, testimonials, and warm sage color theme",
+                imageAlt: "Bright Start Academy daycare website demo with programs section and warm sage color theme",
                 demoLink: "/demos/bright-start-academy",
               },
               {
                 name: "Little Hearts Daycare",
-                type: "Family Daycare",
-                result: "Fully booked within 3 months",
+                type: "Family Daycare Demo",
+                result: "Example website layout",
                 image: "/images/demos/little-hearts-daycare.png",
-                imageAlt: "Little Hearts Daycare family daycare website with daily schedule and personal caregiver focus",
+                imageAlt: "Little Hearts Daycare family daycare website demo with daily schedule section",
                 demoLink: "/demos/little-hearts-daycare",
               },
               {
                 name: "Sunshine Learning Center",
-                type: "Preschool",
-                result: "Doubled tour requests",
+                type: "Preschool Demo",
+                result: "Example website layout",
                 image: "/images/demos/sunshine-learning-center.png",
-                imageAlt: "Sunshine Learning Center preschool website with amber orange theme and tour booking feature",
+                imageAlt: "Sunshine Learning Center preschool website demo with amber orange theme and tour booking",
                 demoLink: "/demos/sunshine-learning-center",
               },
               {
                 name: "Growing Minds Academy",
-                type: "Multi-location",
-                result: "Consistent branding across locations",
+                type: "Multi-location Demo",
+                result: "Example website layout",
                 image: "/images/demos/growing-minds-academy.png",
-                imageAlt: "Growing Minds Academy multi-location childcare center website with location finder",
+                imageAlt: "Growing Minds Academy multi-location childcare center website demo with location finder",
                 demoLink: "/demos/growing-minds-academy",
               },
               {
                 name: "Happy Kids Childcare",
-                type: "Home Daycare",
-                result: "Professional online presence",
+                type: "Home Daycare Demo",
+                result: "Example website layout",
                 image: "/images/demos/happy-kids-childcare.png",
-                imageAlt: "Happy Kids Childcare home daycare website with purple theme and lead capture form",
+                imageAlt: "Happy Kids Childcare home daycare website demo with purple theme and contact form",
                 demoLink: "/demos/happy-kids-childcare",
               },
               {
                 name: "Tiny Steps Learning",
-                type: "Early Education",
-                result: "Improved parent communication",
+                type: "Early Education Demo",
+                result: "Example website layout",
                 image: "/images/demos/tiny-steps-learning.png",
-                imageAlt: "Tiny Steps Learning early education website with teal theme and parent communication features",
+                imageAlt: "Tiny Steps Learning early education website demo with teal theme",
                 demoLink: "/demos/tiny-steps-learning",
               },
             ].map((project, i) => (
@@ -781,7 +778,7 @@ export default function Home() {
                       <h3 className="font-display font-semibold text-foreground">{project.name}</h3>
                       <Badge variant="secondary" className="text-xs">{project.type}</Badge>
                     </div>
-                    <p className="text-sm text-primary">{project.result}</p>
+                    <p className="text-sm text-primary">{project.result} — <span className="text-muted-foreground text-xs">Demo site</span></p>
                   </CardContent>
                 </Card>
               </a>
@@ -799,79 +796,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* What Your Website Could Look Like — Demo Preview Section */}
       <section className="py-16 lg:py-24 bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5">
-              Testimonials
+              Demo Preview
             </Badge>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-              What Daycare Owners Say
+              What Your Website Could Look Like
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              These are example layouts we&apos;ve built for different types of daycare businesses.
+              Your site would be customized with your name, location, and details.
+            </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                quote: "I was embarrassed by my old website. Now I'm proud to share it with parents. The Valley team understood exactly what I needed.",
-                author: "Maria S.",
-                role: "Little Stars Daycare",
-                rating: 5,
+                quote: "Example layout for a home daycare — warm colors, simple navigation, tour request form. Your name, photos, and program details would replace this content.",
+                type: "Home Daycare Example",
               },
               {
-                quote: "They made the whole process so easy. I'm not technical at all, but they guided me through everything. My new site is beautiful.",
-                author: "Jennifer T.",
-                role: "Happy Hearts Childcare",
-                rating: 5,
+                quote: "Example layout for a preschool — structured programs section, clear age groups, parent-focused messaging. We customize everything to match your daycare.",
+                type: "Preschool Example",
               },
               {
-                quote: "The increase in tour requests was immediate. Parents tell me all the time how professional our website looks.",
-                author: "David L.",
-                role: "Bright Beginnings Academy",
-                rating: 5,
+                quote: "Example layout for a childcare center — professional design, inquiry form, mobile-friendly. Built to help parents find and contact you easily.",
+                type: "Childcare Center Example",
               },
               {
-                quote: "I run a small home daycare out of my living room, and parents used to assume we weren't as good as the big centers. Now our website makes us look just as professional. It's been a game-changer.",
-                author: "Amanda R.",
-                role: "Tiny Treasures Family Childcare",
-                rating: 5,
+                quote: "Example layout for a family daycare — personal feel, about the caregiver section, daily schedule. Designed to reflect your unique approach.",
+                type: "Family Daycare Example",
               },
               {
-                quote: "The process was incredibly easy — I filled out a short form and had a beautiful site in two days. Now parents actually find us when they search for daycare in our area.",
-                author: "Carlos M.",
-                role: "Sunshine Kids Preschool",
-                rating: 5,
+                quote: "Example layout for a learning center — curriculum highlights, enrollment process, FAQ section. All content would be specific to your program.",
+                type: "Learning Center Example",
               },
               {
-                quote: "Our inquiries literally doubled in the first month after launching the new site. At $50/month, it paid for itself in the first week. Best investment we've made.",
-                author: "Keisha W.",
-                role: "Little Explorers Academy",
-                rating: 5,
+                quote: "Example layout for a multi-age program — flexible design, clear program descriptions, photo gallery. Tailored to your community and families.",
+                type: "Multi-Age Program Example",
               },
-              {
-                quote: "I'm not tech-savvy at all — I barely use Instagram. But the team made everything so simple. They handled it all, and now I have a website I'm actually proud to share.",
-                author: "Patricia H.",
-                role: "Cuddle Care Home Daycare",
-                rating: 5,
-              },
-            ].map((testimonial, i) => (
+            ].map((example, i) => (
               <Card key={i} className="border-border bg-card">
                 <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star key={j} className="h-4 w-4 fill-primary text-primary" />
-                    ))}
+                  <div className="mb-4">
+                    <Badge variant="secondary" className="text-xs">
+                      Sample Demo Content
+                    </Badge>
                   </div>
-                  <p className="text-foreground leading-relaxed mb-4">"{testimonial.quote}"</p>
+                  <p className="text-foreground leading-relaxed mb-4">{example.quote}</p>
                   <div>
-                    <div className="font-semibold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    <div className="font-semibold text-foreground">{example.type}</div>
+                    <div className="text-sm text-muted-foreground">Example layout only</div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+          <p className="text-center text-xs text-muted-foreground mt-8">
+            All examples shown are for demonstration purposes. Your website will be built with your real content and details.
+          </p>
         </div>
       </section>
 
@@ -1161,6 +1148,22 @@ export default function Home() {
                         value={formData.message}
                         onChange={handleInputChange}
                       />
+                    </div>
+
+                    <div className="flex items-start gap-2">
+                      <input
+                        type="checkbox"
+                        id="privacy-consent"
+                        required
+                        className="mt-1 rounded border-border"
+                      />
+                      <Label htmlFor="privacy-consent" className="text-xs text-muted-foreground font-normal leading-snug">
+                        I agree to the{" "}
+                        <Link href="/privacy" className="underline hover:text-foreground" target="_blank">Privacy Policy</Link>
+                        {" "}and{" "}
+                        <Link href="/terms" className="underline hover:text-foreground" target="_blank">Terms of Service</Link>
+                        . You may contact me about my sample request.
+                      </Label>
                     </div>
 
                     <p className="text-xs text-muted-foreground">

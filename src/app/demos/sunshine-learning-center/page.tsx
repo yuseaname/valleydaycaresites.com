@@ -5,9 +5,8 @@ import { motion } from 'framer-motion'
 import { 
   BookOpen, 
   GraduationCap, 
-  Heart, 
-  Users, 
-  Star, 
+  Heart,
+  Users,
   Clock, 
   Shield, 
   Sparkles,
@@ -112,6 +111,17 @@ function Navigation() {
   )
 }
 
+// DEMO BANNER
+function DemoBanner() {
+  return (
+    <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4">
+      <p className="text-sm font-semibold text-amber-800">
+        Demo Website -- For Demonstration Only
+      </p>
+    </div>
+  )
+}
+
 // Sun Icon Component
 function Sun({ className }: { className?: string }) {
   return (
@@ -181,8 +191,8 @@ function HeroSection() {
               variants={fadeInUp}
               className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              Give your child the head start they deserve. Our proven early education program builds confidence, 
-              social skills, and kindergarten readiness — preparing them for success in school and beyond.
+              Give your child the head start they deserve. Our early education program builds confidence,
+              social skills, and kindergarten readiness — preparing them for success in school and beyond. (Demo)
             </motion.p>
 
             {/* Urgency Banner */}
@@ -229,13 +239,10 @@ function HeroSection() {
                     </div>
                   ))}
                 </div>
-                <span className="text-sm text-gray-600">200+ Happy Families</span>
+                <span className="text-sm text-gray-600">Sample Demo Content</span>
               </div>
               <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                ))}
-                <span className="text-sm text-gray-600 ml-1">4.9/5 Rating</span>
+                <Badge className="bg-amber-100 text-amber-700 text-xs">Sample Demo Content</Badge>
               </div>
             </motion.div>
           </motion.div>
@@ -381,10 +388,10 @@ function EducationSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { value: "95%", label: "Kindergarten Ready" },
-              { value: "15+", label: "Years of Excellence" },
-              { value: "200+", label: "Happy Families" },
-              { value: "8:1", label: "Student-Teacher Ratio" }
+              { value: "--", label: "Kindergarten Readiness (Demo)" },
+              { value: "--", label: "Years of Excellence (Demo)" },
+              { value: "--", label: "Happy Families Served (Demo)" },
+              { value: "--", label: "Student-Teacher Ratio (Demo)" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
@@ -599,17 +606,12 @@ function WhyUsSection() {
               >
                 <div className="flex items-center gap-3">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-amber-500">4.9</div>
-                    <div className="flex gap-0.5 justify-center">
-                      {[1,2,3,4,5].map(i => (
-                        <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
+                    <div className="text-lg font-bold text-amber-500">Demo</div>
                   </div>
                   <div className="h-10 w-px bg-gray-200" />
                   <div>
-                    <p className="font-bold text-gray-900">200+</p>
-                    <p className="text-xs text-gray-500">Happy Families</p>
+                    <p className="font-bold text-gray-900">Sample</p>
+                    <p className="text-xs text-gray-500">Rating Placeholder</p>
                   </div>
                 </div>
               </motion.div>
@@ -665,26 +667,26 @@ function WhyUsSection() {
 function TestimonialsSection() {
   const testimonials = [
     {
-      name: "Sarah M.",
-      role: "Parent of Emma, Age 4",
-      content: "Emma has grown so much in just 6 months! She's recognizing letters, writing her name, and is so much more confident. The teachers truly care about each child's progress.",
-      rating: 5,
+      name: "Sample Name",
+      role: "Example Parent",
+      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0,
       image: "S",
       avatarColor: "from-amber-400 to-orange-500"
     },
     {
-      name: "Michael T.",
-      role: "Parent of Liam, Age 3",
-      content: "We were worried about Liam's transition from staying home. The teachers made it so smooth! He now loves coming to school and talks about his friends constantly.",
-      rating: 5,
+      name: "Sample Name",
+      role: "Example Parent",
+      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0,
       image: "M",
       avatarColor: "from-sky-400 to-sky-500"
     },
     {
-      name: "Jennifer K.",
-      role: "Parent of Sophia, Age 5",
-      content: "Sophia is more than ready for kindergarten now. Her reading skills have improved dramatically, and she's learned to work well with other children. Best decision we made!",
-      rating: 5,
+      name: "Sample Name",
+      role: "Example Parent",
+      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
+      rating: 0,
       image: "J",
       avatarColor: "from-emerald-400 to-emerald-500"
     }
@@ -703,14 +705,16 @@ function TestimonialsSection() {
         >
           <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-4 py-2 mb-4">
             <MessageCircle className="w-5 h-5 text-amber-600" />
-            <span className="text-sm font-semibold text-amber-700">Parent Testimonials</span>
+            <span className="text-sm font-semibold text-amber-700">Demo Website -- Layout Example</span>
           </motion.div>
           <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Hear From Happy Parents
+            What Your Website Could Look Like
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. See what other parents have to say about their 
-            experience at Sunshine Learning Center.
+            This is an example layout for a childcare center -- warm colors, structured program descriptions, enrollment-focused layout. Built to highlight your unique value.
+          </motion.p>
+          <motion.p variants={fadeInUp} className="text-xs text-gray-400 mt-2 italic">
+            Demo Website -- all content shown is for demonstration purposes only.
           </motion.p>
         </motion.div>
 
@@ -728,9 +732,7 @@ function TestimonialsSection() {
                 <CardContent className="p-6 lg:p-8">
                   {/* Rating */}
                   <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
+                    <Badge className="bg-amber-100 text-amber-700 text-xs">Sample Demo Content</Badge>
                   </div>
 
                   {/* Quote */}
@@ -772,12 +774,15 @@ function TestimonialsSection() {
             </div>
           ))}
         </motion.div>
+
+        <p className="text-xs text-gray-400 text-center mt-8">
+          All examples shown are for demonstration purposes only.
+          Your website will be built with your real content and details.
+        </p>
       </div>
     </section>
   )
 }
-
-// Lead Capture Form Section
 function LeadCaptureSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
@@ -840,8 +845,8 @@ function LeadCaptureSection() {
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-xl text-sky-100 mb-8">
-              See our classrooms in action, meet our caring teachers, and discover why 
-              families choose Sunshine Learning Center for their child&apos;s early education.
+              See our classrooms in action, meet our caring teachers, and discover why
+              families choose Sunshine Learning Center for their child&apos;s early education. (Demo)
             </motion.p>
 
             {/* Benefits */}
@@ -1049,8 +1054,8 @@ function Footer() {
               </div>
             </div>
             <p className="text-gray-400 mb-4">
-              Providing quality early education that prepares children for a bright future. 
-              Your trusted preschool near you for kindergarten readiness.
+              Providing quality early education that prepares children for a bright future.
+              Your trusted preschool near you for kindergarten readiness. (Demo)
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors">
@@ -1142,6 +1147,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
+      <DemoBanner />
       <main className="flex-grow">
         <HeroSection />
         <EducationSection />
@@ -1152,6 +1158,11 @@ export default function Home() {
         <DifferentiationSection />
       </main>
       <Footer />
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
     </div>
   )
 }

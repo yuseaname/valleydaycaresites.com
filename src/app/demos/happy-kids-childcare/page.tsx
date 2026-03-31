@@ -13,7 +13,6 @@ import {
   Heart,
   Clock,
   MessageCircle,
-  Star,
   Phone,
   Mail,
   MapPin,
@@ -86,7 +85,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Happy Kids Childcare</h1>
-              <p className="text-xs text-gray-500">Trusted Home Daycare</p>
+              <p className="text-xs text-gray-500">Home Daycare (Demo)</p>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6">
@@ -103,6 +102,13 @@ export default function Home() {
         </div>
       </header>
 
+      {/* DEMO BANNER */}
+      <div className="bg-amber-100 border-b border-amber-200 text-center py-2.5 px-4">
+        <p className="text-sm font-semibold text-amber-800">
+          Demo Website -- For Demonstration Only
+        </p>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-emerald-50 via-white to-teal-50 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
@@ -112,14 +118,14 @@ export default function Home() {
               Licensed Home Daycare
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              A Safe, Trusted Home Daycare You Can Rely On
+              A Safe Home Daycare You Can Rely On (Demo)
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               Professional childcare in a warm, nurturing environment where your child will learn, play, and grow. 
               Licensed, CPR certified, and dedicated to giving your little one the best care possible.
             </p>
             <p className="text-emerald-600 font-medium italic">
-              "Helping families find safe, reliable childcare they can trust"
+              "Helping families find safe, reliable childcare they can trust (Demo)"
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-lg px-8">
@@ -383,96 +389,54 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="border-emerald-600 text-emerald-600 mb-4">
-              Parent Testimonials
+              Demo Website -- Layout Example
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Parents Are Saying
+              What Your Website Could Look Like
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don&apos;t just take our word for it—hear from the families who trust us with their children.
+              This is an example layout for a home daycare website -- warm colors, simple navigation, tour request form. Built to highlight your unique value.
+            </p>
+            <p className="text-xs text-gray-400 mt-2 italic">
+              Demo Website -- all content shown is for demonstration purposes only.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
                 <p className="text-gray-600 mb-6 italic">
-                  &ldquo;I was so nervous about finding childcare for my son, but from the first visit, I felt at ease. 
-                  The environment is spotless, organized, and truly feels like a second home. My son runs in every 
-                  morning excited to see everyone!&rdquo;
+                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
                 </p>
-                <Separator className="mb-4" />
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <span className="font-bold text-emerald-600">SM</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Sarah M.</p>
-                    <p className="text-xs text-gray-500">Mother of 2-year-old</p>
-                  </div>
-                </div>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
                 <p className="text-gray-600 mb-6 italic">
-                  &ldquo;The communication is exceptional. I receive photos and updates throughout the day, which 
-                  gives me peace of mind while at work. Knowing my daughter is safe, learning, and having fun 
-                  makes all the difference.&rdquo;
+                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
                 </p>
-                <Separator className="mb-4" />
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
-                    <span className="font-bold text-teal-600">MR</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Michael R.</p>
-                    <p className="text-xs text-gray-500">Father of 3-year-old</p>
-                  </div>
-                </div>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
                 <p className="text-gray-600 mb-6 italic">
-                  &ldquo;After touring several daycares, this was the clear choice. The provider is incredibly 
-                  patient, experienced, and genuinely cares about each child. My twins have thrived here and 
-                  learned so much!&rdquo;
+                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
                 </p>
-                <Separator className="mb-4" />
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                    <span className="font-bold text-amber-600">JL</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Jennifer L.</p>
-                    <p className="text-xs text-gray-500">Mother of twins, age 4</p>
-                  </div>
-                </div>
               </CardContent>
             </Card>
           </div>
+
+          <p className="text-xs text-gray-400 text-center mt-8">
+            All examples shown are for demonstration purposes only.
+            Your website will be built with your real content and details.
+          </p>
         </div>
       </section>
-
-      {/* Lead Capture Form Section */}
       <section id="contact" className="py-16 md:py-24 bg-gradient-to-br from-emerald-600 to-teal-600">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -600,10 +564,10 @@ export default function Home() {
       <section className="py-12 bg-gray-50 border-y">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h3 className="text-xl font-semibold text-gray-900 mb-3">
-            Trusted Home Daycare Near You
+            Home Daycare Near You (Demo)
           </h3>
           <p className="text-gray-600">
-            Looking for a safe daycare in your area? Happy Kids Childcare is a trusted childcare provider 
+            Looking for a safe daycare in your area? Happy Kids Childcare is a childcare provider (Demo) 
             offering professional, licensed home daycare services. Families from surrounding communities 
             choose us for our nurturing environment, experienced care, and commitment to each child&apos;s 
             development. Contact us today to learn about availability for your family.
@@ -622,7 +586,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold">Happy Kids Childcare</h4>
-                  <p className="text-xs text-gray-400">Trusted Home Daycare</p>
+                  <p className="text-xs text-gray-400">Home Daycare (Demo)</p>
                 </div>
               </div>
               <p className="text-sm text-gray-400 mb-4">
@@ -687,10 +651,17 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} Happy Kids Childcare. All rights reserved.</p>
-            <p>Helping families find safe, reliable childcare they can trust</p>
+            <p>Helping families find safe, reliable childcare (Demo)</p>
           </div>
         </div>
       </footer>
+
+      {/* DEMO DISCLAIMER */}
+      <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">
+        <p className="text-xs text-gray-500">
+          This is a demo site -- all content shown is for demonstration purposes only.
+        </p>
+      </div>
     </div>
   )
 }
