@@ -653,64 +653,78 @@ export default function Home() {
                 name: "Bright Start Academy",
                 type: "Large Center",
                 result: "47% increase in inquiries",
-                image: "/images/daycare-interior.png",
-                imageAlt: "Successful daycare owner smiling at her laptop showing increased inquiries on her new daycare website",
+                image: "/images/demos/bright-start-academy.png",
+                imageAlt: "Bright Start Academy daycare website with programs, testimonials, and warm sage color theme",
+                demoLink: "/demos/bright-start-academy",
               },
               {
                 name: "Little Hearts Daycare",
                 type: "Family Daycare",
                 result: "Fully booked within 3 months",
-                image: "/images/daycare-children.png",
-                imageAlt: "Daycare owner celebrating business growth while viewing new enrollment inquiries on her phone",
+                image: "/images/demos/little-hearts-daycare.png",
+                imageAlt: "Little Hearts Daycare family daycare website with daily schedule and personal caregiver focus",
+                demoLink: "/demos/little-hearts-daycare",
               },
               {
                 name: "Sunshine Learning Center",
                 type: "Preschool",
                 result: "Doubled tour requests",
-                image: "/images/process-design.png",
-                imageAlt: "Web design process showing wireframes, color palette cards, and daycare website mockup in progress",
+                image: "/images/demos/sunshine-learning-center.png",
+                imageAlt: "Sunshine Learning Center preschool website with amber orange theme and tour booking feature",
+                demoLink: "/demos/sunshine-learning-center",
               },
               {
                 name: "Growing Minds Academy",
                 type: "Multi-location",
                 result: "Consistent branding across locations",
-                image: "/images/contact-consultation.png",
-                imageAlt: "Friendly website consultation meeting between a web designer and daycare owner at a coffee shop",
+                image: "/images/demos/growing-minds-academy.png",
+                imageAlt: "Growing Minds Academy multi-location childcare center website with location finder",
+                demoLink: "/demos/growing-minds-academy",
               },
               {
                 name: "Happy Kids Childcare",
                 type: "Home Daycare",
                 result: "Professional online presence",
-                image: "/images/about-workspace.png",
-                imageAlt: "Professional web design workspace with daycare website mockups, color swatches, and design planning materials",
+                image: "/images/demos/happy-kids-childcare.png",
+                imageAlt: "Happy Kids Childcare home daycare website with purple theme and lead capture form",
+                demoLink: "/demos/happy-kids-childcare",
               },
               {
                 name: "Tiny Steps Learning",
                 type: "Early Education",
                 result: "Improved parent communication",
-                image: "/images/hero-mockup.png",
-                imageAlt: "Professional daycare website mockup displayed on laptop and tablet, showcasing responsive web design",
+                image: "/images/demos/tiny-steps-learning.png",
+                imageAlt: "Tiny Steps Learning early education website with teal theme and parent communication features",
+                demoLink: "/demos/tiny-steps-learning",
               },
             ].map((project, i) => (
-              <Card key={i} className="border-border bg-card overflow-hidden card-hover group">
-                {/* Project Image */}
-                <div className="aspect-[16/10] bg-muted/30 relative overflow-hidden">
-                  <Image 
-                    src={project.image}
-                    alt={project.imageAlt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display font-semibold text-foreground">{project.name}</h3>
-                    <Badge variant="secondary" className="text-xs">{project.type}</Badge>
+              <a key={i} href={project.demoLink} className="block group">
+                <Card className="border-border bg-card overflow-hidden card-hover group">
+                  {/* Project Image */}
+                  <div className="aspect-[16/10] bg-muted/30 relative overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {/* View Demo overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                        View Live Demo
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-sm text-primary">{project.result}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-display font-semibold text-foreground">{project.name}</h3>
+                      <Badge variant="secondary" className="text-xs">{project.type}</Badge>
+                    </div>
+                    <p className="text-sm text-primary">{project.result}</p>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
           
