@@ -7,9 +7,14 @@ import { PlanType, OrderStatus } from "@prisma/client";
 
 // Lazy-initialize Stripe to avoid build-time crash when STRIPE_SECRET_KEY is missing
 function getStripe(): Stripe {
-
-  apiVersion: "2023-10-16",
-});
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is not configured");
+  }
+  return new Stripe(key, {
+    apiVersion: "2023-10-16",
+  });
+}
 
 // Stripe Price IDs (set these in .env after creating products in Stripe)
 const STRIPE_PRICES = {
@@ -231,7 +236,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CheckoutR
 
       try {
         // Create or retrieve Stripe customer
-        const existingCustomers = await stripe.customers.list({
+        const existingCustomers = await getStripe().customers.list({
           email: customer.email,
           limit: 1,
         });
@@ -240,7 +245,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CheckoutR
         if (existingCustomers.data.length > 0) {
           stripeCustomer = existingCustomers.data[0];
         } else {
-          stripeCustomer = await stripe.customers.create({
+          stripeCustomer = await getStripe().customers.create({
             email: customer.email,
             name: customer.name,
             phone: customer.phone,
@@ -251,7 +256,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CheckoutR
         }
 
         // Create Checkout Session
-        const session = await stripe.checkout.sessions.create({
+        const session = await getStripe().checkout.sessions.create({
           customer: stripeCustomer.id,
           mode: "subscription",
           payment_method_types: ["card"],
