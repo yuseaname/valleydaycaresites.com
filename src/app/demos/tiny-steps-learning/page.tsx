@@ -22,6 +22,7 @@ import {
   Smartphone,
   CheckCircle,
   ChevronRight,
+  Lock,
   Baby,
   Sparkles,
   GraduationCap,
@@ -54,7 +55,7 @@ function Navigation() {
             <a href="#programs" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Programs</a>
             <a href="#communication" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Communication</a>
             <a href="#education" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Education</a>
-            <a href="#testimonials" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Testimonials</a>
+            <a href="#why-us" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Why Choose Us</a>
             <a href="#contact" className="text-gray-600 hover:text-teal-600 transition-colors font-medium">Contact</a>
           </div>
 
@@ -85,7 +86,7 @@ function Navigation() {
               <a href="#programs" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Programs</a>
               <a href="#communication" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Communication</a>
               <a href="#education" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Education</a>
-              <a href="#testimonials" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Testimonials</a>
+              <a href="#why-us" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Why Choose Us</a>
               <a href="#contact" className="text-gray-600 hover:text-teal-600 transition-colors font-medium py-2">Contact</a>
               <div className="flex flex-col gap-2 pt-4">
                 <Button variant="outline" className="w-full justify-center">
@@ -520,40 +521,36 @@ function ProgramsSection() {
   )
 }
 
-// Testimonials Section
-function TestimonialsSection() {
-  const testimonials = [
+// Why Choose Us Section
+function WhyChooseUsSection() {
+  const items = [
     {
-      name: 'Sample Name',
-      role: 'Example Parent',
-      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0
+      title: 'Licensed & Insured',
+      description: 'Fully licensed facility with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.',
+      icon: 'shield'
     },
     {
-      name: 'Sample Name',
-      role: 'Example Parents',
-      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0
+      title: 'Daily Updates for Parents',
+      description: 'Stay connected with real-time photos, activity reports, and milestone updates delivered straight to your phone throughout the day.',
+      icon: 'phone'
     },
     {
-      name: 'Sample Name',
-      role: 'Example Parent',
-      quote: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0
+      title: 'Safe & Secure Environment',
+      description: 'Secure check-in/check-out systems, controlled access entry, and comprehensive safety measures to keep your child protected at all times.',
+      icon: 'lock'
     }
   ]
 
   return (
-    <section id="testimonials" className="py-20 lg:py-32 bg-gradient-to-b from-white to-teal-50">
+    <section id="why-us" className="py-20 lg:py-32 bg-gradient-to-b from-white to-teal-50">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge className="bg-teal-100 text-teal-700 mb-4 px-4 py-2">
-            <MessageCircle className="w-4 h-4 mr-2" />
             Demo Website -- Layout Example
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            What Your Website Could Look Like
+            Why Families Choose Us
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             This is an example layout for a childcare center -- professional design, clear calls-to-action, mobile-friendly layout. Built to highlight your unique value.
@@ -563,31 +560,18 @@ function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Cards Grid */}
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {items.map((item, index) => (
             <Card key={index} className="border-0 shadow-lg bg-white">
               <CardContent className="p-6">
-                {/* Demo Badge */}
-                <div className="flex gap-1 mb-4">
-                  <Badge className="bg-teal-100 text-teal-700 text-xs">Sample Demo Content</Badge>
+                <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-4">
+                  {item.icon === 'shield' && <Shield className="w-6 h-6 text-teal-700" />}
+                  {item.icon === 'phone' && <Phone className="w-6 h-6 text-teal-700" />}
+                  {item.icon === 'lock' && <Lock className="w-6 h-6 text-teal-700" />}
                 </div>
-                
-                {/* Quote */}
-                <p className="text-gray-600 mb-6 italic">&quot;{testimonial.quote}&quot;</p>
-                
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
-                  </div>
-                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -794,7 +778,7 @@ function Footer() {
               <li><a href="#programs" className="text-gray-400 hover:text-white transition-colors">Programs</a></li>
               <li><a href="#communication" className="text-gray-400 hover:text-white transition-colors">Communication</a></li>
               <li><a href="#education" className="text-gray-400 hover:text-white transition-colors">Education</a></li>
-              <li><a href="#testimonials" className="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="#why-us" className="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -871,7 +855,7 @@ export default function Home() {
       <EducationSection />
       <WhyParentsLoveUs />
       <ProgramsSection />
-      <TestimonialsSection />
+      <WhyChooseUsSection />
       <LeadCaptureSection />
       <Footer />
       <div className="bg-gray-100 border-t border-gray-200 text-center py-4 px-4">

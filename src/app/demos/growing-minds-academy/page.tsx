@@ -76,24 +76,21 @@ const PROGRAMS = [
   }
 ]
 
-const TESTIMONIALS = [
+const WHY_US_ITEMS = [
   {
-    name: 'Sample Name',
-    location: 'Downtown Center',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
-    childAge: '3 years old'
+    title: 'Licensed & Insured Facility',
+    description: 'Fully licensed with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.',
+    icon: 'shield'
   },
   {
-    name: 'Sample Name',
-    location: 'Northgate Learning',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
-    childAge: '2 years old'
+    title: 'Small Class Sizes',
+    description: 'Low teacher-to-child ratios ensure every child gets individual attention, personalized care, and the support they need to thrive.',
+    icon: 'users'
   },
   {
-    name: 'Sample Name',
-    location: 'Riverside Campus',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
-    childAge: '4 years old'
+    title: 'Daily Updates for Parents',
+    description: 'Stay connected with real-time photos, activity reports, and milestone updates delivered straight to your phone throughout the day.',
+    icon: 'phone'
   }
 ]
 
@@ -189,8 +186,8 @@ export default function Home() {
               <button onClick={() => scrollToSection('locations')} className="text-gray-600 hover:text-amber-600 font-medium transition-colors">
                 Locations
               </button>
-              <button onClick={() => scrollToSection('testimonials')} className="text-gray-600 hover:text-amber-600 font-medium transition-colors">
-                Testimonials
+              <button onClick={() => scrollToSection('why-us')} className="text-gray-600 hover:text-amber-600 font-medium transition-colors">
+                Why Choose Us
               </button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-amber-600 font-medium transition-colors">
                 Contact
@@ -234,8 +231,8 @@ export default function Home() {
                 <button onClick={() => scrollToSection('locations')} className="text-left py-2 text-gray-600 hover:text-amber-600 font-medium">
                   Locations
                 </button>
-                <button onClick={() => scrollToSection('testimonials')} className="text-left py-2 text-gray-600 hover:text-amber-600 font-medium">
-                  Testimonials
+                <button onClick={() => scrollToSection('why-us')} className="text-left py-2 text-gray-600 hover:text-amber-600 font-medium">
+                  Why Choose Us
                 </button>
                 <button onClick={() => scrollToSection('contact')} className="text-left py-2 text-gray-600 hover:text-amber-600 font-medium">
                   Contact
@@ -639,8 +636,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section id="testimonials" className="py-16 md:py-20 bg-white">
+        {/* Why Choose Us */}
+        <section id="why-us" className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <Badge className="mb-4 bg-amber-100 text-amber-800 border-0">
@@ -648,7 +645,7 @@ export default function Home() {
                 Demo Website -- Layout Example
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Your Website Could Look Like
+                Why Families Choose Us
               </h2>
               <p className="text-gray-600 text-lg">
                 This is an example layout for a multi-location childcare center -- professional design, clear calls-to-action, contact form, mobile-friendly layout.
@@ -659,25 +656,17 @@ export default function Home() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {TESTIMONIALS.map((testimonial, index) => (
+              {WHY_US_ITEMS.map((item, index) => (
                 <Card key={index} className="relative overflow-hidden border-amber-100 hover:shadow-lg transition-all">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-100 to-transparent rounded-bl-full" />
                   <CardContent className="pt-6">
-                    <div className="flex items-center gap-1 mb-4">
-                      <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">Sample Demo Content</span>
+                    <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+                      {item.icon === 'shield' && <Shield className="w-6 h-6 text-amber-700" />}
+                      {item.icon === 'users' && <Users className="w-6 h-6 text-amber-700" />}
+                      {item.icon === 'phone' && <Phone className="w-6 h-6 text-amber-700" />}
                     </div>
-                    <p className="text-gray-600 mb-6 italic">&quot;{testimonial.text}&quot;</p>
-                    <Separator className="mb-4" />
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                        <p className="text-sm text-gray-500">Child: {testimonial.childAge}</p>
-                      </div>
-                      <Badge variant="outline" className="border-amber-200 text-amber-700">
-                        <MapPin className="w-3 h-3 mr-1" />
-                        {testimonial.location}
-                      </Badge>
-                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600 text-sm">{item.description}</p>
                   </CardContent>
                 </Card>
               ))}

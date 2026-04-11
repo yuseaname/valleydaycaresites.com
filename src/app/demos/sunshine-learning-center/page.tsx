@@ -68,7 +68,7 @@ function Navigation() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#programs" className="text-gray-700 hover:text-amber-600 font-medium transition-colors">Programs</a>
             <a href="#why-us" className="text-gray-700 hover:text-amber-600 font-medium transition-colors">Why Us</a>
-            <a href="#testimonials" className="text-gray-700 hover:text-amber-600 font-medium transition-colors">Testimonials</a>
+            <a href="#why-us" className="text-gray-700 hover:text-amber-600 font-medium transition-colors">Why Choose Us</a>
             <a href="#contact" className="text-gray-700 hover:text-amber-600 font-medium transition-colors">Contact</a>
           </div>
 
@@ -98,7 +98,7 @@ function Navigation() {
             <div className="flex flex-col gap-4">
               <a href="#programs" className="text-gray-700 hover:text-amber-600 font-medium py-2">Programs</a>
               <a href="#why-us" className="text-gray-700 hover:text-amber-600 font-medium py-2">Why Us</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-amber-600 font-medium py-2">Testimonials</a>
+              <a href="#why-us" className="text-gray-700 hover:text-amber-600 font-medium py-2">Why Choose Us</a>
               <a href="#contact" className="text-gray-700 hover:text-amber-600 font-medium py-2">Contact</a>
               <Button className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold w-full rounded-full">
                 Book a Tour
@@ -663,37 +663,28 @@ function WhyUsSection() {
   )
 }
 
-// Testimonials Section
-function TestimonialsSection() {
-  const testimonials = [
+// Why Choose Us Section
+function WhyChooseUsSection() {
+  const items = [
     {
-      name: "Sample Name",
-      role: "Example Parent",
-      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0,
-      image: "S",
-      avatarColor: "from-amber-400 to-orange-500"
+      title: "Licensed & Insured",
+      description: "Fully licensed facility with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.",
+      icon: "shield"
     },
     {
-      name: "Sample Name",
-      role: "Example Parent",
-      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0,
-      image: "M",
-      avatarColor: "from-sky-400 to-sky-500"
+      title: "Small Class Sizes",
+      description: "Low teacher-to-child ratios ensure every child gets individual attention, personalized care, and the support they need to thrive.",
+      icon: "users"
     },
     {
-      name: "Sample Name",
-      role: "Example Parent",
-      content: "Example testimonial -- feel free to request a free sample to see how your website could look.",
-      rating: 0,
-      image: "J",
-      avatarColor: "from-emerald-400 to-emerald-500"
+      title: "Age-Appropriate Curriculum",
+      description: "Research-based learning activities tailored to each developmental stage -- from infant sensory play to pre-K readiness skills.",
+      icon: "book"
     }
   ]
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-b from-amber-50 to-white">
+    <section id="why-us" className="py-16 md:py-24 bg-gradient-to-b from-amber-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -708,7 +699,7 @@ function TestimonialsSection() {
             <span className="text-sm font-semibold text-amber-700">Demo Website -- Layout Example</span>
           </motion.div>
           <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            What Your Website Could Look Like
+            Why Families Choose Us
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-lg text-gray-600 max-w-2xl mx-auto">
             This is an example layout for a childcare center -- warm colors, structured program descriptions, enrollment-focused layout. Built to highlight your unique value.
@@ -718,7 +709,7 @@ function TestimonialsSection() {
           </motion.p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Cards Grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -726,28 +717,17 @@ function TestimonialsSection() {
           variants={staggerContainer}
           className="grid md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {testimonials.map((testimonial, index) => (
+          {items.map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
               <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all bg-white">
                 <CardContent className="p-6 lg:p-8">
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4">
-                    <Badge className="bg-amber-100 text-amber-700 text-xs">Sample Demo Content</Badge>
+                  <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+                    {item.icon === 'shield' && <Shield className="w-6 h-6 text-amber-700" />}
+                    {item.icon === 'users' && <Users className="w-6 h-6 text-amber-700" />}
+                    {item.icon === 'book' && <BookOpen className="w-6 h-6 text-amber-700" />}
                   </div>
-
-                  {/* Quote */}
-                  <p className="text-gray-700 mb-6 leading-relaxed">&quot;{testimonial.content}&quot;</p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                      {testimonial.image}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                      <p className="text-sm text-gray-500">{testimonial.role}</p>
-                    </div>
-                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -1073,7 +1053,7 @@ function Footer() {
             <ul className="space-y-2">
               <li><a href="#programs" className="hover:text-amber-400 transition-colors">Programs</a></li>
               <li><a href="#why-us" className="hover:text-amber-400 transition-colors">Why Choose Us</a></li>
-              <li><a href="#testimonials" className="hover:text-amber-400 transition-colors">Testimonials</a></li>
+              <li><a href="#why-us" className="hover:text-amber-400 transition-colors">Why Choose Us</a></li>
               <li><a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -1153,7 +1133,7 @@ export default function Home() {
         <EducationSection />
         <ProgramsSection />
         <WhyUsSection />
-        <TestimonialsSection />
+        <WhyChooseUsSection />
         <LeadCaptureSection />
         <DifferentiationSection />
       </main>

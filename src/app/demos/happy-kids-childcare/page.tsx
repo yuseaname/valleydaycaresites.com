@@ -91,7 +91,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
             <a href="#about" className="text-sm text-gray-600 hover:text-gray-900 transition">About</a>
             <a href="#routine" className="text-sm text-gray-600 hover:text-gray-900 transition">Daily Routine</a>
-            <a href="#testimonials" className="text-sm text-gray-600 hover:text-gray-900 transition">Testimonials</a>
+            <a href="#why-us" className="text-sm text-gray-600 hover:text-gray-900 transition">Why Choose Us</a>
             <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
               <a href="#contact">Check Availability</a>
             </Button>
@@ -384,15 +384,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 md:py-24 bg-white">
+      {/* Why Choose Us Section */}
+      <section id="why-us" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="border-emerald-600 text-emerald-600 mb-4">
               Demo Website -- Layout Example
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Your Website Could Look Like
+              Why Families Choose Us
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               This is an example layout for a home daycare website -- warm colors, simple navigation, tour request form. Built to highlight your unique value.
@@ -405,28 +405,31 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
-                <p className="text-gray-600 mb-6 italic">
-                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
-                </p>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Licensed & Insured</h3>
+                <p className="text-gray-600 text-sm">Fully licensed facility with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
-                <p className="text-gray-600 mb-6 italic">
-                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
-                </p>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Small Class Sizes</h3>
+                <p className="text-gray-600 text-sm">Low teacher-to-child ratios ensure every child gets individual attention, personalized care, and the support they need to thrive.</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg">
               <CardContent className="pt-8">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Sample Demo Content</p>
-                <p className="text-gray-600 mb-6 italic">
-                  &ldquo;Example testimonial -- feel free to request a free sample to see how your website could look.&rdquo;
-                </p>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Age-Appropriate Curriculum</h3>
+                <p className="text-gray-600 text-sm">Research-based learning activities tailored to each developmental stage, from infant sensory play to preschool readiness skills.</p>
               </CardContent>
             </Card>
           </div>

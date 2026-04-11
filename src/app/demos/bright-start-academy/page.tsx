@@ -134,21 +134,21 @@ const whyChooseUs = [
   },
 ];
 
-const testimonials = [
+const whyUsItems = [
   {
-    name: 'Sample Name',
-    role: 'Example Parent',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
+    icon: Shield,
+    title: 'Licensed & Insured',
+    description: 'Fully licensed facility with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.',
   },
   {
-    name: 'Sample Name',
-    role: 'Example Parents',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
+    icon: Heart,
+    title: 'Small Class Sizes',
+    description: 'Low teacher-to-child ratios ensure every child gets individual attention, personalized care, and the support they need to thrive.',
   },
   {
-    name: 'Sample Name',
-    role: 'Example Parent',
-    text: 'Example testimonial -- feel free to request a free sample to see how your website could look.',
+    icon: Star,
+    title: 'Age-Appropriate Curriculum',
+    description: 'Research-based learning activities tailored to each developmental stage -- from infant sensory play to pre-K readiness skills.',
   },
 ];
 
@@ -199,7 +199,7 @@ export default function Home() {
   const navLinks = [
     { label: 'Programs', href: '#programs' },
     { label: 'Why Us', href: '#why-us' },
-    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Why Choose Us', href: '#why-us' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -545,15 +545,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ TESTIMONIALS ═══ */}
-        <section id="testimonials" className="py-16 sm:py-20 lg:py-24 bg-white">
+        {/* ═══ WHY CHOOSE US ═══ */}
+        <section id="why-us" className="py-16 sm:py-20 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
               <Badge variant="secondary" className="mb-4 px-3 py-1 text-xs font-semibold bg-warm-50 text-warm-500 border-warm-100">
                 Demo Website -- Layout Example
               </Badge>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
-                What Your Website Could Look Like
+                Why Families Choose Us
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 This is an example layout for a childcare center -- warm colors, structured program descriptions, enrollment-focused layout. Built to highlight your unique value.
@@ -564,26 +564,15 @@ export default function Home() {
             </FadeIn>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((t, i) => (
-                <ScaleIn key={t.name} delay={i * 0.1}>
+              {whyUsItems.map((item, i) => (
+                <ScaleIn key={item.title} delay={i * 0.1}>
                   <Card className="h-full rounded-2xl border-0 shadow-warm hover:shadow-warm-lg transition-shadow bg-white">
                     <CardContent className="p-6">
-                      <div className="mb-4">
-                        <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">Sample Demo Content</span>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-sage-500 flex items-center justify-center mb-4">
+                        <item.icon className="w-6 h-6 text-white" />
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 italic">
-                        &ldquo;{t.text}&rdquo;
-                      </p>
-                      <Separator className="mb-4" />
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-sage-500 flex items-center justify-center text-white font-bold text-sm">
-                          {t.name.charAt(0)}
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                          <p className="text-xs text-muted-foreground">{t.role}</p>
-                        </div>
-                      </div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                     </CardContent>
                   </Card>
                 </ScaleIn>

@@ -75,7 +75,7 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
               <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">About</a>
               <a href="#programs" className="text-foreground hover:text-primary transition-colors font-medium">Programs</a>
-              <a href="#testimonials" className="text-foreground hover:text-primary transition-colors font-medium">Testimonials</a>
+              <a href="#why-us" className="text-foreground hover:text-primary transition-colors font-medium">Why Choose Us</a>
               <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">Contact</a>
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
                 Schedule a Visit
@@ -97,7 +97,7 @@ export default function Home() {
               <div className="flex flex-col gap-4">
                 <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setMobileMenuOpen(false)}>About</a>
                 <a href="#programs" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Programs</a>
-                <a href="#testimonials" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Testimonials</a>
+                <a href="#why-us" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Why Choose Us</a>
                 <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Contact</a>
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
                   Schedule a Visit
@@ -418,15 +418,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-20 lg:py-28 bg-white">
+      {/* Why Choose Us Section */}
+      <section id="why-us" className="py-16 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <Badge className="bg-primary/10 text-primary-foreground mb-4 px-4 py-1.5 text-sm font-medium rounded-full">
               Demo Website -- Layout Example
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 sm:mb-6">
-              What Your Website Could Look Like
+              Why Families Choose Us
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               This is an example layout for a home daycare website -- warm colors, simple navigation, tour request form. Built to highlight your unique value.
@@ -439,38 +439,30 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                name: 'Sample Name',
-                child: 'Example Parent',
-                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
+                title: 'Licensed & Insured',
+                description: 'Fully licensed facility with comprehensive insurance, background-checked staff, and strict safety protocols for your peace of mind.',
+                icon: 'shield'
               },
               {
-                name: 'Sample Name',
-                child: 'Example Parents',
-                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
+                title: 'Daily Updates for Parents',
+                description: 'Stay connected with real-time photos, activity reports, and milestone updates delivered straight to your phone throughout the day.',
+                icon: 'phone'
               },
               {
-                name: 'Sample Name',
-                child: 'Example Parent',
-                quote: "Example testimonial -- feel free to request a free sample to see how your website could look."
+                title: 'Flexible Scheduling',
+                description: 'Full-time, part-time, and drop-in options to fit your family\'s unique needs. We work with your schedule, not the other way around.',
+                icon: 'clock'
               }
-            ].map((testimonial, index) => (
+            ].map((item, index) => (
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow rounded-2xl overflow-hidden">
                 <CardContent className="p-6 sm:p-8">
-                  <p className="text-xs font-semibold text-muted-foreground/50 uppercase tracking-wide mb-4">Sample Demo Content</p>
-
-                  <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed italic">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-base sm:text-lg font-semibold text-primary">S</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.child}</p>
-                    </div>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    {item.icon === 'shield' && <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>}
+                    {item.icon === 'phone' && <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>}
+                    {item.icon === 'clock' && <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
                   </div>
+                  <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -806,7 +798,7 @@ export default function Home() {
               <ul className="space-y-2 sm:space-y-3">
                 <li><a href="#about" className="text-sm sm:text-base opacity-80 hover:opacity-100 transition-opacity">About Us</a></li>
                 <li><a href="#programs" className="text-sm sm:text-base opacity-80 hover:opacity-100 transition-opacity">Programs</a></li>
-                <li><a href="#testimonials" className="text-sm sm:text-base opacity-80 hover:opacity-100 transition-opacity">Testimonials</a></li>
+                <li><a href="#why-us" className="text-sm sm:text-base opacity-80 hover:opacity-100 transition-opacity">Why Choose Us</a></li>
                 <li><a href="#contact" className="text-sm sm:text-base opacity-80 hover:opacity-100 transition-opacity">Contact</a></li>
               </ul>
             </div>
