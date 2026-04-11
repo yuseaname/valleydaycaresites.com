@@ -366,7 +366,7 @@ export default function Home() {
               {
                 icon: Shield,
                 title: "Trust-Building Elements",
-                description: "Testimonials, accreditations, and professional imagery that build instant credibility.",
+                description: "Accreditations, professional imagery, and clear messaging that build instant credibility from the first click.",
               },
             ].map((benefit, i) => (
               <Card key={i} className="border-border bg-card card-hover">
@@ -793,72 +793,6 @@ export default function Home() {
               </a>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* What Your Website Could Look Like — Demo Preview Section */}
-      <section className="py-16 lg:py-24 bg-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="mb-4 px-3 py-1 text-sm border-primary/30 text-primary bg-primary/5">
-              Demo Preview
-            </Badge>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground mb-4">
-              What Your Website Could Look Like
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              These are example layouts we&apos;ve built for different types of daycare businesses.
-              Your site would be customized with your name, location, and details.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                quote: "Example layout for a home daycare — warm colors, simple navigation, tour request form. Your name, photos, and program details would replace this content.",
-                type: "Home Daycare Example",
-              },
-              {
-                quote: "Example layout for a preschool — structured programs section, clear age groups, parent-focused messaging. We customize everything to match your daycare.",
-                type: "Preschool Example",
-              },
-              {
-                quote: "Example layout for a childcare center — professional design, inquiry form, mobile-friendly. Built to help parents find and contact you easily.",
-                type: "Childcare Center Example",
-              },
-              {
-                quote: "Example layout for a family daycare — personal feel, about the caregiver section, daily schedule. Designed to reflect your unique approach.",
-                type: "Family Daycare Example",
-              },
-              {
-                quote: "Example layout for a learning center — curriculum highlights, enrollment process, FAQ section. All content would be specific to your program.",
-                type: "Learning Center Example",
-              },
-              {
-                quote: "Example layout for a multi-age program — flexible design, clear program descriptions, photo gallery. Tailored to your community and families.",
-                type: "Multi-Age Program Example",
-              },
-            ].map((example, i) => (
-              <Card key={i} className="border-border bg-card">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <Badge variant="secondary" className="text-xs">
-                      Sample Demo Content
-                    </Badge>
-                  </div>
-                  <p className="text-foreground leading-relaxed mb-4">{example.quote}</p>
-                  <div>
-                    <div className="font-semibold text-foreground">{example.type}</div>
-                    <div className="text-sm text-muted-foreground">Example layout only</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <p className="text-center text-xs text-muted-foreground mt-8">
-            All examples shown are for demonstration purposes. Your website will be built with your real content and details.
-          </p>
         </div>
       </section>
 
