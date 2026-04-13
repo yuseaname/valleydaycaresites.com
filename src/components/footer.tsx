@@ -60,7 +60,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg gradient-sage flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg gradient-forest flex items-center justify-center">
                 <span className="text-primary-foreground font-display font-bold text-lg">V</span>
               </div>
               <div>
@@ -73,7 +73,7 @@ export function Footer() {
             </p>
             <Button
               asChild
-              className="gradient-sage text-primary-foreground hover:opacity-90 transition-opacity shadow-premium"
+              className="gradient-forest text-primary-foreground hover:opacity-90 transition-opacity shadow-premium"
             >
               <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}>
                 Get Your Free Sample

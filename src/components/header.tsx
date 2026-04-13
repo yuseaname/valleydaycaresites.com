@@ -65,7 +65,7 @@ export function Header() {
             }}
             className="flex items-center gap-2 group"
           >
-            <div className="w-10 h-10 rounded-lg gradient-sage flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg gradient-forest flex items-center justify-center">
               <span className="text-primary-foreground font-display font-bold text-lg">V</span>
             </div>
             <div className="hidden sm:block">
@@ -99,7 +99,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <Button
               asChild
-              className="gradient-sage text-primary-foreground hover:opacity-90 transition-opacity shadow-premium-glow"
+              className="gradient-forest text-primary-foreground hover:opacity-90 transition-opacity shadow-premium-glow"
             >
               <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}>
                 Get Your Free Sample
@@ -119,7 +119,7 @@ export function Header() {
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg gradient-sage flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg gradient-forest flex items-center justify-center">
                       <span className="text-primary-foreground font-display font-bold">V</span>
                     </div>
                     <span className="font-display font-semibold">Valley Daycare Sites</span>
@@ -143,7 +143,7 @@ export function Header() {
                 <div className="mt-auto pt-8">
                   <Button
                     asChild
-                    className="w-full gradient-sage text-primary-foreground hover:opacity-90"
+                    className="w-full gradient-forest text-primary-foreground hover:opacity-90"
                   >
                     <a
                       href="#contact"
