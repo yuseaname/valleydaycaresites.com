@@ -5,8 +5,8 @@ author: "Valley Daycare Sites"
 date: 2026-03-28
 categories: ["marketing", "website-design", "trust-building"]
 tags: [daycare marketing, childcare website, trust signals, professional design, parent confidence]
-image: "/images/blog/trustworthy-daycare-website-design-hero.webp"
-imageAlt: "Modern bright daycare center entrance with welcoming front desk and professional interior design"
+image: "/images/blog/parent-skeptical-laptop.webp"
+imageAlt: "Concerned mother reviewing daycare website on laptop"
 imageTitle: "Building Trust Through Daycare Website Design"
 imageCaption: "Professional design elements that make parents feel confident about your childcare center."
 ---
@@ -20,6 +20,8 @@ Here's the reality: **Trusting someone else with your child is one of the hardes
 This comprehensive guide will show you exactly how to transform your daycare website into a trust-building powerhouse that converts anxious visitors into enrolled families.
 
 ## Why Trust Matters More Than Features
+
+![Concerned mother viewing daycare website](/images/blog/parent-skeptical-laptop.webp)
 
 When parents are choosing a daycare, they're not shopping for the flashiest website or the most colorful graphics. They're looking for safety, reliability, and peace of mind. The features you offer—extended hours, organic meals, enrichment programs—are important, but they're secondary to one fundamental question: **Can I trust you with my child?**
 
@@ -144,6 +146,8 @@ Modern parents are savvy about online security. Show them you protect their data
 - **Professional email domain:** Your email should match your website (info@yourdaycare.com, not yourdaycare@gmail.com)
 
 ## Professional Design vs DIY Templates: Why the Difference Matters
+
+![Child's hand reaching for teacher](/images/blog/child-hand-teacher-trust.webp)
 
 You can create a website yourself using free templates—it's never been easier. But when your business is built on trust, the difference between professional design and DIY becomes enrollment-making or enrollment-breaking.
 
@@ -321,6 +325,8 @@ While full HIPAA compliance applies more to medical facilities, childcare center
 - **Training staff:** Ensure all team members understand data protection expectations
 
 ## Social Proof Elements: Let Others Do the Selling for You
+
+![Beautiful testimonial card](/images/blog/testimonial-card-example.webp)
 
 Parents trust other parents more than they trust marketing copy. Social proof—evidence that other families have had positive experiences—is the most powerful enrollment tool you have.
 
@@ -543,6 +549,8 @@ Your brand should reflect what makes your center special while remaining trustwo
 - [ ] Annual brand audit completed
 
 ## Real Photos vs Stock Photos: The Trust Trade-Off
+
+![Stock photo vs authentic classroom photo](/images/blog/stock-vs-real-photos.webp)
 
 This is one of the most important decisions you'll make about your daycare website's visual content. Let's break down the pros, cons, and strategic approach.
 

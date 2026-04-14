@@ -5,8 +5,8 @@ author: "Valley Daycare Sites"
 published: 2026-03-28
 categories: [daycare marketing, daycare website, enrollment strategies]
 tags: [outdated website, daycare enrollment, daycare website design, childcare marketing, parent experience]
-image: "/images/blog/outdated-vs-modern-daycare-website-hero.webp"
-imageAlt: "Before and after comparison of old cluttered website versus modern clean responsive design"
+image: "/images/blog/rundown-daycare-entrance.webp"
+imageAlt: "Rundown daycare entrance with faded signage"
 imageTitle: "Signs Your Daycare Website Is Outdated"
 imageCaption: "An outdated website can silently cost you enrollments every single day."
 draft: false
@@ -25,6 +25,8 @@ This isn't about having the flashiest design or the most expensive technology. I
 Let's explore exactly how an outdated website is hurting your enrollment—and what you can do about it.
 
 ## The Hidden Cost of an Old Website
+
+![Rundown daycare entrance](/images/blog/rundown-daycare-entrance.webp)
 
 Most daycare owners think about expenses in tangible terms: rent, salaries, supplies, insurance. But there's an invisible bleeding wound in many daycare budgets—the opportunity cost of an outdated website.
 
@@ -312,6 +314,8 @@ If your score is below 75 on mobile, your daycare website is actively hurting yo
 
 ## Design Trends from 2015 vs 2026
 
+![Grid of website mistakes](/images/blog/outdated-website-sins.webp)
+
 Design isn't just about aesthetics. It's about communication, trust, and meeting expectations. Parents in 2026 have different expectations than parents in 2015. When your website reflects 2015 design, you're signaling to parents that your daycare hasn't evolved either.
 
 ### The Visual Language Gap
@@ -450,6 +454,8 @@ Don't let this be discouraging—let it be motivating. You have advantages too:
 
 ## Enrollment Stats: Good Site vs Bad Site
 
+![Enrollment funnel drop-off](/images/blog/enrollment-funnel-infographic.webp)
+
 Let's look at the hard numbers. What's the actual difference between a good daycare website and a bad one?
 
 ### Industry Benchmarks for Daycare Websites
@@ -523,6 +529,8 @@ The pattern is clear:
 Your website quality correlates directly with your enrollment success. The two aren't separate issues—they're one and the same.
 
 ## Quick Fixes vs Full Redesign
+
+![Modern daycare reception](/images/blog/modern-daycare-reception.webp)
 
 You might be thinking: "Okay, I need to fix my website, but I don't have thousands of dollars to invest." Good news—you don't need to start with a full redesign.
 

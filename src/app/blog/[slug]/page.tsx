@@ -71,6 +71,9 @@ function markdownToHtml(markdown: string): string {
   // Italic
   html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
   
+  // Images (must come before links)
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<figure class="my-8"><img src="$2" alt="$1" class="w-full rounded-xl shadow-md" loading="lazy" /><figcaption class="text-center text-sm text-muted-foreground mt-2">$1</figcaption></figure>');
+
   // Links
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>');
   
@@ -92,6 +95,13 @@ function markdownToHtml(markdown: string): string {
   
   // Horizontal rules
   html = html.replace(/^---$/gm, '<hr class="my-8 border-border" />');
+
+  // Details/Summary (expandable sections)
+  html = html.replace(/<details>/g, '<details class="my-6 border border-border rounded-lg p-4 bg-muted/20">');
+  html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="cursor-pointer font-semibold text-foreground hover:text-primary transition-colors">$1</summary>');
+
+  // Pass through raw HTML tags (details, summary, figure, img, etc.)
+  // These are already valid HTML, just let them through
   
   return html;
 }

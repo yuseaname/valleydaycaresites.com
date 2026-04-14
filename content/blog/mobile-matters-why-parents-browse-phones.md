@@ -5,8 +5,8 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["mobile daycare website", "mobile-friendly design", "parents browse phones", "daycare mobile optimization"]
-image: "/images/blog/parents-browsing-daycare-websites-mobile-hero.webp"
-imageAlt: "Busy parent checking daycare website on smartphone while walking in urban morning light"
+image: "/images/blog/parent-phone-search-coffee-table.webp"
+imageAlt: "Parent browsing daycare websites on smartphone"
 imageTitle: "Why Mobile Matters for Daycare Websites"
 imageCaption: "Most parents research childcare options on their phones during commute and lunch breaks."
 ---
@@ -22,6 +22,8 @@ If your daycare website doesn't work flawlessly on mobile, you're invisible to m
 This guide explains why mobile matters so much, what mobile-friendly really means, and how to make sure your site captures those phone-browsing parents.
 
 ## The Mobile Revolution in Parent Behavior
+
+![Parent browsing daycare sites on phone](/images/blog/parent-phone-search-coffee-table.webp)
 
 The shift to mobile didn't happen overnight, but it's now complete. Parents in 2026 search for daycare the same way they search for restaurants, products, and services: on their phones.
 
@@ -182,6 +184,8 @@ Even centers with good intentions make these errors:
 
 ## Speed on Mobile Networks
 
+![How long parents wait before leaving slow sites](/images/blog/page-speed-retention-chart.webp)
+
 Speed matters everywhere, but it's especially critical on mobile.
 
 ### Why Mobile is Slower
@@ -221,6 +225,8 @@ Use these free tools:
 Aim for mobile scores above 80 on PageSpeed Insights.
 
 ## Touch-Friendly Design
+
+![Finger tapping Schedule a Tour button](/images/blog/finger-tap-cta-button.webp)
 
 Mobile users interact with fingers, not mice. Design accordingly.
 
@@ -277,6 +283,8 @@ On a phone, tapping this number initiates a call. On desktop, it may open Skype 
 - Make sure it's visible without scrolling (above the fold)
 
 ## Mobile Contact Forms
+
+![Owner comparing website on two phones](/images/blog/daycare-owner-two-phones.webp)
 
 Forms are where mobile optimization often fails. Here's how to get them right.
 

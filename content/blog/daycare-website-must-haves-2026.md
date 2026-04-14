@@ -5,8 +5,8 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website 2026", "childcare website checklist", "daycare website features", "parent portal"]
-image: "/images/blog/daycare-website-essential-features-2026-hero.webp"
-imageAlt: "Futuristic daycare technology interface showing modern website features checklist"
+image: "/images/blog/website-evolution-timeline.webp"
+imageAlt: "Daycare website evolution timeline from 2015 to 2026"
 imageTitle: "Essential Daycare Website Features for 2026"
 imageCaption: "The must-have features parents expect from modern daycare websites."
 ---
@@ -18,6 +18,8 @@ The bar for daycare websites keeps rising. What impressed parents in 2020 feels 
 This guide covers the 20 elements your daycare website must have in 2026 to stay competitive and convert visitors into enrollments.
 
 ## What Changed in 2025-2026
+
+![Website evolution timeline 2015-2026](/images/blog/website-evolution-timeline.webp)
 
 The past two years brought significant shifts in parent expectations:
 
@@ -46,6 +48,8 @@ While not universal, parent portals are becoming a competitive advantage. Center
 Parents are increasingly comfortable with chatbots for initial questions. A well-designed chatbot can answer basic questions 24/7, qualifying leads while your team sleeps.
 
 ## Must-Have #1: Mobile-First Design
+
+![Mother browsing daycare site on phone](/images/blog/parent-phone-lap-browsing.webp)
 
 "Mobile-friendly" isn't enough. In 2026, your site must be designed for mobile first, then scaled up to desktop.
 
@@ -213,6 +217,8 @@ Even if your portal is basic, having one shows parents you're modern and organiz
 
 ## Must-Have #6: Social Media Links
 
+![Google reviews with 5-star ratings](/images/blog/google-reviews-stars.webp)
+
 Your website should connect to your active social media presence.
 
 ### Where to Place Links
@@ -237,6 +243,8 @@ Your website should connect to your active social media presence.
 - Links to platforms you don't actually use
 
 ## Must-Have #7: FAQ Section
+
+![Modern daycare center entrance](/images/blog/daycare-welcome-entrance.webp)
 
 An FAQ section serves two purposes: it helps parents and it improves your SEO.
 

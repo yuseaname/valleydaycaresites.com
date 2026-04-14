@@ -5,8 +5,8 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website design", "parents first impression", "childcare website tips", "daycare marketing"]
-image: "/images/blog/parents-first-impression-daycare-website-hero.webp"
-imageAlt: "Parent's hands holding smartphone viewing a daycare website on screen with warm natural lighting"
+image: "/images/blog/split-screen-good-bad-website.webp"
+imageAlt: "Split-screen comparison of outdated vs modern daycare website on mobile"
 imageTitle: "What Parents Notice First on Daycare Websites"
 imageCaption: "Parents make snap judgments about your daycare within 3 seconds of landing on your website."
 ---
@@ -21,11 +21,16 @@ This guide breaks down exactly what parents notice first—and how to make sure 
 
 ## The 3-Second First Impression: Why It Matters
 
+![Split-screen: outdated vs modern daycare website](/images/blog/split-screen-good-bad-website.webp)
+
+
 Parents don't browse daycare websites the way they browse Amazon. They're stressed, time-pressed, and emotionally charged. They're leaving their child somewhere for 8+ hours a day. The stakes feel enormous.
 
 Research shows that **94% of first impressions are design-related**. Not content. Not your degrees or certifications. Design.
 
 ### What Happens in Those 3 Seconds
+
+![Teacher engaging with child at eye level in warm daycare setting](/images/blog/teacher-child-eye-level.webp)
 
 Within the first glance, parents unconsciously evaluate:
 
@@ -73,6 +78,7 @@ A site that's hard to navigate on a phone tells parents: "We haven't kept up wit
 - Click-to-call buttons increase contact rates by 40%
 
 ## Visual Trust Signals: The Foundation of Credibility
+
 
 Trust isn't built with words. It's built with visuals. Here's what parents look for—and how to deliver.
 
@@ -238,6 +244,8 @@ If the answer is no for any of these, reorganize your navigation.
 
 ## Mobile Experience: The New First Impression
 
+![73% of parents browse on mobile](/images/blog/mobile-stat-infographic.webp)
+
 Let's be blunt: if your website isn't mobile-friendly in 2026, you're losing parents before they even call.
 
 ### What "Mobile-Friendly" Actually Means
@@ -386,6 +394,7 @@ If parents have to squint to read your content, they won't. They'll leave.
 **Fix:** Use 16px+ font size and high contrast (dark text on light background).
 
 ## Quick Wins Checklist: What to Fix Today
+![Daycare owner reviewing her modern website](/images/blog/daycare-owner-laptop-satisfied.webp)
 
 If you only have 30 minutes to improve your site, do these:
 

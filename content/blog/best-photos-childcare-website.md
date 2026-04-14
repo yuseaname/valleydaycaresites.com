@@ -5,8 +5,8 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website photos", "childcare photography", "website images", "daycare marketing"]
-image: "/images/blog/professional-daycare-photography-tips-hero.webp"
-imageAlt: "Professional photographer capturing candid moments in a bright daycare classroom setting"
+image: "/images/blog/same-hallway-different-impression.webp"
+imageAlt: "Same daycare hallway: outdated vs beautifully renovated"
 imageTitle: "Best Photos for Childcare Websites"
 imageCaption: "Authentic, professional photos build trust and show parents what makes your center special."
 ---
@@ -22,6 +22,8 @@ The question is: what judgment are they forming?
 This guide covers exactly which photos build trust, which photos destroy it, and how to capture images that make parents say, "I want my child here."
 
 ## Why Photos Make or Break First Impressions
+
+![Same hallway: outdated vs renovated](/images/blog/same-hallway-different-impression.webp)
 
 Humans are visual creatures. We process images **60,000 times faster** than text. In the time it takes a parent to read your mission statement, they've already scrolled through 20 photos and decided whether to keep reading.
 
@@ -180,6 +182,8 @@ Tell children:
 
 ## Photos Parents Want to See: The Complete List
 
+![6 essential daycare photos grid](/images/blog/six-essential-photos-grid.webp)
+
 ### 1. Classroom Spaces
 
 Parents want to visualize where their child will spend their day.
@@ -320,6 +324,8 @@ First impression when parents arrive for a tour.
 
 ## Photo Equipment for DIY Photography
 
+![Owner taking photos at child's eye level](/images/blog/owner-taking-phone-photos.webp)
+
 You don't need expensive gear. Here's what helps:
 
 ### Smartphone Photography (Recommended)
@@ -377,6 +383,8 @@ If you hire a photographer, they'll bring:
 - Backup equipment
 
 ## Photo Quality Checklist
+
+![Gallery wall of framed daycare photos](/images/blog/photo-gallery-wall-mockup.webp)
 
 Before uploading any photo, ask:
 
