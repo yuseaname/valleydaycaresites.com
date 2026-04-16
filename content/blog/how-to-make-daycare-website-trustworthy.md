@@ -5,7 +5,7 @@ author: "Valley Daycare Sites"
 date: 2026-03-28
 categories: ["marketing", "website-design", "trust-building"]
 tags: [daycare marketing, childcare website, trust signals, professional design, parent confidence]
-image: "/images/blog/parent-skeptical-laptop.webp"
+image: "/images/blog/how-to-make-daycare-website-trustworthy-hero.png"
 imageAlt: "Concerned mother reviewing daycare website on laptop"
 imageTitle: "Building Trust Through Daycare Website Design"
 imageCaption: "Professional design elements that make parents feel confident about your childcare center."

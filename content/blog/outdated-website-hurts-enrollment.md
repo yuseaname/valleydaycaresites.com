@@ -5,7 +5,7 @@ author: "Valley Daycare Sites"
 published: 2026-03-28
 categories: [daycare marketing, daycare website, enrollment strategies]
 tags: [outdated website, daycare enrollment, daycare website design, childcare marketing, parent experience]
-image: "/images/blog/rundown-daycare-entrance.webp"
+image: "/images/blog/outdated-website-hurts-enrollment-hero.png"
 imageAlt: "Rundown daycare entrance with faded signage"
 imageTitle: "Signs Your Daycare Website Is Outdated"
 imageCaption: "An outdated website can silently cost you enrollments every single day."

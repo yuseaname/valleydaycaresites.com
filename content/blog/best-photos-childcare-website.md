@@ -5,7 +5,7 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website photos", "childcare photography", "website images", "daycare marketing"]
-image: "/images/blog/same-hallway-different-impression.webp"
+image: "/images/blog/best-photos-childcare-website-hero.png"
 imageAlt: "Same daycare hallway: outdated vs beautifully renovated"
 imageTitle: "Best Photos for Childcare Websites"
 imageCaption: "Authentic, professional photos build trust and show parents what makes your center special."

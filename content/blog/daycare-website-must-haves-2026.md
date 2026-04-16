@@ -5,7 +5,7 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website 2026", "childcare website checklist", "daycare website features", "parent portal"]
-image: "/images/blog/website-evolution-timeline.webp"
+image: "/images/blog/daycare-website-must-haves-2026-hero.png"
 imageAlt: "Daycare website evolution timeline from 2015 to 2026"
 imageTitle: "Essential Daycare Website Features for 2026"
 imageCaption: "The must-have features parents expect from modern daycare websites."

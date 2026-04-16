@@ -5,7 +5,7 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["mobile daycare website", "mobile-friendly design", "parents browse phones", "daycare mobile optimization"]
-image: "/images/blog/parent-phone-search-coffee-table.webp"
+image: "/images/blog/mobile-matters-why-parents-browse-phones-hero.png"
 imageAlt: "Parent browsing daycare websites on smartphone"
 imageTitle: "Why Mobile Matters for Daycare Websites"
 imageCaption: "Most parents research childcare options on their phones during commute and lunch breaks."

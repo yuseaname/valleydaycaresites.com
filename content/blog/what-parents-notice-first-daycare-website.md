@@ -5,7 +5,7 @@ date: "2026-03-28"
 author: "Valley Daycare Sites"
 category: "Website Design"
 keywords: ["daycare website design", "parents first impression", "childcare website tips", "daycare marketing"]
-image: "/images/blog/split-screen-good-bad-website.webp"
+image: "/images/blog/what-parents-notice-first-daycare-website-hero.png"
 imageAlt: "Split-screen comparison of outdated vs modern daycare website on mobile"
 imageTitle: "What Parents Notice First on Daycare Websites"
 imageCaption: "Parents make snap judgments about your daycare within 3 seconds of landing on your website."
