@@ -1,5 +1,9 @@
 ---
 title: "How to Set Up Google Business Profile for Your Daycare (Step-by-Step)"
+image: "/images/blog/valley-daycare/google-business-profile-daycare-setup-hero.png"
+imageAlt: "How to Set Up Google Business Profile for Your Daycare (Step-by-Step)"
+imageTitle: "How to Set Up Google Business Profile for Your Daycare (Step-by-Step)"
+imageCaption: "Featured image for How to Set Up Google Business Profile for Your Daycare (Step-by-Step)"
 description: "Complete walkthrough for setting up and optimizing your daycare's Google Business Profile. Get found on Google Maps and attract more local families."
 date: "2026-04-15"
 author: "Valley Daycare Sites"

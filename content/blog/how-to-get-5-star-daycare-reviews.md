@@ -1,5 +1,9 @@
 ---
 title: "How to Get More 5-Star Reviews for Your Daycare (Without Being Pushy)"
+image: "/images/blog/valley-daycare/how-to-get-5-star-daycare-reviews-hero.png"
+imageAlt: "How to Get More 5-Star Reviews for Your Daycare (Without Being Pushy)"
+imageTitle: "How to Get More 5-Star Reviews for Your Daycare (Without Being Pushy)"
+imageCaption: "Featured image for How to Get More 5-Star Reviews for Your Daycare (Without Being Pushy)"
 description: "Proven strategies to get more positive reviews for your daycare center. Learn ethical, effective ways to build your online reputation."
 date: "2026-04-15"
 author: "Valley Daycare Sites"

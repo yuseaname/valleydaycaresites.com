@@ -1,5 +1,9 @@
 ---
 title: "Local SEO for Daycares in 2026: The Complete Guide to Getting Found on Google"
+image: "/images/blog/valley-daycare/local-seo-guide-daycares-2026-hero.png"
+imageAlt: "Local SEO for Daycares in 2026: The Complete Guide to Getting Found on Google"
+imageTitle: "Local SEO for Daycares in 2026: The Complete Guide to Getting Found on Google"
+imageCaption: "Featured image for Local SEO for Daycares in 2026: The Complete Guide to Getting Found on Google"
 description: "Step-by-step local SEO guide for daycare centers. Learn how to rank on Google Maps, optimize your website, and attract more local families."
 date: "2026-04-15"
 author: "Valley Daycare Sites"

@@ -1,5 +1,9 @@
 ---
 title: "7 Hidden Costs of Cheap Daycare Websites That Come Back to Bite You"
+image: "/images/blog/valley-daycare/hidden-costs-cheap-daycare-websites-hero.png"
+imageAlt: "7 Hidden Costs of Cheap Daycare Websites That Come Back to Bite You"
+imageTitle: "7 Hidden Costs of Cheap Daycare Websites That Come Back to Bite You"
+imageCaption: "Featured image for 7 Hidden Costs of Cheap Daycare Websites That Come Back to Bite You"
 description: "Discover the hidden costs of budget daycare websites — from lost enrollment to emergency redesigns. Learn what expensive mistakes to avoid."
 date: "2026-04-15"
 author: "Valley Daycare Sites"

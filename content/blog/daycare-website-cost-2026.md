@@ -1,5 +1,9 @@
 ---
 title: "Daycare Website Cost in 2026: What You Should Actually Pay"
+image: "/images/blog/valley-daycare/daycare-website-cost-2026-hero.png"
+imageAlt: "Daycare Website Cost in 2026: What You Should Actually Pay"
+imageTitle: "Daycare Website Cost in 2026: What You Should Actually Pay"
+imageCaption: "Featured image for Daycare Website Cost in 2026: What You Should Actually Pay"
 description: "Complete breakdown of daycare website costs in 2026 — from free builders to professional design. Learn what features you actually need and what's a waste of money."
 date: "2026-04-15"
 author: "Valley Daycare Sites"

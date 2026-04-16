@@ -1,5 +1,9 @@
 ---
 title: "Free vs Professional Daycare Website Design: Which Actually Gets You More Enrollment?"
+image: "/images/blog/valley-daycare/free-vs-professional-daycare-website-hero.png"
+imageAlt: "Free vs Professional Daycare Website Design: Which Actually Gets You More Enrollment?"
+imageTitle: "Free vs Professional Daycare Website Design: Which Actually Gets You More Enrollment?"
+imageCaption: "Featured image for Free vs Professional Daycare Website Design: Which Actually Gets You More Enrollment?"
 description: "Honest comparison of free website builders vs professional daycare web design. See real examples of what works and what costs you students."
 date: "2026-04-15"
 author: "Valley Daycare Sites"
