@@ -72,7 +72,6 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How to ensure your website works perfectly for mobile-first parents.",
     date: "2026-03-28",
   },
-,
   {
     slug: "daycare-website-cost-2026",
     title: "Daycare Website Cost in 2026: What You Should Actually Pay",
