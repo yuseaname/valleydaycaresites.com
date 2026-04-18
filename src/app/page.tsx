@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -101,6 +102,42 @@ function useScrollReveal() {
   return { ref, isRevealed };
 }
 
+/* ─── Animated Number Stat Card ─── */
+function NumberStatCard({ value, suffix, prefix, label, icon: Icon, description }: {
+  value: number;
+  suffix: string;
+  prefix?: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+}) {
+  const { count, ref } = useCountUp(value, 2000);
+  return (
+    <Card className="border-border bg-card card-hover text-center">
+      <CardContent className="p-6">
+        <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+          <Icon className="h-7 w-7 text-primary" />
+        </div>
+        <div ref={ref} className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-1">
+          {prefix || ""}{count}<span className="text-primary">{suffix}</span>
+        </div>
+        <p className="text-sm font-semibold text-foreground mb-2">{label}</p>
+        <p className="text-xs text-muted-foreground">{description}</p>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ─── FAQ Items (single source of truth) ─── */
+const FAQ_ITEMS = [
+  { question: "Is the sample really free?", answer: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." },
+  { question: "How long does the sample take?", answer: "We aim to have your sample ready within 48 hours of receiving your request." },
+  { question: "What's included in the $50/month?", answer: "Your homepage, a contact page with inquiry form, your custom domain (e.g., yourdaycare.com), hosting, SSL security, mobile-friendly design, and support when you need it." },
+  { question: "Can I cancel?", answer: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." },
+  { question: "Will my site work on phones?", answer: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." },
+  { question: "How do payments work?", answer: "We use secure payment processing. Once you decide to keep your site, $50/month covers everything. No hidden fees, no setup charges." },
+];
+
 /* ─── Stat Item Component ─── */
 function StatItem({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const { count, ref, display } = useCountUp(value, 2000, suffix);
@@ -131,6 +168,8 @@ export default function Home() {
 
   // Sticky CTA state
   const [showStickyCta, setShowStickyCta] = useState(false);
+  const [stickyCtaDismissed, setStickyCtaDismissed] = useState(false);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
 
   // Before/After slider state
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -155,6 +194,7 @@ export default function Home() {
           name: formData.name,
           daycare: formData.daycare,
           email: formData.email,
+          phone: formData.phone || undefined,
           location: formData.location,
           type: undefined,
           "current-site": formData.website || undefined,
@@ -249,21 +289,18 @@ export default function Home() {
           }),
         }}
       />
-      {/* Structured Data - FAQ (trimmed to 6) */}
+      {/* Structured Data - FAQ (derived from FAQ_ITEMS) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: [
-              { "@type": "Question", name: "Is the sample really free?", acceptedAnswer: { "@type": "Answer", text: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." } },
-              { "@type": "Question", name: "How long does the sample take?", acceptedAnswer: { "@type": "Answer", text: "We aim to have your sample ready within 48 hours of receiving your request." } },
-              { "@type": "Question", name: "What's included in the $50/month?", acceptedAnswer: { "@type": "Answer", text: "Your homepage, a contact page with inquiry form, your custom domain, hosting, SSL security, mobile-friendly design, and support when you need it." } },
-              { "@type": "Question", name: "Can I cancel?", acceptedAnswer: { "@type": "Answer", text: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." } },
-              { "@type": "Question", name: "Will my site work on phones?", acceptedAnswer: { "@type": "Answer", text: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." } },
-              { "@type": "Question", name: "How do payments work?", acceptedAnswer: { "@type": "Answer", text: "We use secure payment processing. Once you decide to keep your site, $50/month covers everything. No hidden fees, no setup charges." } },
-            ],
+            mainEntity: FAQ_ITEMS.map(item => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
           }),
         }}
       />
@@ -641,7 +678,7 @@ export default function Home() {
                 {/* "After" side (clipped overlay) */}
                 <div
                   className="absolute inset-0"
-                  style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
+                  style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-forest via-forest-light to-forest-mid" />
                   <div className="absolute inset-0 p-6 sm:p-10 flex flex-col items-center justify-center text-center text-white">
@@ -949,25 +986,10 @@ export default function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { value: "48", suffix: "hrs", label: "From request to live preview", icon: Clock, description: "We move fast so you can see results quickly." },
-              { value: "$0", suffix: "", label: "Upfront cost to get started", icon: Shield, description: "See your site before you pay a single cent." },
-              { value: "100", suffix: "%", label: "Mobile-responsive design", icon: Smartphone, description: "Parents browse on phones. Your site works everywhere." },
-              { value: "5", suffix: "min", label: "That's all we need from you", icon: Zap, description: "Fill out a simple form and we handle the rest." },
-            ].map((stat, i) => (
-              <Card key={i} className="border-border bg-card card-hover text-center">
-                <CardContent className="p-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <stat.icon className="h-7 w-7 text-primary" />
-                  </div>
-                  <div className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-1">
-                    {stat.value}<span className="text-primary">{stat.suffix}</span>
-                  </div>
-                  <p className="text-sm font-semibold text-foreground mb-2">{stat.label}</p>
-                  <p className="text-xs text-muted-foreground">{stat.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            <NumberStatCard value={48} suffix="hrs" label="From request to live preview" icon={Clock} description="We move fast so you can see results quickly." />
+            <NumberStatCard value={0} prefix="$" label="Upfront cost to get started" icon={Shield} description="See your site before you pay a single cent." />
+            <NumberStatCard value={100} suffix="%" label="Mobile-responsive design" icon={Smartphone} description="Parents browse on phones. Your site works everywhere." />
+            <NumberStatCard value={5} suffix="min" label="That's all we need from you" icon={Zap} description="Fill out a simple form and we handle the rest." />
           </div>
         </div>
       </section>
@@ -997,7 +1019,7 @@ export default function Home() {
               { name: "Happy Kids Childcare", type: "Home Daycare Demo", result: "Example website layout", image: "/images/demos/happy-kids-childcare.png", imageAlt: "Happy Kids Childcare home daycare website demo with purple theme and contact form", demoLink: "/demos/happy-kids-childcare" },
               { name: "Tiny Steps Learning", type: "Early Education Demo", result: "Example website layout", image: "/images/demos/tiny-steps-learning.png", imageAlt: "Tiny Steps Learning early education website demo with teal theme", demoLink: "/demos/tiny-steps-learning" },
             ].map((project, i) => (
-              <a key={i} href={project.demoLink} className="block group">
+              <a key={i} href={project.demoLink} className="block">
                 <Card className="border-border bg-card overflow-hidden card-hover group">
                   <div className="aspect-[16/10] bg-muted/30 relative overflow-hidden">
                     <Image
@@ -1052,14 +1074,7 @@ export default function Home() {
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
-            {[
-              { question: "Is the sample really free?", answer: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." },
-              { question: "How long does the sample take?", answer: "We aim to have your sample ready within 48 hours of receiving your request." },
-              { question: "What's included in the $50/month?", answer: "Your homepage, a contact page with inquiry form, your custom domain (e.g., yourdaycare.com), hosting, SSL security, mobile-friendly design, and support when you need it." },
-              { question: "Can I cancel?", answer: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." },
-              { question: "Will my site work on phones?", answer: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." },
-              { question: "How do payments work?", answer: "We use secure payment processing. Once you decide to keep your site, $50/month covers everything. No hidden fees, no setup charges." },
-            ].map((item, i) => (
+            {FAQ_ITEMS.map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
@@ -1249,7 +1264,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex items-start gap-2">
-                      <input type="checkbox" id="privacy-consent" required className="mt-1 rounded border-border" />
+                      <Checkbox id="privacy-consent" required onCheckedChange={(checked) => setPrivacyConsent(checked === true)} />
                       <Label htmlFor="privacy-consent" className="text-xs text-muted-foreground font-normal leading-snug">
                         I agree to the{" "}
                         <Link href="/privacy" className="underline hover:text-foreground" target="_blank">Privacy Policy</Link>
@@ -1316,7 +1331,7 @@ export default function Home() {
       </section>
 
       {/* ─── Floating Sticky CTA (Mobile) ─── */}
-      {showStickyCta && (
+      {showStickyCta && !stickyCtaDismissed && (
         <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-background/95 backdrop-blur-md border-t border-border p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] sticky-cta-enter">
           <Button asChild className="w-full gradient-forest text-primary-foreground shadow-premium-glow btn-premium">
             <a href="#contact">
@@ -1324,6 +1339,9 @@ export default function Home() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
+          <button onClick={() => setStickyCtaDismissed(true)} className="absolute top-1 right-2 text-muted-foreground text-xs hover:text-foreground transition-colors">
+            <X className="h-4 w-4" />
+          </button>
         </div>
       )}
 

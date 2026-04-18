@@ -96,6 +96,9 @@ function markdownToHtml(markdown: string): string {
   // Horizontal rules
   html = html.replace(/^---$/gm, '<hr class="my-8 border-border" />');
 
+  // Wrap consecutive <li> in <ul>
+  html = html.replace(/((?:<li[^>]*>.*?<\/li>\s*)+)/gs, '<ul class="space-y-2 my-4">$1</ul>');
+
   // Details/Summary (expandable sections)
   html = html.replace(/<details>/g, '<details class="my-6 border border-border rounded-lg p-4 bg-muted/20">');
   html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="cursor-pointer font-semibold text-foreground hover:text-primary transition-colors">$1</summary>');
@@ -186,7 +189,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
               Get a free sample homepage designed specifically for your daycare. No upfront cost, no pressure.
             </p>
-            <Button size="lg" asChild className="gradient-sage text-primary-foreground hover:opacity-90">
+            <Button size="lg" asChild className="gradient-forest text-primary-foreground hover:opacity-90">
               <Link href="/#contact">
                 Get Your Free Sample
                 <ArrowRight className="ml-2 h-4 w-4" />

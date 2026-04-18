@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -154,16 +155,13 @@
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), serif;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-  }
 }
 
 /* Premium Smooth Scroll */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #C4B896 #F0EDE8;
 }
 
 /* Premium Selection */
@@ -196,10 +194,6 @@ html {
   background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
 }
 
-.gradient-forest-light {
-  background: linear-gradient(135deg, #2D6A4F 0%, #40916C 100%);
-}
-
 .gradient-gold {
   background: linear-gradient(135deg, #D4A843 0%, #E2C46A 100%);
 }
@@ -219,21 +213,6 @@ html {
 
 /* Premium Text Gradients */
 .text-gradient-forest {
-  background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-gold {
-  background: linear-gradient(135deg, #D4A843 0%, #E2C46A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Keep legacy text gradient for compatibility */
-.text-gradient-sage {
   background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -344,20 +323,6 @@ html {
 .animation-delay-500 { animation-delay: 500ms; }
 .animation-delay-600 { animation-delay: 600ms; }
 
-/* Section Spacing */
-.section-padding {
-  @apply py-16 sm:py-20 lg:py-24;
-}
-
-.section-padding-sm {
-  @apply py-12 sm:py-16 lg:py-20;
-}
-
-/* Container with proper padding */
-.container-premium {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
 /* Card Hover Effects */
 .card-hover {
   @apply transition-all duration-300 ease-out;
@@ -369,31 +334,6 @@ html {
     0 2px 4px rgba(26, 26, 26, 0.04),
     0 8px 16px rgba(26, 26, 26, 0.04),
     0 24px 48px rgba(26, 26, 26, 0.06);
-}
-
-/* Focus Ring */
-.focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2 focus:ring-offset-background;
-}
-
-/* Scroll Reveal Animation */
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.scroll-reveal {
-  opacity: 0;
-}
-
-.scroll-reveal.revealed {
-  animation: reveal-up 0.7s ease-out forwards;
 }
 
 /* Sticky Mobile CTA */
@@ -408,18 +348,6 @@ html {
 
 .sticky-cta-enter {
   animation: slide-up 0.3s ease-out forwards;
-}
-
-/* Comparison Slider */
-.comparison-slider {
-  @apply relative overflow-hidden cursor-col-resize select-none;
-}
-
-.comparison-slider::after {
-  content: '';
-  @apply absolute top-0 bottom-0 w-0.5 bg-white z-10;
-  left: 50%;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
 }
 
 /* Stats counter */

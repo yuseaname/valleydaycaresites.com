@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getBlogPosts } from "@/lib/blog";
-import { ArrowLeft, Laptop } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog | Resources for Daycare Owners | Valley Daycare Sites",
@@ -48,11 +49,14 @@ export default function BlogPage() {
               {posts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`}>
                   <Card className="border-border bg-card overflow-hidden card-hover group cursor-pointer h-full">
-                    {/* Image Placeholder */}
+                    {/* Blog Image */}
                     <div className="aspect-[16/9] bg-muted/30 relative">
-                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                        <Laptop className="h-10 w-10 opacity-20" />
-                      </div>
+                      <Image
+                        src={post.image}
+                        alt={post.imageAlt || post.title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <CardContent className="p-4">
                       <Badge variant="outline" className="text-xs mb-2">
@@ -91,7 +95,7 @@ export default function BlogPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 asChild
-                className="gradient-sage text-primary-foreground hover:opacity-90 shadow-premium-glow"
+                className="gradient-forest text-primary-foreground hover:opacity-90 shadow-premium-glow"
               >
                 <Link href="/#contact">Get Your Free Sample</Link>
               </Button>
