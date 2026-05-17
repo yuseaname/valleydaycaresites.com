@@ -1,0 +1,26 @@
+Write a complete SEO article with this frontmatter:
+
+---
+title: "7 Hidden Costs of Cheap Daycare Websites That Come Back to Bite You"
+description: "Discover the hidden costs of budget daycare websites — from lost enrollment to emergency redesigns. Learn what expensive mistakes to avoid."
+date: "2026-04-15"
+author: "Valley Daycare Sites"
+category: "Website Cost"
+keywords: ["hidden costs daycare website", "cheap daycare website problems", "daycare website mistakes", "daycare website redesign cost"]
+---
+
+TARGET: 1500-2000 words. Supporting article.
+
+STRUCTURE:
+1. The True Price of "Cheap" (intro with real cost scenarios)
+2. Hidden Cost #1: Lost Enrollment From Slow Load Times
+3. Hidden Cost #2: Mobile Breakage on New Phones
+4. Hidden Cost #3: SEO invisibility (Google can't find you)
+5. Hidden Cost #4: Security Vulnerabilities
+6. Hidden Cost #5: Stock Photo Licensing Traps
+7. Hidden Cost #6: Domain and Hosting Renewal Surprises
+8. Hidden Cost #7: The Emergency Redesign
+9. The Real Math: Cheap Now vs Right the First Time
+10. Conclusion with link to [cost breakdown →](/blog/daycare-website-cost-2026) and [trust signals →](/blog/how-to-make-daycare-website-trustworthy)
+
+Write for daycare owners. Use specific numbers. Be genuinely helpful.

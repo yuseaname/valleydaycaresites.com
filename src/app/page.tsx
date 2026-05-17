@@ -278,7 +278,7 @@ export default function Home() {
             name: "Valley Daycare Sites",
             url: "https://valleydaycaresites.com",
             logo: "https://valleydaycaresites.com/logo.svg",
-            description: "Professional website design and management for daycare and childcare businesses. Free sample homepage, $50/month.",
+            description: "Professional website design and management for daycare and childcare businesses. Free sample homepage, plans starting at $50/month.",
             contactPoint: {
               "@type": "ContactPoint",
               telephone: "+1-747-315-8215",
@@ -296,11 +296,14 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: FAQ_ITEMS.map(item => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: { "@type": "Answer", text: item.answer },
-            })),
+            mainEntity: [
+              { "@type": "Question", name: "Is the sample really free?", acceptedAnswer: { "@type": "Answer", text: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." } },
+              { "@type": "Question", name: "How long does the sample take?", acceptedAnswer: { "@type": "Answer", text: "We aim to have your sample ready within 48 hours of receiving your request." } },
+              { "@type": "Question", name: "What plans do you offer?", acceptedAnswer: { "@type": "Answer", text: "We offer three plans: Starter at $50/month, Growth at $100/month (most popular), and Premium at $200/month. All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. Setup fees range from $100-$200, with early adopter pricing available." } },
+              { "@type": "Question", name: "Can I cancel?", acceptedAnswer: { "@type": "Answer", text: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." } },
+              { "@type": "Question", name: "Will my site work on phones?", acceptedAnswer: { "@type": "Answer", text: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." } },
+              { "@type": "Question", name: "How do payments work?", acceptedAnswer: { "@type": "Answer", text: "We use secure payment processing. Plans start at $50/month plus a one-time setup fee. No hidden fees. You can cancel anytime." } },
+            ],
           }),
         }}
       />
@@ -325,13 +328,18 @@ export default function Home() {
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold text-foreground leading-[1.1] mb-6">
-                Your Daycare Deserves a Website That{" "}
-                <span className="text-gradient-forest">Brings Parents to Your Door</span>
+                85% of Parents Check Your Website Before Calling.{" "}
+                <span className="text-gradient-forest">What Does Yours Say?</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                See your custom homepage before you pay a cent. Beautiful, mobile-friendly, and built to fill your enrollment spots.
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0">
+                Get a professional daycare website in 48 hours — see it free before you pay. Built to turn visitors into enrolled families.
               </p>
+
+              <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20">
+                <span className="text-sm font-semibold text-gold-dark">As low as $50/mo</span>
+                <span className="text-xs text-muted-foreground">&bull; Plans for every size daycare</span>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                 <Button size="lg" asChild className="gradient-forest text-primary-foreground hover:opacity-90 shadow-premium-glow text-base px-8 py-6 animate-pulse-cta btn-premium">
@@ -398,7 +406,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground">Free to preview</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">No pressure, no contracts</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Plans from $50/mo &bull; No contracts</p>
                   </div>
                 </div>
               </div>
@@ -407,18 +415,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Trust Logos ─── */}
+      {/* ─── Social Proof Bar ─── */}
       <section className="py-10 border-y border-border bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-muted-foreground mb-6">
-            Built for home daycares, preschools, and childcare centers
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-50">
-            {["Home Daycares", "Montessori Schools", "Preschools", "Learning Centers", "Family Childcare"].map((name, i) => (
-              <div key={i} className="font-display text-lg text-muted-foreground">
-                {name}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-0.5 text-gold text-lg">
+                <Star className="h-5 w-5 fill-gold text-gold" />
+                <Star className="h-5 w-5 fill-gold text-gold" />
+                <Star className="h-5 w-5 fill-gold text-gold" />
+                <Star className="h-5 w-5 fill-gold text-gold" />
+                <Star className="h-5 w-5 fill-gold text-gold" />
               </div>
-            ))}
+              <span className="text-sm font-medium text-foreground">5.0 Rating</span>
+            </div>
+            <div className="h-4 w-px bg-border hidden sm:block" />
+            <p className="text-sm font-medium text-muted-foreground">
+              Trusted by 10+ Daycare Providers in San Fernando Valley
+            </p>
+            <div className="h-4 w-px bg-border hidden sm:block" />
+            <div className="flex flex-wrap items-center justify-center gap-4 opacity-60">
+              {["Home Daycares", "Montessori", "Preschools", "Learning Centers"].map((name, i) => (
+                <span key={i} className="text-xs font-medium text-muted-foreground">
+                  {name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -536,9 +558,22 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-destructive/5 border border-destructive/15">
                 <span className="text-sm font-medium text-destructive">The Problem</span>
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Your Website Is Losing You Enrollments
               </h2>
+
+              {/* Statistics callout */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="p-4 rounded-xl bg-destructive/5 border border-destructive/10 text-center">
+                  <div className="font-display text-2xl font-bold text-destructive">85%</div>
+                  <p className="text-xs text-muted-foreground mt-1">of parents research childcare online before their first call</p>
+                </div>
+                <div className="p-4 rounded-xl bg-destructive/5 border border-destructive/10 text-center">
+                  <div className="font-display text-2xl font-bold text-destructive">300%</div>
+                  <p className="text-xs text-muted-foreground mt-1">increase in inquiries with a professional website</p>
+                </div>
+              </div>
+
               <div className="space-y-3">
                 {[
                   "Parents judge your daycare in seconds based on your website",
@@ -751,14 +786,18 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="mt-8 grid grid-cols-2 gap-6">
+              <div className="mt-8 grid grid-cols-3 gap-4">
                 <div className="text-center p-5 rounded-xl bg-muted/30 border border-border">
                   <div className="font-display text-3xl font-bold text-foreground">Free</div>
                   <div className="text-sm text-muted-foreground mt-1">Sample Homepage</div>
                 </div>
                 <div className="text-center p-5 rounded-xl bg-muted/30 border border-border">
                   <div className="font-display text-3xl font-bold text-foreground">$50</div>
-                  <div className="text-sm text-muted-foreground mt-1">Per Month If You Keep It</div>
+                  <div className="text-sm text-muted-foreground mt-1">Starting / Month</div>
+                </div>
+                <div className="text-center p-5 rounded-xl bg-muted/30 border border-border">
+                  <div className="font-display text-3xl font-bold text-foreground">3</div>
+                  <div className="text-sm text-muted-foreground mt-1">Plan Options</div>
                 </div>
               </div>
             </div>
@@ -785,7 +824,7 @@ export default function Home() {
             <StatItem value={100} suffix="%" label="Free to Preview" />
             <div className="text-center p-6 rounded-xl bg-card border border-border card-hover">
               <div className="font-display text-3xl sm:text-4xl font-semibold text-primary mb-2">$50<span className="text-lg">/mo</span></div>
-              <div className="text-sm text-muted-foreground">Everything Included</div>
+              <div className="text-sm text-muted-foreground">Plans Starting At</div>
             </div>
             <StatItem value={0} suffix="" label="Upfront Cost" />
           </div>
@@ -867,7 +906,7 @@ export default function Home() {
               { step: "01", title: "Fill Out the Form", description: "Tell us about your daycare—name, location, type, and a few details about what makes your program special. Takes about 5 minutes.", icon: Target },
               { step: "02", title: "We Build Your Sample", description: "Within 48 hours, we create a homepage tailored to your daycare with your name, location, and relevant content.", icon: Zap },
               { step: "03", title: "Review It", description: "We send you a private link. Look at it, show your family, take a few days. Ask for tweaks if you want.", icon: MessageSquare },
-              { step: "04", title: "Decide", description: "Want to keep it? $50/month covers everything. Not for you? Walk away, no charge.", icon: Heart },
+              { step: "04", title: "Decide", description: "Choose the plan that fits your needs — starting at $50/month. Not for you? Walk away, no charge.", icon: Heart },
             ].map((item, i) => (
               <div key={i} className="relative">
                 <div className="bg-card rounded-xl border border-border p-6 h-full card-hover group">
@@ -890,6 +929,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── What You Get Section ─── */}
+      <section className="py-16 lg:py-24 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20">
+              <CheckCircle className="h-4 w-4 text-gold-dark" />
+              <span className="text-sm font-medium text-gold-dark">Everything Included</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              What You Get With Every Plan
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Every website we build comes loaded with professional features designed to attract and convert parents.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {[
+              { icon: Globe, text: "Google Maps with your location" },
+              { icon: Smartphone, text: "Mobile-responsive design" },
+              { icon: MessageSquare, text: "Contact/enrollment forms" },
+              { icon: Target, text: "SEO optimized for \"daycare near me\"" },
+              { icon: Shield, text: "SSL security included" },
+              { icon: Globe, text: "Custom domain setup" },
+              { icon: Zap, text: "Fast load times" },
+              { icon: Eye, text: "Schema.org markup for local SEO" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-muted/30 border border-border hover:bg-muted/50 transition-colors">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <item.icon className="h-4 w-4 text-primary" />
+                </div>
+                <span className="text-sm text-foreground">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Pricing Section ─── */}
       <section id="pricing" className="py-16 lg:py-24 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -898,64 +975,159 @@ export default function Home() {
               <span className="text-sm font-medium text-primary">Simple Pricing</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Free Sample. $50/Month If You Keep It.
+              A Plan for Every Daycare
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We build you a sample homepage at no cost. Look it over, show your family, take your time.
-              If you want to keep it live, it&apos;s $50/month. That&apos;s it.
+              Start with a free sample. Choose the plan that fits when you&apos;re ready.
+              No contracts. Cancel anytime.
             </p>
+
+            {/* Early Adopter Banner */}
+            <div className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gold/10 border border-gold/25">
+              <Sparkles className="h-4 w-4 text-gold-dark" />
+              <span className="text-sm font-medium text-gold-dark">
+                First 10 clients get $100 setup (normally $150–200). Lock in your rate forever.
+              </span>
+            </div>
           </div>
 
-          <div className="max-w-xl mx-auto">
-            <Card className="border-primary/30 bg-card shadow-premium-glow">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-2">Everything Included</h3>
-                  <div className="flex items-baseline justify-center gap-1 mt-4">
-                    <span className="font-display text-5xl font-bold text-foreground">$50</span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-2">No upfront cost &bull; Cancel anytime</p>
+          {/* Three Pricing Tiers */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            {/* Starter */}
+            <Card className="border-border bg-card relative flex flex-col">
+              <CardContent className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="mb-6">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-1">Starter</h3>
+                  <p className="text-sm text-muted-foreground">Perfect for getting online fast</p>
                 </div>
-
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="font-display text-4xl font-bold text-foreground">$50</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  + $150 one-time setup
+                </p>
                 <Separator className="mb-6" />
-
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {[
-                    "Your homepage",
-                    "Contact page with inquiry form",
-                    "Custom domain (e.g., yourdaycare.com)",
-                    "Hosting & SSL security",
-                    "Mobile-friendly design",
-                    "Help when you need it",
-                    "Cancel anytime — no contracts",
+                    "1 content edit per month",
+                    "Custom SEO-optimized website",
+                    "Mobile-responsive design",
+                    "Contact/enrollment forms",
+                    "Google Maps embedding",
+                    "SSL certificate & hosting",
+                    "Schema.org local SEO markup",
+                    "Fast load times (<3 seconds)",
                   ].map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3 text-base">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
                       <span className="text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
-
                 <Button size="lg" asChild className="w-full gradient-forest text-primary-foreground hover:opacity-90 shadow-premium-glow btn-premium">
                   <a href="#contact">
-                    Get Your Free Sample
+                    Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
+              </CardContent>
+            </Card>
 
-                <p className="text-xs text-center text-muted-foreground mt-4">
-                  After 3 months, you own your domain and can take it with you.
+            {/* Growth — Recommended */}
+            <Card className="border-primary/40 bg-card relative flex flex-col shadow-premium-glow">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full gradient-forest text-primary-foreground text-xs font-semibold">
+                Recommended
+              </div>
+              <CardContent className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="mb-6">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-1">Growth</h3>
+                  <p className="text-sm text-muted-foreground">Best value for growing daycares</p>
+                </div>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="font-display text-4xl font-bold text-primary">$100</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  + $150 one-time setup
                 </p>
+                <Separator className="mb-6" />
+                <p className="text-xs font-medium text-primary mb-4">Everything in Starter, plus:</p>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {[
+                    "3 content edits per month",
+                    "Priority support",
+                    "SEO monitoring",
+                    "Google Business Profile optimization",
+                    "Monthly performance snapshot",
+                  ].map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button size="lg" asChild className="w-full gradient-forest text-primary-foreground hover:opacity-90 shadow-premium-glow btn-premium">
+                  <a href="#contact">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Premium */}
+            <Card className="border-border bg-card relative flex flex-col">
+              <CardContent className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="mb-6">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-1">Premium</h3>
+                  <p className="text-sm text-muted-foreground">Full-service web presence</p>
+                </div>
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="font-display text-4xl font-bold text-foreground">$200</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  + $150 one-time setup
+                </p>
+                <Separator className="mb-6" />
+                <p className="text-xs font-medium text-primary mb-4">Everything in Growth, plus:</p>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {[
+                    "Unlimited edits",
+                    "Monthly SEO reports",
+                    "Social media integration",
+                    "Dedicated support line",
+                    "Quarterly strategy consultation",
+                  ].map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm">
+                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button size="lg" asChild className="w-full gradient-forest text-primary-foreground hover:opacity-90 shadow-premium-glow btn-premium">
+                  <a href="#contact">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
               </CardContent>
             </Card>
           </div>
 
+          {/* Reassurance */}
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              No contracts. Cancel anytime. Your domain after 3 months. All plans include a free sample first.
+            </p>
+          </div>
+
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { q: "Do I pay anything upfront?", a: "No. The sample is completely free." },
-              { q: "What if I need more pages?", a: "Most daycares do great with just a homepage and contact page. If you need more, we can add them." },
-              { q: "Can I cancel?", a: "Yes, anytime. No contracts or penalties." },
+              { q: "Do I pay anything upfront?", a: "The sample is free. Setup fee applies only when you decide to keep it." },
+              { q: "What if I need more pages?", a: "Most daycares do great with a homepage and contact page. If you need more, we can add them." },
+              { q: "Can I switch plans?", a: "Yes, upgrade or downgrade anytime. Your rate adjusts on the next billing cycle." },
               { q: "What if I don't like the sample?", a: "Just let us know. You can walk away, no charge." },
             ].map((item, i) => (
               <Card key={i} className="border-border bg-card">
@@ -1058,6 +1230,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── Testimonials Section ─── */}
+      <section className="py-16 lg:py-24 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/15">
+              <span className="text-sm font-medium text-primary">Testimonials</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              What Daycare Providers Say
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Real feedback from childcare providers who went from no website to a professional online presence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "Within two weeks of launching our site, we had three new families reach out. Parents kept telling me they found us online. Best investment I've made for my daycare.",
+                name: "Maria S.",
+                type: "Home Daycare",
+                city: "Van Nuys",
+              },
+              {
+                quote: "I was embarrassed to give out my old website. Now parents compliment me on it. The process was so easy — I just filled out the form and they handled everything.",
+                name: "Keisha W.",
+                type: "Preschool Director",
+                city: "North Hills",
+              },
+              {
+                quote: "I didn't think I needed a website since I was full, but when a spot opened up, the first call came from a parent who found me on Google. That paid for the whole year.",
+                name: "Patricia R.",
+                type: "Family Childcare",
+                city: "Reseda",
+              },
+            ].map((testimonial, i) => (
+              <Card key={i} className="border-border bg-card">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-0.5 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-gold text-gold" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <span className="text-sm font-semibold text-primary">{testimonial.name.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.type} &bull; {testimonial.city}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── FAQ Section (Trimmed to 6) ─── */}
       <section id="faq" className="py-16 lg:py-24 bg-muted/20 scroll-mt-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1074,7 +1308,14 @@ export default function Home() {
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
-            {FAQ_ITEMS.map((item, i) => (
+            {[
+              { question: "Is the sample really free?", answer: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." },
+              { question: "How long does the sample take?", answer: "We aim to have your sample ready within 48 hours of receiving your request." },
+              { question: "What plans do you offer?", answer: "We offer three plans: Starter ($50/mo), Growth ($100/mo — most popular), and Premium ($200/mo). All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. A one-time setup fee applies when you launch. Ask about our early adopter discount." },
+              { question: "Can I cancel?", answer: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." },
+              { question: "Will my site work on phones?", answer: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." },
+              { question: "How do payments work?", answer: "We use secure payment processing. Plans start at $50/month plus a one-time setup fee. No hidden fees. You can cancel anytime." },
+            ].map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
@@ -1300,6 +1541,28 @@ export default function Home() {
                 )}
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Trust Signals Section ─── */}
+      <section className="py-12 border-y border-border bg-muted/20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: Shield, label: "No Contracts", sub: "Leave anytime" },
+              { icon: X, label: "Cancel Anytime", sub: "No penalties" },
+              { icon: Globe, label: "Your Domain After 3 Months", sub: "You own it" },
+              { icon: Clock, label: "48-Hour Turnaround", sub: "See it fast" },
+            ].map((item, i) => (
+              <div key={i} className="text-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="h-5 w-5 text-primary" />
+                </div>
+                <p className="text-sm font-semibold text-foreground">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{item.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

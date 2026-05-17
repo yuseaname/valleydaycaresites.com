@@ -1,0 +1,26 @@
+Write a complete pillar-format SEO article with this frontmatter:
+
+---
+title: "Local SEO for Daycares in 2026: The Complete Guide to Getting Found on Google"
+description: "Step-by-step local SEO guide for daycare centers. Learn how to rank on Google Maps, optimize your website, and attract more local families."
+date: "2026-04-15"
+author: "Valley Daycare Sites"
+category: "Local SEO"
+keywords: ["daycare local SEO", "daycare Google Maps", "childcare SEO", "daycare Google My Business", "local search daycare"]
+---
+
+TARGET: 3000-4000 words. Pillar article.
+
+STRUCTURE:
+1. Why Local SEO Matters More for Daycares Than Any Other Marketing
+2. Google Business Profile: The Foundation (complete setup walkthrough)
+3. On-Page SEO for Your Daycare Website (title tags, meta descriptions, headers, local keywords)
+4. Content Strategy: What to Write to Rank Locally
+5. Reviews: The Local Ranking Signal That Matters Most
+6. Citations and Directories: Getting Your NAP Right Everywhere
+7. Technical SEO Basics (site speed, mobile, schema markup)
+8. Tracking Your Results (free tools: Google Search Console, Analytics)
+9. Local SEO Checklist for Daycares (comprehensive checklist)
+10. Conclusion with internal links to /blog/daycare-website-must-haves-2026 and /blog/what-parents-notice-first-daycare-website
+
+Be specific, actionable, with real examples. Write for non-technical daycare owners.

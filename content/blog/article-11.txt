@@ -1,0 +1,25 @@
+Write a complete SEO article with this frontmatter:
+
+---
+title: "How to Set Up Google Business Profile for Your Daycare (Step-by-Step)"
+description: "Complete walkthrough for setting up and optimizing your daycare's Google Business Profile. Get found on Google Maps and attract more local families."
+date: "2026-04-15"
+author: "Valley Daycare Sites"
+category: "Local SEO"
+keywords: ["daycare Google Business Profile", "Google My Business daycare", "daycare Google Maps listing", "childcare Google profile"]
+---
+
+TARGET: 1500-2000 words. Supporting article.
+
+STRUCTURE:
+1. Why Your Daycare Needs a Google Business Profile (stats)
+2. Step 1: Claim or Create Your Listing
+3. Step 2: Complete Every Field (detailed walkthrough of each section)
+4. Step 3: Add Photos (what kinds, how many, best practices)
+5. Step 4: Collect and Respond to Reviews
+6. Step 5: Post Updates and Offers
+7. Common Mistakes to Avoid
+8. How to Track Performance
+9. Conclusion with link to [full local SEO guide →](/blog/local-seo-guide-daycares-2026)
+
+Include a simple numbered checklist. Write for daycare owners who are not tech-savvy.
