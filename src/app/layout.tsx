@@ -94,9 +94,10 @@ export default function RootLayout({
             gtag('config', 'G-B3MMTHE85C');
           `}
         </Script>
-        {/* Rybbit Analytics - Site ID: 5001 */}
+        {/* Rybbit Analytics */}
         <Script
           src="https://app.rybbit.io/api/script.js"
+          data-site-id="391589ac5c4b"
           strategy="afterInteractive"
         />
         {/* Consolto Widget - Customer Communication Platform */}
