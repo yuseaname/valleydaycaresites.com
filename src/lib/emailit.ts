@@ -93,6 +93,12 @@ export async function sendNotificationEmail(
     return { success: false, error: "Notification email not configured" };
   }
 
+  // Support multiple recipients via comma-separated EMAILIT_NOTIFY_EMAIL
+  const recipients = notifyEmail
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+
   // Build HTML email from data
   const htmlRows = Object.entries(data)
     .map(([key, value]) => {
@@ -128,7 +134,7 @@ export async function sendNotificationEmail(
   const text = `${subject}\n${"=".repeat(subject.length)}\n\n${textLines}\n\nSent from ${fromName} website`;
 
   return sendEmail({
-    to: notifyEmail,
+    to: recipients,
     subject: `[${fromName}] ${subject}`,
     html,
     text,
