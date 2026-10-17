@@ -5,7 +5,7 @@
  * API docs: https://api.emailit.com/v1/
  */
 
-const EMAILIT_API_URL = "https://api.emailit.com/v1";
+const EMAILIT_API_URL = "https://api.emailit.com/v2";
 
 export interface EmailPayload {
   to: string | string[];
