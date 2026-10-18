@@ -299,10 +299,10 @@ export default function Home() {
             mainEntity: [
               { "@type": "Question", name: "Is the sample really free?", acceptedAnswer: { "@type": "Answer", text: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." } },
               { "@type": "Question", name: "How long does the sample take?", acceptedAnswer: { "@type": "Answer", text: "We aim to have your sample ready within 48 hours of receiving your request." } },
-              { "@type": "Question", name: "What plans do you offer?", acceptedAnswer: { "@type": "Answer", text: "We offer three plans: Starter at $50/month, Growth at $100/month (most popular), and Premium at $200/month. All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. Setup fees range from $100-$200, with early adopter pricing available." } },
+              { "@type": "Question", name: "What plans do you offer?", acceptedAnswer: { "@type": "Answer", text: "Through December 31, every plan — Starter, Growth, and Premium — is $50/month flat, with the $150 setup fee waived. All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. Sign during the promo and your $50/month founding rate is locked for life." } },
               { "@type": "Question", name: "Can I cancel?", acceptedAnswer: { "@type": "Answer", text: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." } },
               { "@type": "Question", name: "Will my site work on phones?", acceptedAnswer: { "@type": "Answer", text: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." } },
-              { "@type": "Question", name: "How do payments work?", acceptedAnswer: { "@type": "Answer", text: "We use secure payment processing. Plans start at $50/month plus a one-time setup fee. No hidden fees. You can cancel anytime." } },
+              { "@type": "Question", name: "How do payments work?", acceptedAnswer: { "@type": "Answer", text: "Simple: $50/month flat via secure payment processing. No setup fee, no hidden charges, and you can cancel anytime." } },
             ],
           }),
         }}
@@ -337,8 +337,9 @@ export default function Home() {
               </p>
 
               <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20">
-                <span className="text-sm font-semibold text-gold-dark">As low as $50/mo</span>
-                <span className="text-xs text-muted-foreground">&bull; Plans for every size daycare</span>
+                <Clock className="h-3.5 w-3.5 text-gold-dark" />
+                <span className="text-sm font-semibold text-gold-dark">$50/mo flat &mdash; every plan, $0 setup</span>
+                <span className="text-xs text-muted-foreground">&bull; Promo ends Dec 31 &bull; rate locked for life</span>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -982,11 +983,11 @@ export default function Home() {
               No contracts. Cancel anytime.
             </p>
 
-            {/* Early Adopter Banner */}
+            {/* End-of-Year Promo Banner */}
             <div className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gold/10 border border-gold/25">
               <Sparkles className="h-4 w-4 text-gold-dark" />
               <span className="text-sm font-medium text-gold-dark">
-                First 10 clients get $100 setup (normally $150–200). Lock in your rate forever.
+                End-of-Year Promo: every plan $50/month flat + $0 setup. Sign by Dec 31 and your founding rate is locked for life.
               </span>
             </div>
           </div>
@@ -1005,7 +1006,7 @@ export default function Home() {
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-6">
-                  + $150 one-time setup
+                  <s className="mr-1">$150 setup</s> waived &mdash; $0 during promo
                 </p>
                 <Separator className="mb-6" />
                 <ul className="space-y-3 mb-8 flex-1">
@@ -1044,12 +1045,13 @@ export default function Home() {
                   <h3 className="font-display text-xl font-semibold text-foreground mb-1">Growth</h3>
                   <p className="text-sm text-muted-foreground">Best value for growing daycares</p>
                 </div>
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="font-display text-4xl font-bold text-primary">$100</span>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <s className="font-display text-xl font-medium text-muted-foreground">$100</s>
+                  <span className="font-display text-4xl font-bold text-primary">$50</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-6">
-                  + $150 one-time setup
+                  <s className="mr-1">$150 setup</s> waived &mdash; $0 during promo
                 </p>
                 <Separator className="mb-6" />
                 <p className="text-xs font-medium text-primary mb-4">Everything in Starter, plus:</p>
@@ -1083,12 +1085,13 @@ export default function Home() {
                   <h3 className="font-display text-xl font-semibold text-foreground mb-1">Premium</h3>
                   <p className="text-sm text-muted-foreground">Full-service web presence</p>
                 </div>
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="font-display text-4xl font-bold text-foreground">$200</span>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <s className="font-display text-xl font-medium text-muted-foreground">$200</s>
+                  <span className="font-display text-4xl font-bold text-foreground">$50</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-6">
-                  + $150 one-time setup
+                  <s className="mr-1">$150 setup</s> waived &mdash; $0 during promo
                 </p>
                 <Separator className="mb-6" />
                 <p className="text-xs font-medium text-primary mb-4">Everything in Growth, plus:</p>
@@ -1119,15 +1122,15 @@ export default function Home() {
           {/* Reassurance */}
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              No contracts. Cancel anytime. Your domain after 3 months. All plans include a free sample first.
+              Every plan $50/month flat through Dec 31 &mdash; $0 setup, no contracts, cancel anytime. Your domain after 3 months. Every site starts with a free sample.
             </p>
           </div>
 
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { q: "Do I pay anything upfront?", a: "The sample is free. Setup fee applies only when you decide to keep it." },
+              { q: "Do I pay anything upfront?", a: "Nothing. The sample is free and the $150 setup fee is waived through Dec 31 — one $50 month is all you ever pay to launch." },
               { q: "What if I need more pages?", a: "Most daycares do great with a homepage and contact page. If you need more, we can add them." },
-              { q: "Can I switch plans?", a: "Yes, upgrade or downgrade anytime. Your rate adjusts on the next billing cycle." },
+              { q: "Can I switch plans?", a: "Yes, anytime. Every plan is the same $50/month during the promo, and your founding rate stays locked whichever you pick." },
               { q: "What if I don't like the sample?", a: "Just let us know. You can walk away, no charge." },
             ].map((item, i) => (
               <Card key={i} className="border-border bg-card">
@@ -1311,10 +1314,10 @@ export default function Home() {
             {[
               { question: "Is the sample really free?", answer: "Yes. We build a homepage for you at no cost. You only pay if you decide to keep it." },
               { question: "How long does the sample take?", answer: "We aim to have your sample ready within 48 hours of receiving your request." },
-              { question: "What plans do you offer?", answer: "We offer three plans: Starter ($50/mo), Growth ($100/mo — most popular), and Premium ($200/mo). All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. A one-time setup fee applies when you launch. Ask about our early adopter discount." },
+              { question: "What plans do you offer?", answer: "Through December 31, every plan — Starter, Growth, and Premium — is $50/month flat, with the $150 setup fee waived. All include a custom SEO-optimized website, mobile-responsive design, hosting, SSL, and more. Sign during the promo and your $50/month founding rate is locked for life." },
               { question: "Can I cancel?", answer: "Yes, anytime. No contracts or penalties. After 3 months, you own your domain and can take it with you." },
               { question: "Will my site work on phones?", answer: "Yes. All our sites are mobile-friendly, so parents can view your site easily from any device." },
-              { question: "How do payments work?", answer: "We use secure payment processing. Plans start at $50/month plus a one-time setup fee. No hidden fees. You can cancel anytime." },
+              { question: "How do payments work?", answer: "Simple: $50/month flat via secure payment processing. No setup fee, no hidden charges, and you can cancel anytime." },
             ].map((item, i) => (
               <AccordionItem
                 key={i}

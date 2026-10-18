@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Valley Daycare Sites | See Your Daycare Homepage Before You Pay",
     template: "%s | Valley Daycare Sites",
   },
-  description: "Get a free sample homepage for your daycare. We build it in 48 hours, you decide if you want to keep it for just $50/month. No upfront cost, no contracts.",
+  description: "Get a free sample homepage for your daycare. We build it in 48 hours, you decide if you want to keep it — $50/month flat, every plan, $0 setup fee. End-of-year promo through Dec 31. No contracts.",
   keywords: [
     "daycare website",
     "childcare website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Valley Daycare Sites | Free Sample Homepage for Your Daycare",
-    description: "Get a free sample homepage in 48 hours. See it before you pay anything. $50/month if you keep it.",
+    description: "Get a free sample homepage in 48 hours. See it before you pay anything. $50/month flat, every plan — promo ends Dec 31.",
     type: "website",
     locale: "en_US",
     siteName: "Valley Daycare Sites",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Valley Daycare Sites",
-    description: "Free sample homepage for your daycare. $50/month if you keep it.",
+    description: "Free sample homepage for your daycare. $50/month flat — promo ends Dec 31.",
     images: [
       {
         url: "/images/hero-mockup.png",

@@ -85,6 +85,8 @@ export default function TermsOfService() {
             <h3 className="font-semibold text-foreground mb-2">2.1 Subscription Billing</h3>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
               <li>Monthly subscription: $50/month</li>
+              <li>End-of-year promo (through Dec 31, 2026): every plan is $50/month flat and the setup fee is waived</li>
+              <li>Clients who sign up during the promo keep the $50/month founding rate for the life of their subscription</li>
               <li>Billed monthly on the date you sign up</li>
               <li>Automatic renewal unless cancelled</li>
             </ul>
