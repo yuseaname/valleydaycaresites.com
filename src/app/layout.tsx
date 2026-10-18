@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     template: "%s | Valley Daycare Sites",
   },
   description: "Get a free sample homepage for your daycare. We build it in 48 hours, you decide if you want to keep it — $50/month flat, every plan, $0 setup fee. End-of-year promo through Dec 31. No contracts.",
+  verification: {
+    google: "4NIpNtpkXf15aMt8dmFljCTthbX27ZtclzKl-YbxnKw",
+  },
   keywords: [
     "daycare website",
     "childcare website",
