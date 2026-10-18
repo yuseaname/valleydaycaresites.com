@@ -1,0 +1,94 @@
+name: deploy-vps
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: vars.DEPLOY_ENABLED == 'true'
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Build standalone
+        run: |
+          echo "deployed-commit=${GITHUB_SHA}" > public/deploy-commit.txt
+          bun install --frozen-lockfile
+          bun run build
+          test -f .next/standalone/server.js
+          test -d .next/standalone/.next/static
+
+      - name: Ship to VPS
+        env:
+          VDS_SSH_KEY: ${{ secrets.VDS_SSH_KEY }}
+          VDS_HOST: ${{ secrets.VDS_HOST }}
+          VDS_PORT: ${{ secrets.VDS_PORT }}
+          VDS_USER: ${{ secrets.VDS_USER }}
+        run: |
+          set -euo pipefail
+          install -m 600 /dev/null ~/vds_key
+          echo "${VDS_SSH_KEY}" > ~/vds_key
+          SSH="ssh -i ~/vds_key -p ${VDS_PORT} -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ${VDS_USER}@${VDS_HOST}"
+          RSYNC_RSH="ssh -i ~/vds_key -p ${VDS_PORT} -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR"
+
+          $SSH 'mkdir -p ~/apps/valleydaycaresites-new'
+          rsync -az --delete -e "$RSYNC_RSH" .next/standalone/ ${VDS_USER}@${VDS_HOST}:apps/valleydaycaresites-new/
+
+      - name: Atomic swap + Passenger restart
+        env:
+          VDS_SSH_KEY: ${{ secrets.VDS_SSH_KEY }}
+          VDS_HOST: ${{ secrets.VDS_HOST }}
+          VDS_PORT: ${{ secrets.VDS_PORT }}
+          VDS_USER: ${{ secrets.VDS_USER }}
+        run: |
+          set -euo pipefail
+          install -m 600 /dev/null ~/vds_key
+          echo "${VDS_SSH_KEY}" > ~/vds_key
+          ssh -i ~/vds_key -p ${VDS_PORT} -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ${VDS_USER}@${VDS_HOST} 'bash -s' <<'REMOTE'
+          set -euo pipefail
+          APP=~/apps/valleydaycaresites
+          NEW=~/apps/valleydaycaresites-new
+          test -f "$NEW/server.js" || { echo "ERROR: new build not staged"; exit 1; }
+          test -f "$APP/server.js" || { echo "ERROR: current app dir missing"; exit 1; }
+          mkdir -p "$NEW/db" "$NEW/prisma"
+          cp -a "$APP/.env" "$NEW/.env" 2>/dev/null || true
+          cp -a "$APP/db/." "$NEW/db/" 2>/dev/null || true
+          cp -a "$APP/prisma/." "$NEW/prisma/" 2>/dev/null || true
+          cd ~/apps
+          STAMP=$(date +%Y%m%d-%H%M%S)
+          mv valleydaycaresites "valleydaycaresites-old-${STAMP}"
+          mv valleydaycaresites-new valleydaycaresites
+          mkdir -p valleydaycaresites/tmp
+          touch valleydaycaresites/tmp/restart.txt
+          # keep the 2 newest rollback copies, drop older ones
+          ls -1dt valleydaycaresites-old-* 2>/dev/null | tail -n +3 | xargs -r rm -rf
+          echo "swapped; rollback dir: valleydaycaresites-old-${STAMP}"
+          REMOTE
+
+      - name: Verify live
+        run: |
+          set -euo pipefail
+          sleep 10
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' https://valleydaycaresites.com/)
+          [ "$CODE" = "200" ] || { echo "homepage returned $CODE"; exit 1; }
+          LIVE=$(curl -s https://valleydaycaresites.com/deploy-commit.txt || true)
+          EXPECTED="deployed-commit=${GITHUB_SHA}"
+          echo "live: $LIVE / expected: $EXPECTED"
+          [ "$LIVE" = "$EXPECTED" ] || { echo "live site is not serving this build"; exit 1; }
+          for p in /blog /payment /terms; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "https://valleydaycaresites.com$p")
+            echo "$p -> $c"
+            [ "$c" = "200" ] || exit 1
+          done
+          echo "DEPLOY VERIFIED LIVE"
