@@ -25,6 +25,7 @@ jobs:
         run: |
           echo "deployed-commit=${GITHUB_SHA}" > public/deploy-commit.txt
           bun install --frozen-lockfile
+          bun run db:generate
           bun run build
           test -f .next/standalone/server.js
           test -d .next/standalone/.next/static
