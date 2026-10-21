@@ -484,7 +484,7 @@ export default function Home() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-warm-lg p-5 border border-sage-100">
+                  <div className="absolute bottom-4 right-4 sm:-bottom-5 sm:-right-5 bg-white rounded-2xl shadow-warm-lg p-5 border border-sage-100">
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-sage-500 to-sage-600 flex items-center justify-center">
                         <Award className="w-5 h-5 text-white" />

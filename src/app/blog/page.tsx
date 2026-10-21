@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/lib/blog-data";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 

@@ -3,6 +3,9 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // hcdn edge 301-appends trailing slash on /demos; Next's default slash-strip
+  // 308 created an infinite redirect loop. Serve both forms, never redirect.
+  skipTrailingSlashRedirect: true,
   outputFileTracingRoot: path.join(__dirname),
   async headers() {
     return [

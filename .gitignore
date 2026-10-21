@@ -55,3 +55,5 @@ server.log
 *.db-shm
 *.db-wal
 prisma/db/
+# Agency harness (local only)
+.agency/

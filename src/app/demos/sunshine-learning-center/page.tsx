@@ -284,7 +284,7 @@ function HeroSection() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-4 -right-4 bg-white rounded-xl p-3 shadow-lg"
+              className="absolute bottom-4 right-4 sm:-bottom-4 sm:-right-4 bg-white rounded-xl p-3 shadow-lg"
             >
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center">

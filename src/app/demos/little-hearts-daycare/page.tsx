@@ -188,7 +188,7 @@ export default function Home() {
                 />
                 
                 {/* Floating Card */}
-                <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5 animate-float">
+                <div className="absolute bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5 animate-float">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                       <Star className="w-5 h-5 sm:w-6 sm:h-6 text-primary fill-primary" />
@@ -218,7 +218,7 @@ export default function Home() {
               />
               
               {/* Experience Badge */}
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5">
+              <div className="absolute top-4 right-4 sm:-top-6 sm:-right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5">
                 <div className="text-center">
                   <p className="text-3xl sm:text-4xl font-bold text-primary">10+</p>
                   <p className="text-sm text-muted-foreground">Years Experience</p>
@@ -226,7 +226,7 @@ export default function Home() {
               </div>
 
               {/* Certification Badge */}
-              <div className="absolute -bottom-4 left-4 sm:-bottom-6 sm:left-6 bg-white rounded-2xl shadow-xl p-3 sm:p-4">
+              <div className="absolute bottom-4 left-4 sm:-bottom-6 sm:left-6 bg-white rounded-2xl shadow-xl p-3 sm:p-4">
                 <div className="flex items-center gap-2">
                   <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   <div>
@@ -404,7 +404,7 @@ export default function Home() {
               />
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-4 right-4 sm:-bottom-6 sm:right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5">
+              <div className="absolute bottom-4 right-4 sm:-bottom-6 sm:right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-5">
                 <div className="flex items-center gap-3">
                   <Clock className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
                   <div>

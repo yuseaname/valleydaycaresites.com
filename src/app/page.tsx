@@ -324,7 +324,7 @@ export default function Home() {
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-primary/5 border border-primary/15">
                 <Sparkles className="h-4 w-4 text-gold" />
-                <span className="text-sm font-medium text-primary">Free sample &bull; 48-hour setup &bull; No upfront cost</span>
+                <span className="text-sm font-medium text-primary [text-wrap:balance]">Free sample &bull; 48-hour setup &bull; No upfront cost</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-bold text-foreground leading-[1.1] mb-6">
@@ -338,8 +338,10 @@ export default function Home() {
 
               <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20">
                 <Clock className="h-3.5 w-3.5 text-gold-dark" />
-                <span className="text-sm font-semibold text-gold-dark">$50/mo flat &mdash; every plan, $0 setup</span>
-                <span className="text-xs text-muted-foreground">&bull; Promo ends Dec 31 &bull; rate locked for life</span>
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                  <span className="text-sm font-semibold text-gold-dark">$50/mo flat &mdash; every plan, $0 setup</span>
+                  <span className="text-xs text-muted-foreground">Promo ends Dec 31 &bull; rate locked for life</span>
+                </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -354,7 +356,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
                   <span>No upfront cost</span>
@@ -1598,20 +1600,21 @@ export default function Home() {
 
       {/* ─── Floating Sticky CTA (Mobile) ─── */}
       {showStickyCta && !stickyCtaDismissed && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-background/95 backdrop-blur-md border-t border-border p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] sticky-cta-enter">
+        <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-background/95 backdrop-blur-md border-t border-border p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] sticky-cta-enter pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
           <Button asChild className="w-full gradient-forest text-primary-foreground shadow-premium-glow btn-premium">
             <a href="#contact">
               Get Your Free Sample
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
-          <button onClick={() => setStickyCtaDismissed(true)} className="absolute top-1 right-2 text-muted-foreground text-xs hover:text-foreground transition-colors">
+          <button onClick={() => setStickyCtaDismissed(true)} aria-label="Dismiss" className="absolute top-1 right-2 h-11 w-11 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <X className="h-4 w-4" />
           </button>
         </div>
       )}
 
       <Footer />
+      <div aria-hidden className="h-24 lg:hidden" />
     </main>
   );
 }

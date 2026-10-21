@@ -72,7 +72,7 @@ export default function TestimonialsPolicyPage() {
           </CardContent>
         </Card>
 
-        <div className="mt-8 flex justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button variant="outline" asChild>
             <Link href="/privacy">Privacy Policy</Link>
           </Button>

@@ -104,4 +104,8 @@ jobs:
             echo "$p -> $c"
             [ "$c" = "200" ] || exit 1
           done
+          # /demos sits behind an hcdn 301 (append-slash) — must resolve to 200, never loop
+          d=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 30 "https://valleydaycaresites.com/demos")
+          echo "/demos (following redirects) -> $d"
+          [ "$d" = "200" ] || { echo "/demos redirect chain broken"; exit 1; }
           echo "DEPLOY VERIFIED LIVE"

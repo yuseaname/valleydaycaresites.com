@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -11,16 +11,16 @@ import { cn } from "@/lib/utils";
 
 const footerLinks = {
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Our Process", href: "#process" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Blog", href: "#blog" },
+    { name: "About Us", href: "/#about" },
+    { name: "Our Process", href: "/#process" },
+    { name: "Portfolio", href: "/#portfolio" },
+    { name: "Blog", href: "/#blog" },
   ],
   services: [
-    { name: "Custom Website Design", href: "#services" },
-    { name: "Website Redesign", href: "#services" },
-    { name: "Mobile Optimization", href: "#services" },
-    { name: "Local SEO", href: "#services" },
+    { name: "Custom Website Design", href: "/#services" },
+    { name: "Website Redesign", href: "/#services" },
+    { name: "Mobile Optimization", href: "/#services" },
+    { name: "Local SEO", href: "/#services" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -31,25 +31,37 @@ const footerLinks = {
     { name: "Testimonials Policy", href: "/testimonials-policy" },
   ],
   support: [
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#contact" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "FAQ", href: "/#faq" },
+    { name: "Contact", href: "/#contact" },
+    { name: "Pricing", href: "/#pricing" },
   ],
 };
 
+// Mobile tap rows: >=44px tall on small screens, compact on desktop.
+const columnLinkClass =
+  "flex items-center min-h-11 lg:min-h-0 text-sm text-muted-foreground hover:text-foreground transition-colors";
+
 export function Footer() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const handleNavClick = (href: string) => {
-    if (href.startsWith("#")) {
-      if (pathname === "/") {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      } else {
-        window.location.href = "/" + href;
+    // Accept both "#about" and "/#about" forms.
+    const hash = href.startsWith("#")
+      ? href
+      : href.startsWith("/#")
+        ? href.slice(1)
+        : null;
+
+    if (!hash) return;
+
+    if (pathname === "/") {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
       }
+    } else {
+      router.push("/" + hash);
     }
   };
 
@@ -75,7 +87,7 @@ export function Footer() {
               asChild
               className="gradient-forest text-primary-foreground hover:opacity-90 transition-opacity shadow-premium"
             >
-              <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}>
+              <a href="/#contact" onClick={(e) => { e.preventDefault(); handleNavClick("/#contact"); }}>
                 Get Your Free Sample
               </a>
             </Button>
@@ -87,19 +99,19 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  {link.href.startsWith("#") ? (
+                  {link.href.startsWith("/#") ? (
                     <a
                       href={link.href}
                       onClick={(e) => {
                         e.preventDefault();
                         handleNavClick(link.href);
                       }}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className={columnLinkClass}
                     >
                       {link.name}
                     </a>
                   ) : (
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} className={columnLinkClass}>
                       {link.name}
                     </Link>
                   )}
@@ -114,19 +126,19 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  {link.href.startsWith("#") ? (
+                  {link.href.startsWith("/#") ? (
                     <a
                       href={link.href}
                       onClick={(e) => {
                         e.preventDefault();
                         handleNavClick(link.href);
                       }}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className={columnLinkClass}
                     >
                       {link.name}
                     </a>
                   ) : (
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link href={link.href} className={columnLinkClass}>
                       {link.name}
                     </Link>
                   )}
@@ -141,7 +153,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className={columnLinkClass}>
                     {link.name}
                   </Link>
                 </li>
@@ -157,15 +169,6 @@ export function Footer() {
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Shield className="h-4 w-4" />
             <span>&copy; {new Date().getFullYear()} Valley Daycare Sites. All rights reserved.</span>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
-            <Link href="/refund" className="hover:text-foreground transition-colors">Refund</Link>
-            <Link href="/disclaimer" className="hover:text-foreground transition-colors">Disclaimer</Link>
-            <Link href="/earnings-disclaimer" className="hover:text-foreground transition-colors">Earnings Disclaimer</Link>
-            <Link href="/testimonials-policy" className="hover:text-foreground transition-colors">Testimonials Policy</Link>
           </div>
         </div>
 

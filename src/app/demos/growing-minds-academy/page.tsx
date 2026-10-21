@@ -343,7 +343,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent" />
                 </div>
                 {/* Floating Badge */}
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
+                <div className="absolute bottom-4 left-4 sm:-bottom-4 sm:-left-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6 text-white" />
                   </div>
