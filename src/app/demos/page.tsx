@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 
 export const metadata: Metadata = {
-  title: 'Demo Daycare Websites | Valley Daycare Sites',
+  title: 'Demo Daycare Websites',
   description:
     'Browse six example daycare websites built by Valley Daycare Sites. See live demos of styles for large centers, family daycares, preschools, and more.',
 }
